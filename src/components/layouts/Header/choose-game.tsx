@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/Dialog";
 import { games } from "@/datas/games";
 import { ChevronDown, Gamepad2 } from "lucide-react";
+import Logo from "../Logo";
 
 const ChooseGameModal = () => {
   return (
@@ -70,10 +71,10 @@ const ChooseGameModal = () => {
             ))}
           </div>
 
-          <div>
-            {/* Bar */}
-            {/* Logo */}
-            {/* Bar */}
+          <div className="flex justify-center items-center gap-8">
+            <hr className="bg-linear-to-r from-transparent to-white w-full h-0.5 rounded-full" />
+            <Logo size={10} />
+            <hr className="bg-linear-to-l from-transparent to-white w-full h-0.5 rounded-full" />
           </div>
         </div>
       </div>

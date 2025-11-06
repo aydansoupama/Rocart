@@ -1,15 +1,16 @@
 import Header from "@/components/layouts/Header";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import HeroSection from "@/components/sections/home/hero";
+import TrendingNowSection from "@/components/sections/home/trending-now";
 
 const Home = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
   return (
     <>
-      <Header user={session?.user} />
+      <Header />
+
+      <main>
+        <HeroSection />
+        <TrendingNowSection />
+      </main>
     </>
   );
 };

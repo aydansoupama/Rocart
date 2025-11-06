@@ -5,15 +5,22 @@ import {
   DialogTrigger,
 } from "@/components/ui/Dialog";
 import { games } from "@/datas/games";
-import { cn } from "@/lib/utils";
 import { ChevronDown, Gamepad2 } from "lucide-react";
 
 const ChooseGameModal = () => {
   return (
-    <DialogContent className="min-w-7xl flex flex-col gap-8 rounded-[70px] bg-linear-to-b from-[#06100A] to-[#031C0D] drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) px-24 py-11 [&>button]:hidden">
-      <DialogTitle className="font-poppins uppercase text-2xl font-bold mx-auto bg-linear-to-r from-white to-secondary bg-clip-text text-transparent" >
-        Choose a game
-      </DialogTitle>
+    <DialogContent className="!p-0 !border-0 !bg-transparent min-w-7xl rounded-[70px] [&>button]:hidden">
+      <div
+        className="p-[2px] rounded-[70px]"
+        style={{
+          background:
+            "linear-gradient(180deg, #3DFF88 0%, rgba(61, 255, 136, 0.6) 50%, rgba(61, 255, 136, 0.2) 100%)",
+        }}
+      >
+        <div className="flex flex-col gap-8 rounded-[70px] bg-gradient-to-b from-[#06100A] to-[#031C0D] px-24 py-11">
+          <DialogTitle className="font-poppins uppercase text-2xl font-bold mx-auto bg-linear-to-r from-white to-secondary bg-clip-text text-transparent">
+            Choose a game
+          </DialogTitle>
 
       <div className="flex flex-wrap justify-center gap-8 min-w-full">
         {games.map((game) => (
@@ -63,10 +70,12 @@ const ChooseGameModal = () => {
         ))}
       </div>
 
-      <div>
-        {/* Bar */}
-        {/* Logo */}
-        {/* Bar */}
+          <div>
+            {/* Bar */}
+            {/* Logo */}
+            {/* Bar */}
+          </div>
+        </div>
       </div>
     </DialogContent>
   );

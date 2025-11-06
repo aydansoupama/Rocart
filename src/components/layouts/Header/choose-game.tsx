@@ -22,53 +22,53 @@ const ChooseGameModal = () => {
             Choose a game
           </DialogTitle>
 
-      <div className="flex flex-wrap justify-center gap-8 min-w-full">
-        {games.map((game) => (
-          <div
-            key={game.id}
-            className="relative w-[30%] min-w-[280px] max-w-[351px] h-[243px] p-[2px] rounded-[53px] cursor-pointer hover:scale-[1.02] transition-transform"
-            style={{
-              background:
-                "linear-gradient(180deg, #3DFF88 0%, rgba(61, 255, 136, 0.6) 50%, rgba(61, 255, 136, 0.2) 100%)",
-            }}
-          >
-            <div className="relative flex flex-col justify-center items-center gap-6 w-full h-full rounded-[51px] bg-[#030904] overflow-hidden">
+          <div className="flex flex-wrap justify-center gap-8 min-w-full">
+            {games.map((game) => (
               <div
-                className="absolute inset-0 opacity-[0.24] rounded-[51px]"
+                key={game.id}
+                className="relative w-[30%] min-w-[280px] max-w-[351px] h-[243px] p-[2px] rounded-[53px] cursor-pointer hover:scale-[1.02] transition-transform"
                 style={{
-                  backgroundImage: `url(${game.icon})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  background:
+                    "linear-gradient(180deg, #3DFF88 0%, rgba(61, 255, 136, 0.6) 50%, rgba(61, 255, 136, 0.2) 100%)",
                 }}
-              />
-
-              <div className="relative z-10 flex flex-col justify-center items-center gap-6 px-8 py-10">
-                <div className="rounded-3xl overflow-hidden w-[140px] h-[80px] shadow-xl">
-                  <img
-                    src={game.icon}
-                    alt={game.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="flex flex-col justify-center items-center gap-0.5 font-poppins">
-                  <h3
-                    className="font-bold text-[20px] leading-[30px] bg-clip-text text-transparent"
+              >
+                <div className="relative flex flex-col justify-center items-center gap-6 w-full h-full rounded-[51px] bg-[#030904] overflow-hidden">
+                  <div
+                    className="absolute inset-0 opacity-[0.24] rounded-[51px]"
                     style={{
-                      backgroundImage: `linear-gradient(90deg, ${game.color} 0%, #D9EDFF 100%)`,
+                      backgroundImage: `url(${game.icon})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
                     }}
-                  >
-                    {game.name}
-                  </h3>
-                  <p className="font-semibold text-[15px] leading-[22px] text-white">
-                    Tap to view Items
-                  </p>
+                  />
+
+                  <div className="relative z-10 flex flex-col justify-center items-center gap-6 px-8 py-10">
+                    <div className="rounded-3xl overflow-hidden w-[140px] h-[80px] shadow-xl">
+                      <img
+                        src={game.icon}
+                        alt={game.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center gap-0.5 font-poppins">
+                      <h3
+                        className="font-bold text-[20px] leading-[30px] bg-clip-text text-transparent"
+                        style={{
+                          backgroundImage: `linear-gradient(90deg, ${game.color} 0%, #D9EDFF 100%)`,
+                        }}
+                      >
+                        {game.name}
+                      </h3>
+                      <p className="font-semibold text-[15px] leading-[22px] text-white">
+                        Tap to view Items
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
 
           <div>
             {/* Bar */}

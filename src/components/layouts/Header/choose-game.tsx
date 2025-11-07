@@ -24,13 +24,13 @@ const ChooseGameModal = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] as const }}
       >
-        <div className="flex flex-col gap-8 rounded-[70px] bg-linear-to-b from-[#06100A] to-[#031C0D] px-24 py-11">
+        <div className="flex flex-col w-full gap-8 rounded-[70px] bg-linear-to-b from-[#06100A] to-[#031C0D] px-24 py-11">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] as const }}
           >
-            <DialogTitle className="font-poppins uppercase text-2xl font-bold mx-auto bg-linear-to-r from-white to-secondary bg-clip-text text-transparent">
+            <DialogTitle className="font-poppins uppercase text-2xl font-bold w-fit mx-auto bg-blue-600 bg-linear-to-r from-white to-secondary bg-clip-text text-transparent">
               Choose a game
             </DialogTitle>
           </motion.div>

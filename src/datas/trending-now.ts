@@ -1,81 +1,105 @@
 const trendingGames = [
   {
-    name: "Grow a Garden",
+    id: 1,
+    title: "Grow A Garden",
     icon: "/gag-jqsy7lwj-1.png",
-    image: "/bgs/image4.png",
-    color: "#27ae60",
+    maskGroup: "/bgs/image4.png",
+    buttonGradient: "linear-gradient(90deg, #06100A 0%, #2C764A 100%)",
+    buttonBorderColor: "#9B9B9B",
     items: [
       {
         name: "Raccoon",
         price: "$15",
         image: "/img-5467--1--1.png",
-        color: "#3DFF88",
+        priceColor: "text-[#3dff87]",
+        backgroundImage:
+          "linear-gradient(180deg, rgba(61, 255, 135, 0.05) 0%, rgba(44, 118, 74, 0) 50%)",
       },
       {
         name: "Kitsune",
         price: "$10",
         image: "/pets/kitsume.png",
-        color: "#FF3D3D",
+        priceColor: "text-[#861C1C]",
+        backgroundImage:
+          "linear-gradient(180deg, rgba(255, 87, 34, 0.05) 0%, rgba(134, 28, 28, 0) 50%)",
       },
     ],
   },
   {
-    name: "MM2",
+    id: 2,
+    title: "MM2",
     icon: "/icon/mm2.png",
-    image: "/bgs/image2.png",
-    color: "#911313",
+    maskGroup: "/bgs/image2.png",
+    buttonGradient: "linear-gradient(90deg, #100706 0%, #911313 100%)",
+    buttonBorderColor: "#9B9B9B",
     items: [
       {
         name: "Gingerscope",
         price: "$15",
         image: "/pets/Gingerscope.png",
-        color: "#FFA13D",
+        priceColor: "text-[#ff3c3c]",
+        backgroundImage:
+          "linear-gradient(180deg, rgba(255, 60, 60, 0.05) 0%, rgba(145, 19, 19, 0) 50%)",
       },
       {
         name: "Bat Knife",
         price: "$10",
         image: "/pets/bat.png",
-        color: "#ffcc00",
+        priceColor: "text-[#be8832]",
+        backgroundImage:
+          "linear-gradient(180deg, rgba(190, 136, 50, 0.05) 0%, rgba(145, 19, 19, 0) 50%)",
       },
     ],
   },
   {
-    name: "Steal A Brainrot",
+    id: 3,
+    title: "Steal A brainrot",
     icon: "/logo/brain.png",
-    image: "/bgs/image1.png",
-    color: "#9b59b6",
+    maskGroup: "/bgs/image1.png",
+    buttonGradient: "linear-gradient(90deg, #0D0610 0%, #6C2C76 100%)",
+    buttonBorderColor: "#9B9B9B",
     items: [
       {
         name: "Medussi",
         price: "$15",
         image: "/pets/Medussi.png",
-        color: "#FF3DF2",
+        priceColor: "text-[#821BF0]",
+        backgroundImage:
+          "linear-gradient(180deg, rgba(255, 61, 242, 0.05) 0%, rgba(149, 37, 153, 0)50%)",
       },
       {
         name: "Combinasion",
         price: "$10",
         image: "/pets/Combinasion.png",
-        color: "#FF3DF2",
+        priceColor: "text-[#31a6ff]",
+        backgroundImage:
+          "linear-gradient(180deg, rgba(49, 166, 255, 0.05) 0%, rgba(108, 44, 118, 0)50%)",
       },
     ],
   },
   {
-    name: "Adopt Me",
+    id: 4,
+    title: "Adopt Me",
     icon: "/am-yek4mbfs-1.png",
-    image: "/bgs/image3.png",
-    color: "#3498db",
+    maskGroup: "/bgs/image3.png",
+    buttonGradient: "linear-gradient(90deg, #0D0610 0%, #2886CD 100%)",
+    buttonBorderColor: "#9B9B9B",
     items: [
       {
-        name: "Raccoon",
+        name: "Elephant",
         price: "$15",
         image: "/elephant-17-9fcc194d-4ed1-475f-9992-6ede479175b9-1.png",
-        color: "#3DC8FF",
+        priceColor: "text-[#999999]",
+        backgroundImage:
+          "linear-gradient(180deg, rgba(3, 169, 244, 0.05) 0%, rgba(40, 134, 205, 0)50%)",
       },
       {
-        name: "Queen Bee",
+        name: "Cow ",
         price: "$10",
         image: "/cow-12-04a274cd-d0f3-448a-8729-45826f64f935-1.png",
-        color: "#FFFFFF",
+        priceColor: "text-white",
+        backgroundImage:
+          "linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(40, 134, 205, 0)50%)",
       },
     ],
   },

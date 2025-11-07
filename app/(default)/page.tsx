@@ -4,6 +4,7 @@ import HowItWorksSection from "@/components/sections/home/how-it-works";
 import TrendingNowSection from "@/components/sections/home/trending-now";
 import TrustedSection from "@/components/sections/home/trusted";
 import WhyChooseSection from "@/components/sections/home/why-choose";
+import FAQSection from "@/components/sections/home/faq";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 
@@ -22,6 +23,7 @@ const Home = async () => {
         <TrustedSection />
         <WhyChooseSection />
         <HowItWorksSection />
+        <FAQSection />
       </main>
     </>
   );

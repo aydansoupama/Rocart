@@ -102,7 +102,11 @@ const HeroSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] as const },
+      transition: {
+        duration: 0.6,
+        delay: 0.2,
+        ease: [0.4, 0, 0.2, 1] as const,
+      },
     },
   };
 
@@ -111,7 +115,11 @@ const HeroSection = () => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, delay: 0.4, ease: [0.4, 0, 0.2, 1] as const },
+      transition: {
+        duration: 0.5,
+        delay: 0.4,
+        ease: [0.4, 0, 0.2, 1] as const,
+      },
     },
   };
 
@@ -121,7 +129,11 @@ const HeroSection = () => {
       opacity: 1,
       x: 0,
       scale: 1,
-      transition: { duration: 0.8, delay: 0.3, ease: [0.4, 0, 0.2, 1] as const },
+      transition: {
+        duration: 0.8,
+        delay: 0.3,
+        ease: [0.4, 0, 0.2, 1] as const,
+      },
     },
   };
 
@@ -174,7 +186,7 @@ const HeroSection = () => {
             </div>
 
             <motion.div
-              className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 sm:gap-3 relative"
+              className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 sm:gap-3"
               variants={buttonVariants}
             >
               <motion.button
@@ -190,15 +202,20 @@ const HeroSection = () => {
                 Start Buying
               </motion.button>
               <motion.div
-                className="hidden lg:block absolute -right-32 top-1/2 -translate-y-1/2 w-32 h-32"
+                className="hidden lg:block w-16 h-16"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.6,
+                  ease: [0.4, 0, 0.2, 1] as const,
+                }}
               >
                 <Image
                   src="/icon/arroww.png"
                   alt="Arrow"
-                  fill
+                  width={64}
+                  height={64}
                   className="object-contain"
                 />
               </motion.div>
@@ -206,28 +223,12 @@ const HeroSection = () => {
           </motion.div>
 
           <motion.div
-            className="hidden lg:flex flex-1 relative aspect-[4/3] w-full max-w-[40vw] mx-auto"
+            className="hidden lg:flex flex-1 relative aspect-4/3 w-full max-w-[40vw] mx-auto"
             variants={characterVariants}
             initial="hidden"
             animate="visible"
           >
-            {/* Main Character */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: [0.4, 0, 0.2, 1] as const }}
-            >
-              <Image
-                className="absolute top-[25vh] left-[30%] w-[50%] h-auto object-contain"
-                alt="Character"
-                src="/logo/char.png"
-                width={500}
-                height={500}
-                priority
-              />
-            </motion.div>
-
-            {/* Floating Game Items */}
+            {/* Floating Game Items - Behind */}
             {gameItems.map((item, index) => (
               <motion.div
                 key={index}
@@ -238,28 +239,11 @@ const HeroSection = () => {
                   width: "30%",
                   height: "30%",
                 }}
-                initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  rotate: 0,
-                  y: [0, -10, 0],
-                }}
+                animate={{ y: [0, -10, 0] }}
                 transition={{
-                  opacity: { duration: 0.6, delay: 0.6 + index * 0.2 },
-                  scale: { duration: 0.6, delay: 0.6 + index * 0.2 },
-                  rotate: { duration: 0.8, delay: 0.6 + index * 0.2 },
-                  y: {
-                    duration: 3 + index,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1.2,
-                  },
-                }}
-                whileHover={{
-                  scale: 1.1,
-                  rotate: 5,
-                  transition: { duration: 0.2 },
+                  duration: 3 + index,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                 }}
               >
                 <Card className="relative top-[15vw] w-full h-full bg-transparent shadow-none border-none">
@@ -268,12 +252,10 @@ const HeroSection = () => {
                     <div className="absolute inset-0 rounded-[2.5vw] opacity-[0.12] -rotate-45" />
 
                     {/* Item Image */}
-                    <Image
-                      className={`absolute inset-0 w-full h-full m-auto object-contain scale-150 ${item.rotation}`}
+                    <img
+                      className={`absolute inset-0 w-[100%] h-[100%] m-auto object-contain scale-150 ${item.rotation}`}
                       alt={item.name}
                       src={item.image}
-                      fill
-                      sizes="100%"
                     />
 
                     {/* Badge */}
@@ -282,6 +264,28 @@ const HeroSection = () => {
                 </Card>
               </motion.div>
             ))}
+
+            {/* Main Character - In Front */}
+            <motion.div
+              className="absolute translate-y-16 z-10 inset-0 flex items-end justify-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.5,
+                ease: [0.4, 0, 0.2, 1] as const,
+              }}
+            >
+              <div className="relative w-full mt-16 aspect-square">
+                <Image
+                  alt="Character"
+                  src="/logo/char.png"
+                  fill
+                  className="object-contain object-bottom"
+                  priority
+                />
+              </div>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -289,7 +293,11 @@ const HeroSection = () => {
           className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-primary to-transparent"
           initial={{ scaleX: 0, originX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 0.8, ease: [0.4, 0, 0.2, 1] as const }}
+          transition={{
+            duration: 1.2,
+            delay: 0.8,
+            ease: [0.4, 0, 0.2, 1] as const,
+          }}
         />
       </section>
     </VertexBackground>

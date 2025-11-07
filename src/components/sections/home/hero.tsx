@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 import { motion } from "framer-motion";
 import VertexBackground from "@/components/backgrounds/Vertex";
+import { Card, CardContent } from "@/components/ui/card";
 
 const FloatingItem = ({
   image,
@@ -63,6 +64,67 @@ const FloatingItem = ({
 };
 
 const HeroSection = () => {
+  const gameItems = [
+    {
+      name: "Chroma Evergun",
+      image: "/homeico/1.png",
+      top: "10%",
+      left: "0%",
+      rotation: "rotate-[-55deg]",
+    },
+    {
+      name: "Control Fruit",
+      image: "/homeico/3.png",
+      top: "-25%",
+      left: "65%",
+      rotation: "rotate-[45.57deg]",
+    },
+    {
+      name: "Gold disco Bee",
+      image: "/homeico/2.png",
+      top: "-35%",
+      left: "20%",
+      rotation: "rotate-[-30.90deg]",
+    },
+  ];
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] as const },
+    },
+  };
+
+  const descriptionVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] as const },
+    },
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, delay: 0.4, ease: [0.4, 0, 0.2, 1] as const },
+    },
+  };
+
+  const characterVariants = {
+    hidden: { opacity: 0, x: 50, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: { duration: 0.8, delay: 0.3, ease: [0.4, 0, 0.2, 1] as const },
+    },
+  };
+
   return (
     <VertexBackground
       backgroundLayer={
@@ -77,18 +139,28 @@ const HeroSection = () => {
       radius={80}
     >
       <div className="absolute inset-0 z-1 bg-linear-to-t from-primary/20 to-[#06100a] pointer-events-none" />
-      
+
       <section className="w-full py-8 md:py-12 px-4 md:px-6 font-poppins relative z-10">
         <div className="px-4 md:px-8 flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
-          <div className="w-full lg:w-1/2">
+          <motion.div
+            className="w-full lg:w-1/2"
+            initial="hidden"
+            animate="visible"
+          >
             <div className="mb-8 md:mb-16">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white max-w-2xl leading-tight mb-4 md:mb-6">
+              <motion.h1
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white max-w-2xl leading-tight mb-4 md:mb-6"
+                variants={titleVariants}
+              >
                 Buy Your Favorite Items{" "}
-                <span className="text-primary">Fast, Safe, and Easy</span>{" "}
-                with BloxBeam!
-              </h1>
+                <span className="text-primary">Fast, Safe, and Easy</span> with
+                BloxBeam!
+              </motion.h1>
 
-              <div className="space-y-2 md:space-y-3 text-secondary text-sm md:text-base mb-6 md:mb-8">
+              <motion.div
+                className="space-y-2 md:space-y-3 text-secondary text-sm md:text-base mb-6 md:mb-8"
+                variants={descriptionVariants}
+              >
                 <p>
                   Bloxbeam the fastest, safest shop for in-game items with
                   automated delivery.
@@ -98,87 +170,127 @@ const HeroSection = () => {
                   For items in Murder Mystery 2, Grow a Garden, Blox Fruits,
                   Steal a Brainrot, Blade Ball.
                 </p>
-              </div>
+              </motion.div>
             </div>
 
-            <button className="flex justify-center items-center font-bold gap-x-2.5 px-4 py-3 rounded-xl bg-linear-to-b from-[#3DFF88] to-[#259951] hover:to-[#259951] hover:from-[#169e4a] transition-colors transition-300 shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,255.1)] active:shadow-none active:translate-y-0.5 cursor-pointer">
-              <ShoppingCart fill="white" size={20} className="md:w-6 md:h-6" />
-              Start Buying
-            </button>
-          </div>
-
-          <div className="w-full lg:w-1/2 relative h-[300px] sm:h-[400px] lg:h-[500px] flex items-center justify-center">
             <motion.div
-              className="absolute top-0 left-4 sm:left-8 lg:left-12 z-20 scale-75 sm:scale-90 lg:scale-100"
-              animate={{
-                y: [0, -20, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-                repeatType: "loop",
-              }}
+              className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 sm:gap-3 relative"
+              variants={buttonVariants}
             >
-              <FloatingItem
-                image="/images/homepage/red_hero.png"
-                name="Gold disco"
-                category="Bee"
-                primary="#FF1744"
-                gradient="linear-gradient(135deg, rgba(139, 0, 0, 0.8), rgba(69, 0, 0, 0.6))"
-                rotation={-24}
+              <motion.button
+                className="relative flex justify-center items-center font-bold gap-x-2.5 px-6 py-3 rounded-xl bg-linear-to-b from-[#3DFF88] to-[#259951] hover:to-[#259951] hover:from-[#169e4a] transition-colors transition-300 shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,255.1)] active:shadow-none active:translate-y-0.5 cursor-pointer text-sm sm:text-base"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ShoppingCart
+                  fill="white"
+                  size={18}
+                  className="sm:w-5 sm:h-5 md:w-6 md:h-6"
+                />
+                Start Buying
+              </motion.button>
+              <motion.div
+                className="hidden lg:block absolute -right-32 top-1/2 -translate-y-1/2 w-32 h-32"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
+              >
+                <Image
+                  src="/icon/arroww.png"
+                  alt="Arrow"
+                  fill
+                  className="object-contain"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="hidden lg:flex flex-1 relative aspect-[4/3] w-full max-w-[40vw] mx-auto"
+            variants={characterVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Main Character */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: [0.4, 0, 0.2, 1] as const }}
+            >
+              <Image
+                className="absolute top-[25vh] left-[30%] w-[50%] h-auto object-contain"
+                alt="Character"
+                src="/logo/char.png"
+                width={500}
+                height={500}
+                priority
               />
             </motion.div>
 
-            <motion.div
-              className="absolute top-4 sm:top-8 right-0 z-20 scale-75 sm:scale-90 lg:scale-100"
-              animate={{
-                y: [0, -20, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.5,
-                repeatType: "loop",
-              }}
-            >
-              <FloatingItem
-                image="/images/homepage/blue_hero.png"
-                name="Control"
-                category="Fruit"
-                primary="#448AFF"
-                gradient="linear-gradient(135deg, rgba(25, 118, 210, 0.8), rgba(13, 71, 161, 0.6))"
-                rotation={45}
-              />
-            </motion.div>
+            {/* Floating Game Items */}
+            {gameItems.map((item, index) => (
+              <motion.div
+                key={index}
+                className="absolute"
+                style={{
+                  top: item.top,
+                  left: item.left,
+                  width: "30%",
+                  height: "30%",
+                }}
+                initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  rotate: 0,
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  opacity: { duration: 0.6, delay: 0.6 + index * 0.2 },
+                  scale: { duration: 0.6, delay: 0.6 + index * 0.2 },
+                  rotate: { duration: 0.8, delay: 0.6 + index * 0.2 },
+                  y: {
+                    duration: 3 + index,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1.2,
+                  },
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  rotate: 5,
+                  transition: { duration: 0.2 },
+                }}
+              >
+                <Card className="relative top-[15vw] w-full h-full bg-transparent shadow-none border-none">
+                  <CardContent className="p-0 relative w-full h-full">
+                    {/* Background gradient */}
+                    <div className="absolute inset-0 rounded-[2.5vw] opacity-[0.12] -rotate-45" />
 
-            <motion.div
-              className="absolute bottom-8 sm:bottom-12 left-0 z-20 scale-75 sm:scale-90 lg:scale-100"
-              animate={{
-                y: [0, -20, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1,
-                repeatType: "loop",
-              }}
-            >
-              <FloatingItem
-                image="/images/homepage/green_hero.png"
-                name="Chroma"
-                category="Evergun"
-                primary="#00E676"
-                gradient="linear-gradient(135deg, rgba(27, 94, 32, 0.8), rgba(46, 125, 50, 0.6))"
-                rotation={-55}
-              />
-            </motion.div>
-          </div>
+                    {/* Item Image */}
+                    <Image
+                      className={`absolute inset-0 w-full h-full m-auto object-contain scale-150 ${item.rotation}`}
+                      alt={item.name}
+                      src={item.image}
+                      fill
+                      sizes="100%"
+                    />
+
+                    {/* Badge */}
+                    <div className="absolute bottom-[20%] right-[10%] w-[2.5vw] h-[2.5vw] rounded-[0.8vw] -rotate-45" />
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-primary to-transparent" />
+        <motion.div
+          className="absolute bottom-0 left-0 w-full h-1 bg-linear-to-r from-primary to-transparent"
+          initial={{ scaleX: 0, originX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.2, delay: 0.8, ease: [0.4, 0, 0.2, 1] as const }}
+        />
       </section>
     </VertexBackground>
   );

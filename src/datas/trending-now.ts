@@ -23,7 +23,7 @@ const trendingGames = [
     name: "MM2",
     icon: "/icon/mm2.png",
     image: "/bgs/image2.png",
-    color: "#c0392b",
+    color: "#911313",
     items: [
       {
         name: "Gingerscope",

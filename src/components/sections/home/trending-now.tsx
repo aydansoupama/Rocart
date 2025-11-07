@@ -7,7 +7,7 @@ interface TrendingItem {
   name: string;
   price: string;
   image: string;
-  borderColor: string;
+  color: string;
 }
 
 const TrendingMarket = ({

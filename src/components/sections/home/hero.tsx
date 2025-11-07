@@ -76,7 +76,7 @@ const HeroSection = () => {
       }
       radius={80}
     >
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 z-1 bg-linear-to-t from-primary/20 to-[#06100a] pointer-events-none" />
       
       <section className="w-full py-8 md:py-12 px-4 md:px-6 font-poppins relative z-10">
         <div className="px-4 md:px-8 flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">

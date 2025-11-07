@@ -4,7 +4,7 @@ const Logo = ({ size }: { size: number }) => {
     <img
       src={"/bloxbeam_logo.png"}
       className={`object-cover h-${size}`}
-      alt="Rocart's Logo"
+      alt="Bloxbeam's Logo"
     />
   );
 };

@@ -5,7 +5,7 @@ const benefitCards = [
     icon: "/why/4.png",
     title: "Best Prices",
     description:
-      "RoCart has the best prices, keeping everything cheap and easy so you can get the items you want without stress.",
+      "BloxBeam has the best prices, keeping everything cheap and easy so you can get the items you want without stress.",
   },
   {
     bgColor: "bg-[#0e2514]",

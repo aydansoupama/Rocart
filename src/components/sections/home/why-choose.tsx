@@ -61,7 +61,7 @@ const WhyChooseSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
             >
-              Why Choose <span className="text-primary">Rocart</span>?
+              Why Choose <span className="text-primary">Bloxbeam</span>?
             </motion.h2>
             <p className="font-poppins font-medium text-[#999999] text-sm tracking-[0] leading-[normal] max-w-4xl mx-auto">
               Enjoy lightning - fast delivery, unbeatable prices, and a safe,

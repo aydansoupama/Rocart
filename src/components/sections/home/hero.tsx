@@ -85,12 +85,12 @@ const HeroSection = () => {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white max-w-2xl leading-tight mb-4 md:mb-6">
                 Buy Your Favorite Items{" "}
                 <span className="text-primary">Fast, Safe, and Easy</span>{" "}
-                with RoCart!
+                with BloxBeam!
               </h1>
 
               <div className="space-y-2 md:space-y-3 text-secondary text-sm md:text-base mb-6 md:mb-8">
                 <p>
-                  Rocart the fastest, safest shop for in-game items with
+                  Bloxbeam the fastest, safest shop for in-game items with
                   automated delivery.
                 </p>
                 <p>Get what you need in seconds.</p>

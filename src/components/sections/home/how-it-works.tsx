@@ -67,13 +67,13 @@ const HowItWorksSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
           >
-            How <span className="text-[#3dff87]">Rocart</span> Works?
+            How <span className="text-[#3dff87]">Bloxbeam</span> Works?
           </motion.h2>
           <motion.p
             className="font-poppins font-medium text-[#999999] text-base lg:text-lg tracking-[0] leading-relaxed max-w-4xl mx-auto"
             variants={descriptionVariants}
           >
-            Buying Items on RoCart is designed to be simple, fast, and reliable!
+            Buying Items on BloxBeam is designed to be simple, fast, and reliable!
             <br />
             Here&apos;s how you can get started
           </motion.p>

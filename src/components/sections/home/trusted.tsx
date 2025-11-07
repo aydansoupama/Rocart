@@ -60,7 +60,7 @@ const TrustedSection = () => {
             variants={descriptionVariants}
           >
             <span>
-              Join thousands of happy buyers who trust Rocart for their in-game
+              Join thousands of happy buyers who trust Bloxbeam for their in-game
               items!
             </span>
             <span>

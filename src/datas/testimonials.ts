@@ -39,7 +39,7 @@ const testimonials = [
     id: 6,
     name: "Michael B.",
     testimonial:
-      "Top-tier customer support and quality items. Been using Rocart for months now!",
+      "Top-tier customer support and quality items. Been using Bloxbeam for months now!",
     verified: true,
     avatar: "/avatars/michael.png",
   },

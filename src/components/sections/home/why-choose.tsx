@@ -27,7 +27,7 @@ const WhyChooseSection = () => {
       scale: 1,
       transition: {
         duration: 0.5,
-        ease: [0.4, 0, 0.2, 1],
+        ease: [0.4, 0, 0.2, 1] as const,
       },
     },
   };
@@ -39,7 +39,7 @@ const WhyChooseSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.4, 0, 0.2, 1],
+        ease: [0.4, 0, 0.2, 1] as const,
       },
     },
   };
@@ -59,9 +59,9 @@ const WhyChooseSection = () => {
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
             >
-              Why Choose <span className=" text-[#3dff87] ">Rocart</span>?
+              Why Choose <span className="text-primary">Rocart</span>?
             </motion.h2>
             <p className="font-poppins font-medium text-[#999999] text-sm tracking-[0] leading-[normal] max-w-4xl mx-auto">
               Enjoy lightning - fast delivery, unbeatable prices, and a safe,
@@ -119,7 +119,7 @@ const WhyChooseSection = () => {
                           transition={{
                             delay: index * 0.1 + 0.4,
                             duration: 0.4,
-                            ease: [0.4, 0, 0.2, 1],
+                            ease: [0.4, 0, 0.2, 1] as const,
                           }}
                           whileHover={{
                             rotate: 10,

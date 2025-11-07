@@ -5,18 +5,60 @@ import { Star, StarHalf } from "lucide-react";
 import Image from "next/image";
 
 const TrustedSection = () => {
+  const titleVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] as const },
+    },
+  };
+
+  const descriptionVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] as const },
+    },
+  };
+
+  const ratingVariants = {
+    hidden: { opacity: 0, scale: 0.8, x: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      x: 0,
+      transition: { duration: 0.6, delay: 0.3, ease: [0.4, 0, 0.2, 1] as const },
+    },
+  };
 
   return (
     <section className="font-poppins bg-[#030804] py-12 sm:py-14 md:py-16 px-4">
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6 md:gap-8 max-w-7xl mx-auto">
-        <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 w-full md:max-w-4xl">
-          <h3 className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center md:text-left w-full">
+        <motion.div
+          className="flex flex-col gap-4 sm:gap-6 md:gap-8 w-full md:max-w-4xl"
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.h3
+            className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center md:text-left w-full"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
+          >
             Trusted with by{" "}
             <span className="bg-clip-text text-transparent bg-linear-to-r from-primary to-primary">
               5,000+ Happy Buyers
             </span>
-          </h3>
-          <p className="flex flex-col font-medium text-xs sm:text-sm text-secondary text-center md:text-left">
+          </motion.h3>
+          <motion.p
+            className="flex flex-col font-medium text-xs sm:text-sm text-secondary text-center md:text-left"
+            variants={descriptionVariants}
+          >
             <span>
               Join thousands of happy buyers who trust Rocart for their in-game
               items!
@@ -26,10 +68,19 @@ const TrustedSection = () => {
               coming back for quality and reliability, See same of our amazing
               supporters below:
             </span>
-          </p>
-        </div>
-        <div className="shrink-0">
-          <div className="flex flex-col w-fit rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 border border-secondary/10">
+          </motion.p>
+        </motion.div>
+        <motion.div
+          className="shrink-0"
+          variants={ratingVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div
+            className="flex flex-col w-fit rounded-xl sm:rounded-2xl px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 border border-secondary/10"
+            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+          >
             <div className="flex items-center text-primary gap-0.5">
               <Star fill="var(--primary)" className="w-3 h-3 sm:w-4 sm:h-4" />
               <Star fill="var(--primary)" className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -48,11 +99,17 @@ const TrustedSection = () => {
                 out of 5.0
               </span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      <div className="relative overflow-hidden max-w-7xl mx-auto mt-8 sm:mt-10 md:mt-12">
+      <motion.div
+        className="relative overflow-hidden max-w-7xl mx-auto mt-8 sm:mt-10 md:mt-12"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8, delay: 0.4, ease: [0.4, 0, 0.2, 1] as const }}
+      >
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-linear-to-r from-[#030804] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-linear-to-l from-[#030804] to-transparent z-10 pointer-events-none" />
 
@@ -71,9 +128,15 @@ const TrustedSection = () => {
         >
           {[...testimonials, ...testimonials, ...testimonials].map(
             (testimonial, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="relative rounded-xl sm:rounded-2xl min-w-60 sm:min-w-[260px] md:min-w-[280px] transition-transform cursor-pointer overflow-hidden bg-[#0a1a0f] border-[0.5px] border-transparent hover:border-primary"
+                className="relative rounded-xl sm:rounded-2xl min-w-60 sm:min-w-[260px] md:min-w-[280px] cursor-pointer overflow-hidden bg-[#0a1a0f] border-[0.5px] border-transparent hover:border-primary"
+                whileHover={{
+                  scale: 1.05,
+                  y: -5,
+                  borderColor: "#22c55e",
+                  transition: { duration: 0.2 },
+                }}
               >
                 <div className="relative z-10 p-4 sm:p-5">
                   <div className="flex items-center justify-between mb-2 sm:mb-3">
@@ -120,11 +183,11 @@ const TrustedSection = () => {
                     {testimonial.testimonial}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             )
           )}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

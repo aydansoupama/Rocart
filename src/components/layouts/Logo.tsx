@@ -2,7 +2,7 @@
 const Logo = ({ size }: { size: number }) => {
   return (
     <img
-      src={"/ro-cart-33-2.png"}
+      src={"/bloxbeam_logo.png"}
       className={`object-cover h-${size}`}
       alt="Rocart's Logo"
     />

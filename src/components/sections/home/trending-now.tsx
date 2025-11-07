@@ -1,7 +1,9 @@
+"use client";
 import VertexBackground from "@/components/backgrounds/Vertex";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { trendingGames } from "@/datas/trending-now";
+import { motion } from "framer-motion";
 
 interface TrendingItem {
   name: string;
@@ -16,15 +18,28 @@ const TrendingMarket = ({
   items,
   color,
   backgroundImage,
+  index,
 }: {
   gameName: string;
   gameIcon: string;
   color: string;
   items: TrendingItem[];
   backgroundImage: string;
+  index: number;
 }) => {
   return (
-    <div className="relative rounded-4xl overflow-hidden border border-white/10 shadow-2xl w-full sm:min-w-[350px] md:min-w-[400px] mx-auto">
+    <motion.div
+      className="relative rounded-4xl overflow-hidden border border-white/10 shadow-2xl w-full sm:min-w-[350px] md:min-w-[400px] mx-auto"
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.2,
+        ease: [0.4, 0, 0.2, 1] as const,
+      }}
+      whileHover={{ scale: 1.02, y: -5, transition: { duration: 0.3 } }}
+    >
       <div className="absolute inset-0 bg-black/60 z-1" />
       <div className="relative z-10 h-full flex flex-col">
         <div className="flex justify-center items-center my-auto p-4 sm:p-6 md:p-8 gap-2 sm:gap-3">
@@ -111,34 +126,79 @@ const TrendingMarket = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 const TrendingNowSection = () => {
+  const titleVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] as const },
+    },
+  };
+
+  const descriptionVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] as const },
+    },
+  };
+
   return (
     <VertexBackground
       radius={80}
       backgroundLayer={<div className="bg-[#06100a] w-full h-full" />}
     >
       <section className="font-poppins w-full py-16 sm:py-24 md:py-32 px-4">
-        <div className="flex flex-col justify-center gap-2 mb-8 sm:mb-12 md:mb-16">
+        <motion.div
+          className="flex flex-col justify-center gap-2 mb-8 sm:mb-12 md:mb-16"
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className="flex justify-center items-center gap-3 sm:gap-6 md:gap-8">
-            <hr className="bg-linear-to-r from-transparent to-white w-full h-0.5 rounded-full border-0" />
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center w-fit whitespace-nowrap">
+            <motion.hr
+              className="bg-linear-to-r from-transparent to-white w-full h-0.5 rounded-full border-0"
+              initial={{ scaleX: 0, originX: 1 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] as const }}
+            />
+            <motion.h3
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-center w-fit whitespace-nowrap"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
+            >
               Trending Now
-            </h3>
-            <hr className="bg-linear-to-l from-transparent to-white w-full h-0.5 rounded-full border-0" />
+            </motion.h3>
+            <motion.hr
+              className="bg-linear-to-l from-transparent to-white w-full h-0.5 rounded-full border-0"
+              initial={{ scaleX: 0, originX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] as const }}
+            />
           </div>
-          <p className="text-center mx-auto text-gray-400 text-xs sm:text-sm md:text-base">
+          <motion.p
+            className="text-center mx-auto text-gray-400 text-xs sm:text-sm md:text-base"
+            variants={descriptionVariants}
+          >
             Items gaining popularity right now.
             <br />
             Most users are active on their catalog pages.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
-          {trendingGames.map((game) => (
+          {trendingGames.map((game, index) => (
             <TrendingMarket
               key={game.name}
               gameName={game.name}
@@ -146,6 +206,7 @@ const TrendingNowSection = () => {
               items={game.items}
               color={game.color}
               backgroundImage={game.image}
+              index={index}
             />
           ))}
         </div>

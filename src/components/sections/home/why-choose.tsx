@@ -44,7 +44,7 @@ const WhyChooseSection = () => {
     },
   };
   return (
-    <VertexBackground radius={20} backgroundLayer={<div className="bg-[#030804] w-full h-full" />}>
+    <VertexBackground radius={20} backgroundLayer={<div className="bg-[#06100a] w-full h-full" />}>
       <section className="w-full py-8 md:py-12 px-4 md:px-6 font-poppins relative z-10">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div

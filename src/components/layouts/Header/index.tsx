@@ -1,18 +1,22 @@
 "use client";
 import { User } from "better-auth";
-import ChooseGame from "./choose-game";
+import ChooseGame, { ChooseGameDropdown, ChooseGameHeaderDropdown } from "./choose-game";
 import Logo from "../Logo";
 import LanguageEditor from "./language-editor";
 import Auth from "./auth";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { games } from "@/datas/games";
 
 const Header = ({ user }: { user: User | undefined }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSection, setOpenSection] = useState<"game" | "language" | null>(
     null
   );
+
+  const [isGameDropdownOpen, setIsGameDropdownOpen] = useState(false);
 
   return (
     <header className="w-full h-20 flex items-center justify-between py-2 px-4 md:px-[2vw] relative">
@@ -31,7 +35,7 @@ const Header = ({ user }: { user: User | undefined }) => {
 
         {/* Choose Game - desktop only */}
         <div className="hidden lg:block">
-          <ChooseGame />
+          <ChooseGameHeaderDropdown />
         </div>
       </div>
 

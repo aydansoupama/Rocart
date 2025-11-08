@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { Dialog, DialogTrigger } from "@/components/ui/Dialog";
+import { ChooseGameModal } from "@/components/layouts/Header/choose-game";
 
 interface HeroContentProps {
   onStartBuying: () => void;
@@ -29,29 +31,35 @@ export const HeroContent = ({ onStartBuying }: HeroContentProps) => {
         </p>
 
         <div className="flex justify-center lg:justify-start items-center space-x-3 relative">
-          <Button
-            onClick={onStartBuying}
-            className="relative mt-[2vh] sm:mt-[4vh] lg:mt-[6vh] h-[6vh] w-[40vw] sm:w-[25vw] lg:w-[12vw]
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                onClick={onStartBuying}
+                className="relative mt-[2vh] sm:mt-[4vh] lg:mt-[6vh] h-[6vh] w-[40vw] sm:w-[25vw] lg:w-[12vw]
             p-2 flex items-center justify-center gap-x-2
             bg-linear-to-r from-[#3DFF88] to-[#259951]
             hover:to-[#259951] hover:from-[#169e4a]
             rounded-2xl
             transition-colors duration-300 cursor-pointer"
-          >
-            <div className="relative z-10 flex items-center space-x-2">
-              <Image
-                className="w-[4vw] sm:w-[3vw] lg:w-[2vw] h-[4vw] sm:h-[3vw] lg:h-[2.5vw] object-contain"
-                alt="Cart icon"
-                src="/icon/shop.png"
-                width={32}
-                height={32}
-              />
-              <span className="font-bold text-white text-[4vw] sm:text-[2.5vw] lg:text-[1vw]">
-                Start Buying
-              </span>
-            </div>
-          </Button>
+              >
+                <div className="relative z-10 flex items-center space-x-2">
+                  <Image
+                    className="w-[4vw] sm:w-[3vw] lg:w-[2vw] h-[4vw] sm:h-[3vw] lg:h-[2.5vw] object-contain"
+                    alt="Cart icon"
+                    src="/icon/shop.png"
+                    width={32}
+                    height={32}
+                  />
+                  <span className="font-bold text-white text-[4vw] sm:text-[2.5vw] lg:text-[1vw]">
+                    Start Buying
+                  </span>
+                </div>
+              </Button>
+            </DialogTrigger>
 
+            <ChooseGameModal />
+          </Dialog>
+          
           <Image
             src="/icon/arroww.png"
             alt="Arrow"

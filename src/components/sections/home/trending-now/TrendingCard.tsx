@@ -136,7 +136,10 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                 >
                   <defs>
                     <linearGradient
-                      id={`stroke-gradient-${item.name.replace(/\s+/g, "-")}-${index}`}
+                      id={`stroke-gradient-${item.name.replace(
+                        /\s+/g,
+                        "-"
+                      )}-${index}`}
                       x1="0%"
                       y1="0%"
                       x2="0%"
@@ -155,13 +158,16 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                     </linearGradient>
                   </defs>
                   <rect
-                    x="2%"
-                    y="2%"
-                    width="96%"
-                    height="96%"
+                    x="0"
+                    y="0"
+                    width="100%"
+                    height="100%"
                     rx="24"
                     fill="none"
-                    stroke={`url(#stroke-gradient-${item.name.replace(/\s+/g, "-")}-${index})`}
+                    stroke={`url(#stroke-gradient-${item.name.replace(
+                      /\s+/g,
+                      "-"
+                    )}-${index})`}
                     strokeWidth="1"
                     strokeLinecap="round"
                     strokeLinejoin="round"

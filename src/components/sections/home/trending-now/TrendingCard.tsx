@@ -131,6 +131,7 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                   className="absolute inset-0 w-full h-full pointer-events-none z-20"
                   style={{
                     borderRadius: "inherit",
+                    overflow: "visible",
                   }}
                 >
                   <defs>
@@ -154,14 +155,17 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                     </linearGradient>
                   </defs>
                   <rect
-                    x="1"
-                    y="1"
-                    width="99%"
-                    height="99%"
+                    x="2%"
+                    y="2%"
+                    width="96%"
+                    height="96%"
                     rx="24"
                     fill="none"
                     stroke={`url(#stroke-gradient-${item.name.replace(/\s+/g, "-")}-${index})`}
-                    strokeWidth="4"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    vectorEffect="non-scaling-stroke"
                   />
                 </svg>
                 <motion.div className="absolute inset-0 rounded-[3vw] sm:rounded-[1.2vw] bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />

@@ -6,7 +6,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/Dialog";
 import { games } from "@/datas/games";
-import { ChevronDown, Gamepad2 } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Logo from "../Logo";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";

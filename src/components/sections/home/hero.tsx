@@ -1,9 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import VertexBackground from "@/components/backgrounds/Vertex";
-import { useState } from "react";
 import { HeroContent } from "./hero/HeroContent";
 import { HeroCharacter } from "./hero/HeroCharacter";
 

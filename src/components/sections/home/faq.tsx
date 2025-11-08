@@ -84,20 +84,21 @@ const FAQSection = () => {
                 />
               ))}
             </motion.div>
-            <div className="w-full flex justify-center">
-              <p className="text-center text-sm sm:text-base font-medium">
-                More Questions?
-                <a
-                  className="text-primary hover:text-primary/80 underline hover:underline focus:outline-none rounded-sm ml-1"
-                  aria-label="Contact us for additional support"
-                  data-discover="true"
-                  href="/contact-us"
-                >
-                  Contact Us
-                </a>
-              </p>
-            </div>
           </div>
+        </div>
+        
+        <div className="w-full flex justify-center">
+          <p className="text-center text-sm sm:text-base font-medium">
+            More Questions?
+            <a
+              className="text-primary hover:text-primary/80 underline hover:underline focus:outline-none rounded-sm ml-1"
+              aria-label="Contact us for additional support"
+              data-discover="true"
+              href="/contact-us"
+            >
+              Contact Us
+            </a>
+          </p>
         </div>
 
         <FAQFooter />

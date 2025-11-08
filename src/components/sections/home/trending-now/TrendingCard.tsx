@@ -162,7 +162,7 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                     rx="24"
                     fill="none"
                     stroke={`url(#stroke-gradient-${item.name.replace(/\s+/g, "-")}-${index})`}
-                    strokeWidth="5"
+                    strokeWidth="1"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     vectorEffect="non-scaling-stroke"

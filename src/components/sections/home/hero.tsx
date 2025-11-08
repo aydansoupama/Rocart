@@ -28,7 +28,7 @@ const HeroSection = () => {
                     from-[#06100A] via-transparent to-[#2A2A2A]
                   "
             style={{
-              backgroundSize: "200vw 200vh",
+              backgroundSize: "100% 100%",
               backgroundBlendMode: "overlay",
               backgroundAttachment: "fixed",
             }}

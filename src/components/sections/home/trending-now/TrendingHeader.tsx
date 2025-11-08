@@ -6,7 +6,7 @@ import { descriptionVariants } from "../hero/animation-variants";
 export const TrendingHeader = () => {
   return (
     <motion.div
-      className="flex flex-col justify-center gap-2 mb-8 sm:mb-12 md:mb-16"
+      className="flex flex-col justify-center gap-2 mb-[10vh]"
       variants={titleVariants}
       initial="hidden"
       whileInView="visible"

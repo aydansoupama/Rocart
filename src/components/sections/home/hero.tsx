@@ -13,17 +13,34 @@ const HeroSection = () => {
   return (
     <VertexBackground
       backgroundLayer={
-        <Image
-          src="/images/homepage/hero_banner.png"
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
+        <div className="w-full h-full bg-[#06100a] relative">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/bg/ho.png')" }}
+          ></div>
+          <div
+            className="
+                    absolute inset-0 
+                    bg-[url('/bg/mesh.png')] 
+                    bg-no-repeat bg-center 
+                    sm:bg-repeat
+                    opacity-40 pointer-events-none 
+                    from-[#06100A] via-transparent to-[#2A2A2A]
+                  "
+            style={{
+              backgroundSize: "200vw 200vh",
+              backgroundBlendMode: "overlay",
+              backgroundAttachment: "fixed",
+            }}
+          ></div>
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: 'url("/bg/image.png")' }}
+          ></div>
+        </div>
       }
       radius={80}
     >
-      <div className="absolute inset-0 z-1 bg-linear-to-t from-primary/20 to-[#06100a] pointer-events-none" />
       <section className="relative z-10 w-full h-[75vh] overflow-hidden">
         <div
           className="absolute bottom-0 left-0 w-full h-[0.2vh]"

@@ -24,25 +24,22 @@ export const HeroContent = ({ onStartBuying }: HeroContentProps) => {
           delivery. <br className="hidden sm:block" />
           Get what you need in seconds.
           <br className="hidden sm:block" />
-          For items in Murder Mystery 2,&nbsp;Grow a Garden, Blox Fruits,
-          Steal a Brainrot, Blade Ball.
+          For items in Murder Mystery 2,&nbsp;Grow a Garden, Blox Fruits, Steal
+          a Brainrot, Blade Ball.
         </p>
 
         <div className="flex justify-center lg:justify-start items-center space-x-3 relative">
           <Button
             onClick={onStartBuying}
             className="relative mt-[2vh] sm:mt-[4vh] lg:mt-[6vh] h-[8vh] sm:h-[7vh] w-[40vw] sm:w-[25vw] lg:w-[12vw]
-            rounded-[15px] p-2 flex items-center justify-center
-            bg-linear-to-r from-[#a9d692] via-[#3DFF88] to-[#259951]
-            hover:shadow-xl hover:shadow-[#259951]/30
-            transition-all duration-300 overflow-hidden"
+            p-2 flex items-center justify-center gap-x-2
+            bg-linear-to-r from-[#3DFF88] to-[#259951]
+            hover:to-[#259951] hover:from-[#169e4a]
+            rounded-2xl
+            shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,255.1)]
+            active:shadow-none active:translate-y-0.5
+            transition-colors duration-300 cursor-pointer"
           >
-            <motion.div
-              className="absolute inset-0 bg-white/10 pointer-events-none"
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 0.15 }}
-              transition={{ duration: 0.3 }}
-            />
             <div className="relative z-10 flex items-center space-x-2">
               <Image
                 className="w-[4vw] sm:w-[3vw] lg:w-[2vw] h-[4vw] sm:h-[3vw] lg:h-[2.5vw] object-contain"

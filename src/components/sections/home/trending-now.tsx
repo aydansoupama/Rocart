@@ -5,7 +5,7 @@ import { TrendingCard } from "./trending-now/TrendingCard";
 
 const TrendingNowSection = () => {
   return (
-    <section className="relative w-full min-h-screen bg-[#06100A] pt-[11.11vh] pb-[5vh] scrollbar-none">
+    <section className="relative w-full  bg-[#06100A] pt-[11.11vh] pb-[5vh] scrollbar-none">
       <div
         className="
           absolute inset-0 

@@ -109,7 +109,7 @@ const HowItWorksSection = () => {
               className="relative"
             >
               <Card
-                className={`${step.bgColor} ${step.borderColor} border border-solid rounded-[26px] h-full group`}
+                className={`${step.bgColor} ${step.borderColor} py-0 border border-solid rounded-[26px] h-full group`}
                 style={{
                   boxShadow: `0 0 20px ${
                     step.borderColor.includes("3dff87")

@@ -24,7 +24,6 @@ export const cardVariants = {
     scale: 1,
     rotateY: 0,
     transition: {
-      type: "spring",
       duration: 0.8,
       bounce: 0.4,
     },
@@ -38,7 +37,6 @@ export const itemVariants = {
     scale: 1,
     y: 0,
     transition: {
-      type: "spring",
       stiffness: 200,
       damping: 15,
     },
@@ -52,7 +50,6 @@ export const titleVariants = {
     y: 0,
     scale: 1,
     transition: {
-      type: "spring",
       duration: 0.6,
       bounce: 0.3,
     },
@@ -76,7 +73,6 @@ export const mobileImageTap = {
   scale: 1.2,
   rotateZ: 5,
   transition: {
-    type: "spring",
     stiffness: 500,
     damping: 20,
     duration: 0.2,

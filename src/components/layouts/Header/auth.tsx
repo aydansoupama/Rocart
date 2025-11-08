@@ -10,7 +10,6 @@ import { RegisterForm } from "@/components/modals/forms/auth/register";
 import { LoginForm } from "@/components/modals/forms/auth/login";
 
 import { User } from "better-auth";
-import { User as UserIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import Logo from "../Logo";
 
@@ -19,7 +18,7 @@ const AuthModal = () => {
     <Dialog>
       <DialogTrigger asChild>
         <motion.button
-          className="flex justify-center items-center gap-x-2 px-2 py-2 rounded-xl bg-linear-to-b from-[#3DFF88] to-[#259951] hover:to-[#259951] hover:from-[#169e4a] transition-colors transition-300 shadow-[inset_0px_-0.093vw_0px_0px_rgba(255,255,255,255.1)] active:shadow-none active:translate-y-0.5 cursor-pointer"
+          className="flex justify-center items-center gap-x-2 px-2 py-2 rounded-xl bg-linear-to-b from-[#3DFF88] to-[#259951] hover:to-[#259951] hover:from-[#169e4a] transition-colors transition-300 cursor-pointer"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

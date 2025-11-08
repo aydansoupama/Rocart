@@ -36,8 +36,6 @@ export const HeroContent = ({ onStartBuying }: HeroContentProps) => {
             bg-linear-to-r from-[#3DFF88] to-[#259951]
             hover:to-[#259951] hover:from-[#169e4a]
             rounded-2xl
-            shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,255.1)]
-            active:shadow-none active:translate-y-0.5
             transition-colors duration-300 cursor-pointer"
           >
             <div className="relative z-10 flex items-center space-x-2">

@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import { CreditCard, ShoppingBag } from "lucide-react";
 import Logo from "./Logo";
 import Image from "next/image";
@@ -84,19 +84,19 @@ const linkHover = {
   scale: 1.05,
   x: 4,
   color: "#00ff88",
-  transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] },
+  transition: { duration: 0.2, ease: easeInOut },
 };
 
 const buttonHover = {
   scale: 1.1,
   rotateZ: 5,
-  transition: { duration: 0.2, ease: "easeInOut" },
+  transition: { duration: 0.2, ease: easeInOut },
 };
 
 const paymentHover = {
   scale: 1.1,
   y: -2,
-  transition: { duration: 0.2, ease: "easeInOut" },
+  transition: { duration: 0.2, ease: easeInOut },
 };
 
 export const MainContentSection = () => {
@@ -265,7 +265,6 @@ export const MainContentSection = () => {
                         ).style.opacity = "1";
                       }
                     }}
-                  />
                   />
                 </motion.div>
               );

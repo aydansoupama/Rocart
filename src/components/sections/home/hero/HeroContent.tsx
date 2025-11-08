@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Dialog, DialogTrigger } from "@/components/ui/Dialog";
 import { ChooseGameModal } from "@/components/layouts/Header/choose-game";

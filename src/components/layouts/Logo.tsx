@@ -1,9 +1,10 @@
+import { cn } from "@/lib/utils";
 
-const Logo = ({ size }: { size: number }) => {
+const Logo = ({ size, className }: { size: number, className: string }) => {
   return (
     <img
       src={"/bloxbeam_logo.png"}
-      className={`object-cover h-${size}`}
+      className={cn(`object-cover h-${size}`, className ? className : "")}
       alt="Bloxbeam's Logo"
     />
   );

@@ -1,4 +1,6 @@
 import Header from "@/components/layouts/Header";
+import Footer from "@/components/layouts/Footer";
+
 import HeroSection from "@/components/sections/home/hero";
 import HowItWorksSection from "@/components/sections/home/how-it-works";
 import TrendingNowSection from "@/components/sections/home/trending-now";
@@ -25,6 +27,7 @@ const Home = async () => {
         <HowItWorksSection />
         <FAQSection />
       </main>
+      <Footer />
     </>
   );
 };

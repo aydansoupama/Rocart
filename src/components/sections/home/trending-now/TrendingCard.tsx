@@ -38,10 +38,7 @@ interface TrendingCardProps {
   onVisitMarket: (route: string) => void;
 }
 
-export const TrendingCard = ({
-  game,
-  gameIndex,
-}: TrendingCardProps) => {
+export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
   return (
     <motion.div
       key={game.id}
@@ -92,7 +89,7 @@ export const TrendingCard = ({
                 variants={itemVariants}
                 className="relative w-[30vw] sm:w-[7vw] h-[22vh] sm:h-[22vh] lg:h-[18vh] rounded-[3vw] sm:rounded-[1.2vw] flex flex-col items-center backdrop-blur-sm border-none group/item cursor-pointer select-none"
                 style={{
-                  background: item.backgroundImage
+                  background: item.backgroundImage,
                 }}
                 whileHover={{
                   scale: 1.1,
@@ -217,13 +214,9 @@ export const TrendingCard = ({
                                 w-[30vw] 
                                 h-[4.5vh] 
                                 z-100 rounded-[3vw] 
-                                group-hover:scale-105 transition-transform duration-300"
+                                group-hover:scale-105 transition-transform duration-300 border-[0.5px] border-[#D9D9D9]"
               style={{
-                backgroundImage: `url(${game.buttonImage})`,
-                backgroundSize: "100% 100%",
-                backgroundPosition: "center",
-                opacity: 1,
-                border: "none",
+                background: game.buttonGradient,
               }}
             >
               <motion.span
@@ -263,7 +256,7 @@ export const TrendingCard = ({
                                 z-100 rounded-[1.2vw] lg:rounded-[0.8vw] 
                                 group-hover:scale-105 transition-transform duration-300 border-[0.5px] border-[#D9D9D9]"
               style={{
-                background: game.buttonGradient
+                background: game.buttonGradient,
               }}
             >
               <motion.span

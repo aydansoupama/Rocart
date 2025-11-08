@@ -2,15 +2,14 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/Button";
-import Image from "next/image";
 import {
   containerVariants,
   cardVariants,
   itemVariants,
 } from "./animation-variants";
 
-const AnimatedCard = motion(Card);
-const AnimatedImg = motion(Image);
+const AnimatedCard = motion.create(Card);
+const AnimatedImg = motion.img;
 
 const mobileImageTap = {
   scale: 1.08,
@@ -50,37 +49,31 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
     <motion.div
       key={game.id}
       variants={cardVariants}
-      className={`group w-full sm:w-[48%] lg:w-[31%] xl:w-[23.5%] ${
-        gameIndex >= 2 ? "hidden sm:block" : ""
-      }`}
+      className={`group ${gameIndex >= 2 ? "hidden sm:block" : ""}`}
     >
       <AnimatedCard
-        className="h-auto 
+        className="py-0 w-full aspect-3/4 sm:h-[35vh]  lg:h-[45vh] 
                 bg-[#030804] border border-[#2A2A2A] 
-                p-0
-                rounded-2xl
+                rounded-[10vw] sm:rounded-[2.5vw] lg:rounded-[2vw] 
                 shadow-2xl flex flex-col items-center relative overflow-hidden 
                 group-hover:border-[#3DFF87]/30 transition-colors duration-300"
       >
-        <CardContent className="flex flex-col items-center justify-start w-full h-full relative px-0 z-10">
+        <CardContent className="flex flex-col items-center justify-start w-full h-full p-0 relative z-10">
           {/* Game Header */}
           <motion.div
-            className="w-auto gap-2 flex flex-row items-center pt-4 pb-2"
+            className="w-auto gap-[2vw] sm:gap-[1vw] flex flex-row items-center pt-[3vh] pb-[2vh]"
             initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: gameIndex * 0.1 + 0.4, duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <AnimatedImg
-              className="w-8 h-8 rounded-md object-cover mb-2 shadow-lg"
+            <motion.img
+              className="w-[4vw] sm:w-[1.8vw] h-[4vw] sm:h-[1.8vw] rounded-[0.8vw] sm:rounded-[0.4vw] object-cover mb-[1.5vh] shadow-lg"
               alt={game.title}
               src={game.icon}
-              width={32}
-              height={32}
-              unoptimized
-            />{" "}
+            />
             <motion.div
-              className="w-full text-center font-bold text-lg bg-linear-to-r from-white to-gray-400 bg-clip-text text-transparent mb-2"
+              className="w-full text-center font-bold text-[3vw] sm:text-[0.5vw] lg:text-[0.8vw] bg-linear-to-r from-white to-gray-400 bg-clip-text text-transparent mb-[1vh]"
               style={{ fontFamily: "Poppins, sans-serif" }}
               transition={{ type: "spring", stiffness: 200 }}
             >
@@ -89,7 +82,7 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-2 gap-4 justify-center w-full mb-6 px-4"
+            className="flex justify-center items-center gap-8 w-full px-8"
             variants={containerVariants}
             initial="visible"
             whileInView="visible"
@@ -99,24 +92,36 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="relative w-full h-auto rounded-lg flex flex-col items-center backdrop-blur-sm border-none group/item cursor-pointer select-none p-2"
+                className="relative w-1/2 rounded-[3vw] sm:rounded-[1.2vw] flex flex-col items-center backdrop-blur-sm border-none group/item cursor-pointer select-none"
                 style={{
                   background: item.backgroundImage,
                 }}
                 whileHover={{
-                  scale: 1.05,
-                  y: -5,
-                  boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                  scale: 1.1,
+                  y: -8,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
                   transition: {
                     type: "spring",
                     stiffness: 300,
-                    damping: 15,
+                    damping: 20,
                   },
                 }}
                 onClick={() => {
                   if (typeof window !== "undefined" && window.navigator) {
                     if (window.navigator.vibrate) {
-                      window.navigator.vibrate([100]);
+                      window.navigator.vibrate([200]);
+                    }
+                    if ("vibrate" in window.navigator === false) {
+                      if (
+                        window.navigator &&
+                        (window.navigator as Navigator).userAgent.includes(
+                          "iPhone"
+                        )
+                      ) {
+                        console.log(
+                          "iPhone detected — basic haptic feedback triggered"
+                        );
+                      }
                     }
                   }
                   console.log(`Clicked on ${item.name}`);
@@ -157,7 +162,7 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                     y="0"
                     width="100%"
                     height="100%"
-                    rx="8"
+                    rx="24"
                     fill="none"
                     stroke={`url(#stroke-gradient-${item.name.replace(
                       /\s+/g,
@@ -169,17 +174,14 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                     vectorEffect="non-scaling-stroke"
                   />
                 </svg>
-                <motion.div className="absolute inset-0 rounded-lg bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
+                <motion.div className="absolute inset-0 rounded-[3vw] sm:rounded-[1.2vw] bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
                 <AnimatedImg
-                  className="mt-2 rounded-md object-cover shadow-xl z-10 w-20 h-20 select-none"
+                  className="mt-[2vh] rounded-[2vw] sm:rounded-[0.8vw] object-cover shadow-xl z-10 w-[20vw] h-[20vw] sm:w-[5vw] sm:h-[5vw] select-none"
                   alt={item.name}
                   src={item.image}
-                  width={80}
-                  height={80}
-                  unoptimized
                   whileHover={{
-                    scale: 1.1,
-                    rotate: -3,
+                    scale: 1.15,
+                    rotate: -5,
                     transition: { type: "spring", stiffness: 300 },
                   }}
                   whileTap={
@@ -203,19 +205,37 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                   }}
                 />
                 <motion.div
-                  className="w-full text-left font-bold text-sm md:text-base mt-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent px-2 select-none"
+                  className="w-full text-left font-bold text-[3.5vw] sm:text-[1.3vw] lg:text-[0.9vw] mt-[3vh] bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent px-[2vw] sm:px-[0.8vw] select-none"
                   style={{ fontFamily: "Poppins, sans-serif" }}
+                  initial={{ opacity: 1 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  animate={{
+                    scale: 1,
+                    transition: { type: "spring", stiffness: 200 },
+                  }}
                 >
                   {item.name}
                 </motion.div>
                 <motion.div
-                  className={`w-full text-left font-bold text-xs md:text-sm mt-1 px-2 ${item.priceColor} drop-shadow-lg select-none`}
+                  className={`w-full text-left font-bold text-[3vw] sm:text-[1.1vw] lg:text-[0.8vw] mt-0 px-[2vw] sm:px-[0.8vw] ${item.priceColor} drop-shadow-lg select-none`}
                   style={{ fontFamily: "Poppins, sans-serif" }}
+                  initial={{ opacity: 1, scale: 1 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3, type: "spring" }}
+                  whileTap={
+                    typeof window !== "undefined" && window.innerWidth <= 768
+                      ? {
+                          scale: 1.05,
+                          transition: { duration: 0.1 },
+                        }
+                      : {}
+                  }
                 >
                   {item.price}
                 </motion.div>
                 <motion.div
-                  className="absolute inset-0 rounded-lg border-2 border-[#3DFF87] opacity-0 pointer-events-none"
+                  className="absolute inset-0 rounded-[3vw] sm:rounded-[1.2vw] border-2 border-[#3DFF87] opacity-0 pointer-events-none"
                   animate={{ opacity: 0 }}
                   whileTap={
                     typeof window !== "undefined" && window.innerWidth <= 768
@@ -231,51 +251,59 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
             ))}
           </motion.div>
 
-          {/* Visit Market Button */}
-          <motion.div
+          {/* Visit Market Button - Deksotp */}
+          <motion.div className="absolute bottom-0 w-full"
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 1, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: gameIndex * 0.1 + 0.6, duration: 0.5 }}
-            viewport={{ once: true }}
-            className="relative py-4 w-full flex justify-center items-center"
-          >
-            <Button
-              className="h-12 z-10 rounded-lg group-hover:scale-105 transition-transform duration-300"
-              style={{
-                background: game.buttonGradient,
-                boxShadow: `inset 0px 0px 0px 0.5px #D9D9D9`,
-              }}
-            >
-              <motion.span
-                className="font-medium text-white text-sm md:text-base opacity-100 tracking-tight leading-none pointer-events-none"
-                style={{ fontFamily: "Poppins, sans-serif" }}
-              >
-                Visit Market
-                <Image
-                  src="/icon/icon2.png"
-                  alt="arrow right"
-                  className="inline w-4 h-4 ml-2 object-contain"
-                  width={16}
-                  height={16}
-                  unoptimized
-                />
-              </motion.span>
-            </Button>
-
-            {/* Mask Group Image */}
-            <AnimatedImg
-              className="absolute bottom-0 left-0 bg-red-600 z-[-1] opacity-50"
-              alt="Mask group"
-              src={game.maskGroup}
-              fill
-              unoptimized
-              initial={{ opacity: 0, y: 20, scale: 1 }}
-              whileInView={{ opacity: 0.5, y: 0, scale: 1 }}
-              transition={{ delay: gameIndex * 0.1 + 0.8, duration: 0.8 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 1, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: gameIndex * 0.1 + 0.6, duration: 0.5 }}
               viewport={{ once: true }}
-            />
+          >
+            <div
+              className="flex justify-center items-center relative w-full"
+            >
+              <Button
+                className="absolute bottom-full -translate-y-full
+               w-[40%] sm:w-[25%] lg:w-[12vw] 
+               h-fit lg:py-4 
+               rounded-[1.5vw] sm:rounded-[1vw] lg:rounded-[0.8vw] 
+               z-10 
+               group-hover:scale-105 transition-transform duration-300"
+                style={{
+                  background: game.buttonGradient,
+                  boxShadow: `inset 0px 0px 0px 0.5px #D9D9D9`,
+                }}
+              >
+                <motion.span
+                  className="font-medium text-white 
+                 text-[3vw] sm:text-[1.2vw] lg:text-[1vw] 
+                 opacity-100 tracking-tight leading-none pointer-events-none flex items-center justify-center"
+                  style={{ fontFamily: "Poppins, sans-serif" }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  Visit Market
+                  <img
+                    src="/icon/icon2.png"
+                    alt="arrow right"
+                    className="inline w-[4vw] sm:w-[1vw] lg:w-[0.8vw] 
+                   h-[4vw] sm:h-[1vw] lg:h-[0.8vw] 
+                   ml-[2vw] sm:ml-[0.3vw] object-contain"
+                  />
+                </motion.span>
+              </Button>
+
+              <motion.img
+                className="block absolute bottom-0 left-0 
+               w-full h-auto max-h-[25vh] sm:max-h-[20vh] lg:max-h-[20vh] 
+               z-[-1] opacity-50 object-cover"
+                alt="Mask group desktop"
+                src={game.maskGroup}
+                whileInView={{ opacity: 0.5, y: 0, scale: 1 }}
+                transition={{ delay: gameIndex * 0.1 + 0.8, duration: 0.8 }}
+                viewport={{ once: true }}
+              />
+            </div>
           </motion.div>
         </CardContent>
       </AnimatedCard>

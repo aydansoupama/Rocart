@@ -96,7 +96,7 @@ export const TrendingCard = ({
                     /\s+/g,
                     "-"
                   )}-${index})`}
-                  strokeWidth="1"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   vectorEffect="non-scaling-stroke"

@@ -172,6 +172,7 @@ const TrendingNowSection = () => {
               game={game}
               gameIndex={game.id}
               key={index}
+              onVisitMarket={() => console.log("market")}
             />
           ))}
         </div>

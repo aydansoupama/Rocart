@@ -14,7 +14,7 @@ const AnimatedImg = motion.img;
 const mobileImageTap = {
   scale: 1.08,
   rotate: -3,
-  transition: { type: "spring", stiffness: 500, damping: 20, duration: 0.15 },
+  transition: { type: "spring" as const, stiffness: 500, damping: 20, duration: 0.15 },
 };
 
 interface TrendingCardProps {

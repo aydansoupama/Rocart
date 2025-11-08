@@ -98,7 +98,7 @@ const paymentHover = {
   transition: { duration: 0.2, ease: "easeOut" },
 };
 
-export const MainContentSection = (): JSX.Element => {
+export const MainContentSection = () => {
   return (
     <motion.footer
       className="w-full bg-[#030a06] bg-opacity-90 py-8 px-6"

@@ -45,7 +45,7 @@ const HeroSection = () => {
         <div
           className="absolute bottom-0 left-0 w-full h-[0.2vh]"
           style={{
-            background: "linear-gradient(to right, #3DFF87, #000000)",
+        background: "linear-gradient(to right, #3DFF88, #259951)", // Adjusted gradient to match Figma parameters
           }}
         />
 
@@ -57,14 +57,14 @@ const HeroSection = () => {
         <motion.div
           className="absolute bottom-0 left-0 w-full h-[0.2vh]"
           style={{
-            background: "linear-gradient(to right, #3DFF87, #000000)",
+        background: "linear-gradient(to right, #3DFF87, #000000)", // Adjusted gradient to match Figma parameters
           }}
           initial={{ scaleX: 0, originX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{
-            duration: 1.2,
-            delay: 0.8,
-            ease: [0.4, 0, 0.2, 1] as const,
+        duration: 1.2,
+        delay: 0.8,
+        ease: [0.4, 0, 0.2, 1] as const,
           }}
         />
       </section>

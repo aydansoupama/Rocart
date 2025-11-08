@@ -7,6 +7,7 @@ import {
   cardVariants,
   itemVariants,
 } from "./animation-variants";
+import { ChevronRight } from "lucide-react";
 
 const AnimatedCard = motion.create(Card);
 const AnimatedImg = motion.img;
@@ -82,7 +83,7 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
           </motion.div>
 
           <motion.div
-            className="flex justify-center items-center gap-8 w-full px-8"
+            className="grid grid-cols-2 gap-8 w-full px-8"
             variants={containerVariants}
             initial="visible"
             whileInView="visible"
@@ -92,7 +93,7 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="relative w-1/2 rounded-[3vw] sm:rounded-[1.2vw] flex flex-col items-center backdrop-blur-sm border-none group/item cursor-pointer select-none"
+                className="relative w-full rounded-[3vw] sm:rounded-[1.2vw] flex flex-col items-center backdrop-blur-sm border-none group/item cursor-pointer select-none"
                 style={{
                   background: item.backgroundImage,
                 }}
@@ -251,60 +252,29 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
             ))}
           </motion.div>
 
-          {/* Visit Market Button - Deksotp */}
-          <motion.div className="absolute bottom-0 w-full"
-            whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 1, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: gameIndex * 0.1 + 0.6, duration: 0.5 }}
-              viewport={{ once: true }}
-          >
+          <div className="absolute bottom-0 w-full">
             <div
-              className="flex justify-center items-center relative w-full"
+              className="relative w-full h-20 flex items-center justify-center"
+              style={{
+                background: `url(${game.maskGroup})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
             >
-              <Button
-                className="absolute bottom-full -translate-y-full
-               w-[40%] sm:w-[25%] lg:w-[12vw] 
-               h-fit lg:py-4 
-               rounded-[1.5vw] sm:rounded-[1vw] lg:rounded-[0.8vw] 
-               z-10 
-               group-hover:scale-105 transition-transform duration-300"
+              <button
+                data-slot="button"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:w-4 [&_svg]:w-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer bg-primary hover:bg-primary/90 h-10 px-6 has-[>svg]:px-4 rounded-lg group-hover:scale-105 transition-transform duration-300 font-medium text-white bg-linear-to-r shadow-md "
                 style={{
                   background: game.buttonGradient,
-                  boxShadow: `inset 0px 0px 0px 0.5px #D9D9D9`,
+                  borderColor: "#D9D9D9",
+                  borderWidth: "1px",
                 }}
               >
-                <motion.span
-                  className="font-medium text-white 
-                 text-[3vw] sm:text-[1.2vw] lg:text-[1vw] 
-                 opacity-100 tracking-tight leading-none pointer-events-none flex items-center justify-center"
-                  style={{ fontFamily: "Poppins, sans-serif" }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Visit Market
-                  <img
-                    src="/icon/icon2.png"
-                    alt="arrow right"
-                    className="inline w-[4vw] sm:w-[1vw] lg:w-[0.8vw] 
-                   h-[4vw] sm:h-[1vw] lg:h-[0.8vw] 
-                   ml-[2vw] sm:ml-[0.3vw] object-contain"
-                  />
-                </motion.span>
-              </Button>
-
-              <motion.img
-                className="block absolute bottom-0 left-0 
-               w-full h-auto max-h-[25vh] sm:max-h-[20vh] lg:max-h-[20vh] 
-               z-[-1] opacity-50 object-cover"
-                alt="Mask group desktop"
-                src={game.maskGroup}
-                whileInView={{ opacity: 0.5, y: 0, scale: 1 }}
-                transition={{ delay: gameIndex * 0.1 + 0.8, duration: 0.8 }}
-                viewport={{ once: true }}
-              />
+                Visit Market
+                <ChevronRight size={24} />
+              </button>
             </div>
-          </motion.div>
+          </div>
         </CardContent>
       </AnimatedCard>
     </motion.div>

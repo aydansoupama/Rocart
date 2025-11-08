@@ -1,3 +1,5 @@
+import { easeInOut } from "framer-motion";
+
 export const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -64,7 +66,7 @@ export const lineVariants = {
     opacity: 1,
     transition: {
       duration: 1.2,
-      ease: "easeInOut",
+      ease: easeInOut,
       delay: 0.5,
     },
   },

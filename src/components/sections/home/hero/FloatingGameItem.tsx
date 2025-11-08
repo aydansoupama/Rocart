@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 
@@ -29,7 +29,7 @@ export const FloatingGameItem = ({ item, index }: FloatingGameItemProps) => {
       transition={{
         duration: 3 + index,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: easeInOut,
       }}
     >
       <Card className="relative top-[15vw] w-full h-full bg-transparent shadow-none border-none">

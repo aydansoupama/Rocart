@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-const Logo = ({ size, className }: { size: number, className: string }) => {
+const Logo = ({ size, className }: { size: number, className?: string }) => {
   return (
     <img
       src={"/bloxbeam_logo.png"}

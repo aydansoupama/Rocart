@@ -15,7 +15,7 @@ const Header = ({ user }: { user: User | undefined }) => {
   );
 
   return (
-    <header className="w-full h-fit flex items-center justify-between py-4 px-4 md:px-[2vw] relative">
+    <header className="w-full h-20 flex items-center justify-between py-2 px-4 md:px-[2vw] relative">
       <div className="flex justify-center items-center gap-4 sm:gap-6 lg:gap-8">
         {/* Menu hamburger - mobile only */}
         <button

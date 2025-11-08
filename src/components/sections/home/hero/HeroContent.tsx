@@ -31,7 +31,7 @@ export const HeroContent = ({ onStartBuying }: HeroContentProps) => {
         <div className="flex justify-center lg:justify-start items-center space-x-3 relative">
           <Button
             onClick={onStartBuying}
-            className="relative mt-[2vh] sm:mt-[4vh] lg:mt-[6vh] h-[8vh] sm:h-[7vh] w-[40vw] sm:w-[25vw] lg:w-[12vw]
+            className="relative mt-[2vh] sm:mt-[4vh] lg:mt-[6vh] h-[6vh] w-[40vw] sm:w-[25vw] lg:w-[12vw]
             p-2 flex items-center justify-center gap-x-2
             bg-linear-to-r from-[#3DFF88] to-[#259951]
             hover:to-[#259951] hover:from-[#169e4a]

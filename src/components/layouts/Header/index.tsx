@@ -10,10 +10,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Header = ({ user }: { user: User | undefined }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openSection, setOpenSection] = useState<"game" | "language" | null>(null);
+  const [openSection, setOpenSection] = useState<"game" | "language" | null>(
+    null
+  );
 
   return (
-    <header className="flex justify-between items-center h-26 p-4 sm:p-6 lg:p-8">
+    <header className="w-full h-16 md:h-[5.42vh] flex items-center justify-between px-4 md:px-[2vw] relative">
       <div className="flex justify-center items-center gap-4 sm:gap-6 lg:gap-8">
         {/* Menu hamburger - mobile only */}
         <button
@@ -31,7 +33,6 @@ const Header = ({ user }: { user: User | undefined }) => {
         <div className="hidden lg:block">
           <ChooseGame />
         </div>
-        
       </div>
 
       <div className="flex justify-center items-center gap-4 sm:gap-6 lg:gap-8">
@@ -73,15 +74,21 @@ const Header = ({ user }: { user: User | undefined }) => {
                   </button>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <ChooseGame 
-                    isMobile 
+                  <ChooseGame
+                    isMobile
                     isOpen={openSection === "game"}
-                    onToggle={() => setOpenSection(openSection === "game" ? null : "game")}
+                    onToggle={() =>
+                      setOpenSection(openSection === "game" ? null : "game")
+                    }
                   />
-                  <LanguageEditor 
+                  <LanguageEditor
                     isMobile
                     isOpen={openSection === "language"}
-                    onToggle={() => setOpenSection(openSection === "language" ? null : "language")}
+                    onToggle={() =>
+                      setOpenSection(
+                        openSection === "language" ? null : "language"
+                      )
+                    }
                   />
                 </div>
               </div>

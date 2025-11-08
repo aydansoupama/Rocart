@@ -39,7 +39,7 @@ export const FAQItem = ({ question, answer, index }: FAQItemProps) => {
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="flex-shrink-0 ml-4"
+          className="shrink-0 ml-4"
         >
           <ChevronDown
             size={20}

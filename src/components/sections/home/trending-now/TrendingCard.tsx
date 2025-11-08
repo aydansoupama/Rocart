@@ -14,7 +14,12 @@ const AnimatedImg = motion.img;
 const mobileImageTap = {
   scale: 1.08,
   rotate: -3,
-  transition: { type: "spring" as const, stiffness: 500, damping: 20, duration: 0.15 },
+  transition: {
+    type: "spring" as const,
+    stiffness: 500,
+    damping: 20,
+    duration: 0.15,
+  },
 };
 
 interface TrendingCardProps {
@@ -27,6 +32,7 @@ interface TrendingCardProps {
       image: string;
       price: string;
       priceColor: string;
+      strokeColor: string;
       backgroundImage: string;
     }>;
     route?: string;
@@ -67,7 +73,7 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
               src={game.icon}
             />
             <motion.div
-              className="w-full text-center font-bold text-[3vw] sm:text-[0.5vw] lg:text-[0.8vw] bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-[1vh]"
+              className="w-full text-center font-bold text-[3vw] sm:text-[0.5vw] lg:text-[0.8vw] bg-linear-to-r from-white to-gray-400 bg-clip-text text-transparent mb-[1vh]"
               style={{ fontFamily: "Poppins, sans-serif" }}
               transition={{ type: "spring", stiffness: 200 }}
             >
@@ -75,7 +81,6 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
             </motion.div>
           </motion.div>
 
-          {/* Items Grid with Enhanced Mobile Click Animation */}
           <motion.div
             className="flex gap-[3vw] sm:gap-[1.2vw] justify-center w-[75vw] sm:w-[20vw] mb-[4vh]"
             variants={containerVariants}
@@ -122,7 +127,44 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                   console.log(`Clicked on ${item.name}`);
                 }}
               >
-                <motion.div className="absolute inset-0 rounded-[3vw] sm:rounded-[1.2vw] bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none z-20"
+                  style={{
+                    borderRadius: "inherit",
+                  }}
+                >
+                  <defs>
+                    <linearGradient
+                      id={`stroke-gradient-${item.name.replace(/\s+/g, "-")}-${index}`}
+                      x1="0%"
+                      y1="0%"
+                      x2="0%"
+                      y2="100%"
+                    >
+                      <stop
+                        offset="0%"
+                        stopColor={item.strokeColor}
+                        stopOpacity="0.7"
+                      />
+                      <stop
+                        offset="100%"
+                        stopColor="transparent"
+                        stopOpacity="0"
+                      />
+                    </linearGradient>
+                  </defs>
+                  <rect
+                    x="1"
+                    y="1"
+                    width="99%"
+                    height="99%"
+                    rx="24"
+                    fill="none"
+                    stroke={`url(#stroke-gradient-${item.name.replace(/\s+/g, "-")}-${index})`}
+                    strokeWidth="4"
+                  />
+                </svg>
+                <motion.div className="absolute inset-0 rounded-[3vw] sm:rounded-[1.2vw] bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
                 <AnimatedImg
                   className="mt-[2vh] rounded-[2vw] sm:rounded-[0.8vw] object-cover shadow-xl z-10 w-[20vw] h-[20vw] sm:w-[5vw] sm:h-[5vw] select-none"
                   alt={item.name}
@@ -211,12 +253,13 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
           >
             <Button
               className="mt-[2vh] 
-                                w-[30vw] 
-                                h-[4.5vh] 
-                                z-100 rounded-[3vw] 
-                                group-hover:scale-105 transition-transform duration-300 border-[0.5px] border-[#D9D9D9]"
+                      w-[30vw] 
+                      h-[4.5vh] 
+                      z-100 rounded-[3vw] 
+                      group-hover:scale-105 transition-transform duration-300"
               style={{
                 background: game.buttonGradient,
+                boxShadow: `inset 0px 0px 0px 0.5px #D9D9D9`,
               }}
             >
               <motion.span
@@ -254,9 +297,10 @@ export const TrendingCard = ({ game, gameIndex }: TrendingCardProps) => {
                                 w-[12vw] lg:w-[8vw] 
                                 h-[5vh] lg:h-[5vh] 
                                 z-100 rounded-[1.2vw] lg:rounded-[0.8vw] 
-                                group-hover:scale-105 transition-transform duration-300 border-[0.5px] border-[#D9D9D9]"
+                                group-hover:scale-105 transition-transform duration-300"
               style={{
                 background: game.buttonGradient,
+                boxShadow: `inset 0px 0px 0px 0.5px #D9D9D9`,
               }}
             >
               <motion.span

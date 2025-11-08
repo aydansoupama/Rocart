@@ -5,8 +5,22 @@ import { TrendingCard } from "./trending-now/TrendingCard";
 
 const TrendingNowSection = () => {
   return (
-    <section className="relative w-full min-h-screen bg-[#06100A] pt-[2vh] pb-[5vh] scrollbar-none">
-    
+    <section className="relative w-full min-h-screen bg-[#06100A] pt-[11.11vh] pb-[5vh] scrollbar-none">
+      <div
+        className="
+          absolute inset-0 
+          bg-[url('/bg/mesh.png')] 
+          bg-no-repeat bg-center 
+          sm:bg-repeat
+          opacity-90 pointer-events-none 
+          from-[#06100A] via-transparent to-[#2A2A2A]
+        "
+        style={{
+          backgroundSize: "100% 100%",
+          backgroundBlendMode: "overlay",
+          backgroundAttachment: "fixed",
+        }}
+      />
 
       <div className="max-w-[95vw] mx-auto px-[3vw] z-10">
         <TrendingHeader />

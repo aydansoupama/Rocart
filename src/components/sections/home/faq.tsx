@@ -6,6 +6,7 @@ import { FAQItem } from "./faq/FAQItem";
 import { FAQCategoryButton } from "./faq/FAQCategoryButton";
 import { faqCategories } from "@/datas/faq";
 import VertexBackground from "@/components/backgrounds/Vertex";
+import FAQFooter from "./faq/FAQFooter";
 
 const FAQSection = () => {
   const [activeCategory, setActiveCategory] = useState(faqCategories[0].id);
@@ -15,142 +16,93 @@ const FAQSection = () => {
   );
 
   return (
-    <VertexBackground radius={80} backgroundLayer={<div className="w-full h-full bg-[#06100a]" />}>
-      <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 ">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-          <FAQHeader />
+    <section className="relative bg-[#06100a] w-full py-12 sm:py-16 md:py-20 lg:py-24 ">
+      <div
+        className="
+          absolute inset-0 
+          bg-[url('/bg/mesh.png')] 
+          bg-no-repeat bg-center 
+          sm:bg-repeat
+          opacity-30 pointer-events-none 
+          from-[#06100A] via-transparent to-[#2A2A2A]
+        "
+        style={{
+          backgroundSize: "100% 100%",
+          backgroundBlendMode: "overlay",
+          backgroundAttachment: "fixed",
+        }}
+      />
+      <div className="flex flex-col gap-6 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+        <FAQHeader />
 
-          <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 md:gap-10 lg:gap-12">
-            {/* Sidebar Categories */}
-            <div className="w-full lg:w-64 xl:w-72 flex-shrink-0">
-              <motion.div
-                className="flex flex-row lg:flex-col gap-3 sm:gap-4 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                {faqCategories.map((category, index) => (
-                  <div
-                    key={category.id}
-                    className="flex-shrink-0 lg:flex-shrink lg:w-full"
-                  >
-                    <FAQCategoryButton
-                      name={category.name}
-                      icon={category.icon}
-                      isActive={activeCategory === category.id}
-                      onClick={() => setActiveCategory(category.id)}
-                      index={index}
-                    />
-                  </div>
-                ))}
-              </motion.div>
+        <div className="flex flex-col lg:flex-row">
+          {/* Sidebar Categories */}
+          <div className="lg:w-max bg-transparent mt-8 sm:mt-12 lg:mt-16 p-3 sm:p-4">
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-2"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              {faqCategories.map((category, index) => (
+                <div key={category.id} className="shrink-0 lg:shrink lg:w-full">
+                  <FAQCategoryButton
+                    name={category.name}
+                    icon={category.icon}
+                    isActive={activeCategory === category.id}
+                    onClick={() => setActiveCategory(category.id)}
+                    index={index}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
 
-              {/* Contact Us Section */}
-              <motion.div
-                className="hidden lg:block mt-8 p-6 bg-[#030804] border border-[#2A2A2A] rounded-2xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                viewport={{ once: true }}
+          {/* Questions List */}
+          <div className="flex-1 space-y-6 sm:space-y-8 p-4 sm:p-6">
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="space-y-3 sm:space-y-4"
+            >
+              <h3
+                className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-6"
+                style={{ fontFamily: "Poppins, sans-serif" }}
               >
-                <p
-                  className="text-white text-sm mb-2"
-                  style={{ fontFamily: "Poppins, sans-serif" }}
-                >
-                  <span className="text-[#3DFF87] font-semibold">
-                    More Questions?
-                  </span>
-                </p>
+                {currentCategory?.name} FAQs
+              </h3>
+
+              {currentCategory?.questions.map((question, index) => (
+                <FAQItem
+                  key={question.id}
+                  question={question.question}
+                  answer={question.answer}
+                  index={index}
+                />
+              ))}
+            </motion.div>
+            <div className="w-full flex justify-center">
+              <p className="text-center text-sm sm:text-base font-medium">
+                More Questions?
                 <a
-                  href="#"
-                  className="text-[#3DFF87] text-sm hover:underline"
-                  style={{ fontFamily: "Poppins, sans-serif" }}
+                  className="text-primary hover:text-primary/80 underline hover:underline focus:outline-none rounded-sm ml-1"
+                  aria-label="Contact us for additional support"
+                  data-discover="true"
+                  href="/contact-us"
                 >
                   Contact Us
                 </a>
-              </motion.div>
-
-              {/* Disclaimer */}
-              <motion.div
-                className="hidden lg:block mt-6 p-4 bg-[#030804]/50 border border-[#2A2A2A] rounded-xl"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <p
-                  className="text-[#999999] text-xs leading-relaxed"
-                  style={{ fontFamily: "Poppins, sans-serif" }}
-                >
-                  <span className="font-semibold text-[#d9d9d9]">
-                    We are not affiliated with Roblox Corporation or any of its
-                    trademarks
-                  </span>
-                  <br />
-                  <br />
-                  Bloxbeam&apos;s services are not the same, similar or
-                  equivalent to Roblox Corporation&apos;s products and services
-                  and we are not sponsored by, affiliated with, approved by
-                  and/or endorsed by ROBLOX Corporation at all.
-                </p>
-              </motion.div>
-            </div>
-
-            {/* Questions List */}
-            <div className="flex-1">
-              <motion.div
-                key={activeCategory}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-3 sm:space-y-4"
-              >
-                <h3
-                  className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-6"
-                  style={{ fontFamily: "Poppins, sans-serif" }}
-                >
-                  {currentCategory?.name} FAQs
-                </h3>
-                {currentCategory?.questions.map((question, index) => (
-                  <FAQItem
-                    key={question.id}
-                    question={question.question}
-                    answer={question.answer}
-                    index={index}
-                  />
-                ))}
-              </motion.div>
+              </p>
             </div>
           </div>
-
-          {/* Mobile Contact Us */}
-          <motion.div
-            className="lg:hidden mt-8 p-6 bg-[#030804] border border-[#2A2A2A] rounded-2xl text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <p
-              className="text-white text-sm mb-2"
-              style={{ fontFamily: "Poppins, sans-serif" }}
-            >
-              <span className="text-[#3DFF87] font-semibold">
-                More Questions?
-              </span>
-            </p>
-            <a
-              href="/contact"
-              className="text-[#3DFF87] text-sm hover:underline"
-              style={{ fontFamily: "Poppins, sans-serif" }}
-            >
-              Contact Us
-            </a>
-          </motion.div>
         </div>
-      </section>
-    </VertexBackground>
+
+        <FAQFooter />
+      </div>
+    </section>
   );
 };
 

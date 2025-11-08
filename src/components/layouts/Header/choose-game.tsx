@@ -28,7 +28,11 @@ const ChooseGameModal = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] as const }}
+            transition={{
+              duration: 0.5,
+              delay: 0.1,
+              ease: [0.4, 0, 0.2, 1] as const,
+            }}
           >
             <DialogTitle className="font-poppins uppercase text-2xl font-bold w-fit mx-auto bg-blue-600 bg-linear-to-r from-white to-secondary bg-clip-text text-transparent">
               Choose a game
@@ -46,10 +50,10 @@ const ChooseGameModal = () => {
                 }}
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: 0.2 + index * 0.1, 
-                  ease: [0.4, 0, 0.2, 1] as const 
+                transition={{
+                  duration: 0.5,
+                  delay: 0.2 + index * 0.1,
+                  ease: [0.4, 0, 0.2, 1] as const,
                 }}
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.98 }}
@@ -64,11 +68,11 @@ const ChooseGameModal = () => {
                     }}
                   />
 
-                  <div className="relative z-10 flex flex-col justify-center items-center gap-6 px-8 py-10">
+                  <div className="relative z-10 flex flex-col justify-center items-center rounded-2xl w-[4.17vw] h-[5.56vh] gap-6 px-8 py-10">
                     <Image
                       src={game.icon}
                       alt={game.name}
-                      className="object-cover"
+                      className="object-cover rounded-2xl"
                       fill
                     />
                   </div>
@@ -91,11 +95,15 @@ const ChooseGameModal = () => {
             ))}
           </div>
 
-          <motion.div 
+          <motion.div
             className="flex justify-center items-center gap-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
+            transition={{
+              duration: 0.5,
+              delay: 0.6,
+              ease: [0.4, 0, 0.2, 1] as const,
+            }}
           >
             <hr className="bg-linear-to-r from-transparent to-white w-full h-0.5 rounded-full" />
             <Logo size={10} />
@@ -183,13 +191,20 @@ const ChooseGame = ({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <motion.button 
+        <motion.button
           className="flex justify-center items-center gap-x-2.5 px-4 py-3 rounded-xl bg-card hover:bg-card/30 cursor-pointer"
-          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Gamepad2 className="text-primary" />
-          <span className="font-poppins font-semibold">Choose a game</span>
+          <span className="font-poppins font-semibold flex items-center gap-x-2">
+            <Image
+              src="/icon/gamepad.png"
+              alt="Gamepad"
+              width={24}
+              height={24}
+              className="object-contain"
+            />
+            Choose a game
+          </span>
           <ChevronDown className="text-secondary" />
         </motion.button>
       </DialogTrigger>

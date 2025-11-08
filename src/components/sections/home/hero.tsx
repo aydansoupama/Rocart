@@ -8,8 +8,6 @@ import { HeroContent } from "./hero/HeroContent";
 import { HeroCharacter } from "./hero/HeroCharacter";
 
 const HeroSection = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <VertexBackground
       backgroundLayer={
@@ -50,7 +48,7 @@ const HeroSection = () => {
         />
 
         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-[2vh] px-[4vw] sm:px-[2vw] py-[4vh] max-w-[95vw] mx-auto h-full">
-          <HeroContent onStartBuying={() => setIsOpen(true)} />
+          <HeroContent onStartBuying={() => console.log("Start Buying")} />
           <HeroCharacter />
         </div>
 

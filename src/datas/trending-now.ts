@@ -14,6 +14,7 @@ const trendingGames = [
         priceColor: "text-[#3dff87]",
         backgroundImage:
           "linear-gradient(180deg, rgba(61, 255, 135, 0.05) 0%, rgba(44, 118, 74, 0) 50%)",
+        strokeColor: "rgb(61, 255, 135)",
       },
       {
         name: "Kitsune",
@@ -22,6 +23,7 @@ const trendingGames = [
         priceColor: "text-[#861C1C]",
         backgroundImage:
           "linear-gradient(180deg, rgba(255, 87, 34, 0.05) 0%, rgba(134, 28, 28, 0) 50%)",
+        strokeColor: "rgb(255, 87, 34)",
       },
     ],
   },
@@ -40,6 +42,7 @@ const trendingGames = [
         priceColor: "text-[#ff3c3c]",
         backgroundImage:
           "linear-gradient(180deg, rgba(255, 60, 60, 0.05) 0%, rgba(145, 19, 19, 0) 50%)",
+        strokeColor: "rgb(255, 60, 60)",
       },
       {
         name: "Bat Knife",
@@ -48,6 +51,7 @@ const trendingGames = [
         priceColor: "text-[#be8832]",
         backgroundImage:
           "linear-gradient(180deg, rgba(190, 136, 50, 0.05) 0%, rgba(145, 19, 19, 0) 50%)",
+        strokeColor: "rgb(190, 136, 50)",
       },
     ],
   },
@@ -66,6 +70,7 @@ const trendingGames = [
         priceColor: "text-[#821BF0]",
         backgroundImage:
           "linear-gradient(180deg, rgba(255, 61, 242, 0.05) 0%, rgba(149, 37, 153, 0)50%)",
+        strokeColor: "rgb(255, 61, 242)",
       },
       {
         name: "Combinasion",
@@ -74,6 +79,7 @@ const trendingGames = [
         priceColor: "text-[#31a6ff]",
         backgroundImage:
           "linear-gradient(180deg, rgba(49, 166, 255, 0.05) 0%, rgba(108, 44, 118, 0)50%)",
+        strokeColor: "rgb(49, 166, 255)",
       },
     ],
   },
@@ -92,6 +98,7 @@ const trendingGames = [
         priceColor: "text-[#999999]",
         backgroundImage:
           "linear-gradient(180deg, rgba(3, 169, 244, 0.05) 0%, rgba(40, 134, 205, 0)50%)",
+        strokeColor: "rgb(3, 169, 244)",
       },
       {
         name: "Cow ",
@@ -100,6 +107,7 @@ const trendingGames = [
         priceColor: "text-white",
         backgroundImage:
           "linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(40, 134, 205, 0)50%)",
+        strokeColor: "rgb(255, 255, 255)",
       },
     ],
   },

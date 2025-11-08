@@ -47,10 +47,23 @@ const HowItWorksSection = () => {
   };
 
   return (
-    <VertexBackground
-      radius={45}
-      backgroundLayer={<div className="bg-[#06100a]  w-full h-full" />}
-    >
+    <section className="w-full bg-[#06100a] py-16 px-4 md:px-6 relative z-10 font-poppins">
+      <div
+        className="
+          absolute inset-0 
+          bg-[url('/bg/mesh.png')] 
+          bg-no-repeat bg-center 
+          sm:bg-repeat
+          opacity-90 pointer-events-none 
+          from-[#06100A] via-transparent to-[#2A2A2A]
+        "
+        style={{
+          backgroundSize: "100% 100%",
+          backgroundBlendMode: "overlay",
+          backgroundAttachment: "fixed",
+        }}
+      />
+      
       <div className="max-w-7xl mx-auto px-4 py-16 relative">
         {/* Title Section */}
         <motion.div
@@ -73,7 +86,8 @@ const HowItWorksSection = () => {
             className="font-poppins font-medium text-[#999999] text-base lg:text-lg tracking-[0] leading-relaxed max-w-4xl mx-auto"
             variants={descriptionVariants}
           >
-            Buying Items on BloxBeam is designed to be simple, fast, and reliable!
+            Buying Items on BloxBeam is designed to be simple, fast, and
+            reliable!
             <br />
             Here&apos;s how you can get started
           </motion.p>
@@ -135,7 +149,7 @@ const HowItWorksSection = () => {
           ))}
         </motion.div>
       </div>
-    </VertexBackground>
+    </section>
   );
 };
 

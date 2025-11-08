@@ -1,5 +1,10 @@
-"use client"
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/Dialog";
+"use client";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/Dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/Tabs";
 import { RegisterForm } from "@/components/modals/forms/auth/register";
 import { LoginForm } from "@/components/modals/forms/auth/login";
@@ -13,12 +18,12 @@ const AuthModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <motion.button 
-          className="flex justify-center items-center gap-x-2 px-2 py-2 rounded-xl bg-linear-to-b from-[#3DFF88] to-[#259951] hover:to-[#259951] hover:from-[#169e4a] transition-colors transition-300 shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,255.1)] active:shadow-none active:translate-y-0.5 cursor-pointer"
+        <motion.button
+          className="flex justify-center items-center gap-x-2 px-2 py-2 rounded-xl bg-linear-to-b from-[#3DFF88] to-[#259951] hover:to-[#259951] hover:from-[#169e4a] transition-colors transition-300 shadow-[inset_0px_-0.093vw_0px_0px_rgba(255,255,255,255.1)] active:shadow-none active:translate-y-0.5 cursor-pointer"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <UserIcon />
+          <div className="w-4 h-4 bg-[url(/icon/person.png)] bg-cover"></div>
           <span className="font-poppins font-semibold">Log in</span>
         </motion.button>
       </DialogTrigger>
@@ -26,7 +31,7 @@ const AuthModal = () => {
         className="bg-[#06100a] border-none w-[95vw] sm:w-[90vw] md:w-[80vw] lg:min-w-[960px] max-w-[960px] max-h-[95vh] sm:max-h-[90vh] p-0 overflow-hidden"
         showCloseButton={false}
       >
-        <DialogTitle className="sr-only"/>
+        <DialogTitle className="sr-only" />
         <div className="flex flex-col lg:flex-row w-full h-full min-h-[700px] sm:min-h-[750px] lg:min-h-[800px]">
           <motion.div
             className="hidden lg:flex lg:w-1/2 relative flex-col justify-between items-center py-8 self-stretch bg-cover bg-center bg-no-repeat"
@@ -37,20 +42,28 @@ const AuthModal = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
           >
-            <motion.div 
+            <motion.div
               className="p-8"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: [0.4, 0, 0.2, 1] as const }}
+              transition={{
+                duration: 0.5,
+                delay: 0.2,
+                ease: [0.4, 0, 0.2, 1] as const,
+              }}
             >
               <Logo size={10} />
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="mt-auto pt-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: [0.4, 0, 0.2, 1] as const }}
+              transition={{
+                duration: 0.5,
+                delay: 0.3,
+                ease: [0.4, 0, 0.2, 1] as const,
+              }}
             >
               <p className="text-center text-sm font-poppins leading-relaxed text-white drop-shadow-lg">
                 By accessing the site, I attest that I am at least 18 years old
@@ -61,18 +74,22 @@ const AuthModal = () => {
           </motion.div>
 
           {/* Right side - Form */}
-          <motion.div 
+          <motion.div
             className="w-full lg:w-1/2 h-full flex flex-col py-8 sm:py-10 lg:py-12 px-4 sm:px-6 md:px-8 lg:px-10"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
           >
             {/* Logo on mobile */}
-            <motion.div 
+            <motion.div
               className="lg:hidden flex justify-center mb-8"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: [0.4, 0, 0.2, 1] as const }}
+              transition={{
+                duration: 0.5,
+                delay: 0.2,
+                ease: [0.4, 0, 0.2, 1] as const,
+              }}
             >
               <Logo size={8} />
             </motion.div>
@@ -80,7 +97,11 @@ const AuthModal = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: [0.4, 0, 0.2, 1] as const }}
+              transition={{
+                duration: 0.5,
+                delay: 0.3,
+                ease: [0.4, 0, 0.2, 1] as const,
+              }}
               className="flex-1 flex flex-col"
             >
               <Tabs
@@ -88,7 +109,10 @@ const AuthModal = () => {
                 className="w-full flex-1 flex flex-col"
               >
                 <TabsList className="w-full grid grid-cols-2 mb-0">
-                  <TabsTrigger value="register" className="text-sm sm:text-base">
+                  <TabsTrigger
+                    value="register"
+                    className="text-sm sm:text-base"
+                  >
                     Register
                   </TabsTrigger>
                   <TabsTrigger value="login" className="text-sm sm:text-base">
@@ -96,25 +120,36 @@ const AuthModal = () => {
                   </TabsTrigger>
                 </TabsList>
 
-                <TabsContent value="register" className="mt-6 sm:mt-8 flex-1 overflow-y-auto">
+                <TabsContent
+                  value="register"
+                  className="mt-6 sm:mt-8 flex-1 overflow-y-auto"
+                >
                   <RegisterForm />
                 </TabsContent>
 
-                <TabsContent value="login" className="mt-6 sm:mt-8 flex-1 overflow-y-auto">
+                <TabsContent
+                  value="login"
+                  className="mt-6 sm:mt-8 flex-1 overflow-y-auto"
+                >
                   <LoginForm />
                 </TabsContent>
               </Tabs>
             </motion.div>
 
             {/* Terms on mobile */}
-            <motion.div 
+            <motion.div
               className="lg:hidden mt-8 px-4 py-3.5 rounded-lg bg-black/40 backdrop-blur-sm border border-white/10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4, ease: [0.4, 0, 0.2, 1] as const }}
+              transition={{
+                duration: 0.5,
+                delay: 0.4,
+                ease: [0.4, 0, 0.2, 1] as const,
+              }}
             >
               <p className="text-center text-xs font-poppins leading-relaxed text-white/90">
-                By accessing the site, I attest that I am at least 18 years old and have read the Terms and Conditions
+                By accessing the site, I attest that I am at least 18 years old
+                and have read the Terms and Conditions
               </p>
             </motion.div>
           </motion.div>
@@ -129,7 +164,6 @@ const AccountDropdown = () => {
 };
 
 const Auth = ({ user }: { user: User | undefined }) => {
-
   return <>{user ? <AccountDropdown /> : <AuthModal />}</>;
 };
 

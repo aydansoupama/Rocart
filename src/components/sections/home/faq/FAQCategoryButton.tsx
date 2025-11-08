@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface FAQCategoryButtonProps {
   name: string;
@@ -24,18 +25,13 @@ export const FAQCategoryButton = ({
       transition={{ delay: index * 0.1, duration: 0.4 }}
       viewport={{ once: true }}
       className={`
-        w-full flex items-center gap-3 sm:gap-4 
-        px-4 sm:px-6 py-3 sm:py-4 
-        rounded-xl sm:rounded-2xl
-        transition-all duration-300
-        group
+      flex flex-col items-center gap-2 sm:gap-3 w-full p-2 sm:p-3 rounded-lg transition-colors text-xs sm:text-sm text-white-0
         ${
           isActive
             ? "bg-[#0a1a0f] border-2 border-[#3DFF87]"
             : "bg-[#030804] border-2 border-[#2A2A2A] hover:border-[#3DFF87]/30"
         }
       `}
-      whileHover={{ scale: 1.02, x: 4 }}
       whileTap={{ scale: 0.98 }}
     >
       <div
@@ -47,19 +43,22 @@ export const FAQCategoryButton = ({
         ${isActive ? "bg-[#3DFF87]/20" : "bg-[#0a1a0f]"}
       `}
       >
-        <img
+        <Image
           src={icon}
           alt={name}
+          width={24}
+          height={24}
           className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
         />
       </div>
       <span
         className={`
-        text-sm sm:text-base md:text-lg font-medium
-        transition-colors duration-300
+        font-poppins
+        font-medium
+        transition-colors
+        duration-300
         ${isActive ? "text-white" : "text-gray-400 group-hover:text-gray-200"}
       `}
-        style={{ fontFamily: "Poppins, sans-serif" }}
       >
         {name}
       </span>

@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { CreditCard, ShoppingBag } from "lucide-react";
 import Logo from "./Logo";
+import Image from "next/image";
 
 // Social media, support, resource, and legal links (updated to use custom icon)
 const socialMediaIcons = [
@@ -83,19 +84,19 @@ const linkHover = {
   scale: 1.05,
   x: 4,
   color: "#00ff88",
-  transition: { duration: 0.2, ease: "easeOut" },
+  transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] },
 };
 
 const buttonHover = {
   scale: 1.1,
   rotateZ: 5,
-  transition: { duration: 0.2, ease: "easeOut" },
+  transition: { duration: 0.2, ease: "easeInOut" },
 };
 
 const paymentHover = {
   scale: 1.1,
   y: -2,
-  transition: { duration: 0.2, ease: "easeOut" },
+  transition: { duration: 0.2, ease: "easeInOut" },
 };
 
 export const MainContentSection = () => {
@@ -249,13 +250,13 @@ export const MainContentSection = () => {
                     className="text-gray-600 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200"
                   />
 
-                  {/* Payment Image */}
-                  <img
+                  <Image
                     src={method.image}
                     alt={`${
                       method.name.charAt(0).toUpperCase() + method.name.slice(1)
                     } logo`}
-                    className="absolute inset-0 w-full h-auto object-contain opacity-100 transition-opacity duration-200"
+                    fill
+                    className="absolute inset-0 object-contain opacity-100 transition-opacity duration-200"
                     onError={(e) => {
                       e.currentTarget.style.opacity = "0";
                       if (e.currentTarget.previousSibling) {
@@ -264,6 +265,7 @@ export const MainContentSection = () => {
                         ).style.opacity = "1";
                       }
                     }}
+                  />
                   />
                 </motion.div>
               );

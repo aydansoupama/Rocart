@@ -60,7 +60,7 @@ export const RegisterForm = () => {
 
   const onSubmit = async (data: RegisterFormInputs) => {
     try {
-      const { error } = await authClient.signUp.email(
+      await authClient.signUp.email(
         {
           email: data.email,
           name: data.username,
@@ -76,7 +76,7 @@ export const RegisterForm = () => {
           },
           onError: (err) => {
             toast.error(err.error.message);
-            return
+            return;
           },
         }
       );

@@ -1,5 +1,4 @@
 "use client";
-import { User } from "better-auth";
 import ChooseGame, { ChooseGameHeaderDropdown } from "./choose-game";
 import Logo from "../Logo";
 import LanguageEditor from "./language-editor";
@@ -7,9 +6,9 @@ import Auth from "./auth";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CustomUser } from "@/types/auth";
+import { User } from "better-auth";
 
-const Header = ({ user }: { user: CustomUser | undefined }) => {
+const Header = ({ user }: { user: User | undefined }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSection, setOpenSection] = useState<"game" | "language" | null>(
     null

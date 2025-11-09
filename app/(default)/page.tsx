@@ -19,7 +19,7 @@ const Home = async () => {
     <>
       <Header user={session?.user} />
 
-      <main>
+      <main className="scroll-smooth">
         <HeroSection />
         <TrendingNowSection />
         <TrustedSection />

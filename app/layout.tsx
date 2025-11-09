@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const poppinsFont = Poppins({
   variable: "--font-poppins",
@@ -28,6 +29,7 @@ export default function RootLayout({
         className={`${poppinsFont.variable} ${interFont.variable} antialiased max-w-full mx-auto`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );

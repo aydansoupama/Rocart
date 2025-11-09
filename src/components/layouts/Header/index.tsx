@@ -1,21 +1,22 @@
 "use client";
 import { User } from "better-auth";
-import ChooseGame, { ChooseGameDropdown, ChooseGameHeaderDropdown } from "./choose-game";
+import ChooseGame, { ChooseGameHeaderDropdown } from "./choose-game";
 import Logo from "../Logo";
 import LanguageEditor from "./language-editor";
 import Auth from "./auth";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { CustomUser } from "@/types/auth";
 
-const Header = ({ user }: { user: User | undefined }) => {
+const Header = ({ user }: { user: CustomUser | undefined }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSection, setOpenSection] = useState<"game" | "language" | null>(
     null
   );
 
   return (
-    <header className="w-full h-16 md:h-[10vh] flex items-center justify-between py-2 px-4 md:px-[2vw] relative">
+    <header className="fixed w-full h-16 md:h-[10vh] flex items-center justify-between py-2 px-4 md:px-[2vw] bg-background z-50">
       <div className="flex justify-center items-center gap-4 sm:gap-6 lg:gap-8">
         {/* Menu hamburger - mobile only */}
         <button

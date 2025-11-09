@@ -1,4 +1,4 @@
-"use client";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,23 +8,30 @@ import {
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/Tabs";
 import { RegisterForm } from "@/components/modals/forms/auth/register";
 import { LoginForm } from "@/components/modals/forms/auth/login";
-
-import { User } from "better-auth";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Logo from "../Logo";
+import { CustomUser } from "@/types/auth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { LogOut } from "lucide-react";
+import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
+import { authClient } from "@/lib/auth-client";
 
 const AuthModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <motion.button
-          className="flex justify-center items-center gap-x-2 px-2 py-2 rounded-xl bg-linear-to-b from-[#3DFF88] to-[#259951] hover:to-[#259951] hover:from-[#169e4a] transition-colors transition-300 cursor-pointer"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
+        <button className="flex justify-center items-center gap-x-2 px-2 py-2 rounded-xl bg-linear-to-b from-[#3DFF88] to-[#259951] hover:to-[#259951] hover:from-[#169e4a] transition-all transition-300 cursor-pointer hover:scale-105 actove:scale-95">
           <div className="w-4 h-4 bg-[url(/icon/person.png)] bg-cover"></div>
           <span className="font-poppins font-semibold">Log in</span>
-        </motion.button>
+        </button>
       </DialogTrigger>
       <DialogContent
         className="bg-[#06100a] border-none w-[95vw] sm:w-[90vw] md:w-[80vw] lg:min-w-[960px] max-w-[960px] max-h-[95vh] sm:max-h-[90vh] p-0 overflow-hidden"
@@ -158,12 +165,91 @@ const AuthModal = () => {
   );
 };
 
-const AccountDropdown = () => {
-  return <h1>AccountDropdown</h1>;
+const AccountDropdown = ({ user }: { user: CustomUser }) => {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.refresh();
+        },
+      },
+    });
+  };
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          className={`flex items-center rounded-xl cursor-pointer transition-colors 
+          justify-center bg-card hover:bg-card/30 outline-none scroll active:scale-95 hover:scale-105 p-1`}
+        >
+          <Avatar className="h-8 w-8 rounded-lg">
+            <AvatarImage
+              src={
+                user.image
+                  ? user.image
+                  : `https://ui-avatars.com/api/?name=${user.name}`
+              }
+              alt={user.name}
+            />
+            <AvatarFallback className="rounded-lg">
+              {user.name[0]}
+            </AvatarFallback>
+          </Avatar>
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className="w-(--radix-dropdown-menu-trigger-width) min-w-48 rounded-lg"
+        side="bottom"
+        align="end"
+        sideOffset={4}
+      >
+        <DropdownMenuLabel className="p-0 font-normal">
+          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+            <Avatar className="h-8 w-8 rounded-lg">
+              <AvatarImage
+                src={
+                  user.image
+                    ? user.image
+                    : `https://ui-avatars.com/api/?name=${user.name}`
+                }
+                alt={user.name}
+              />
+              <AvatarFallback className="rounded-lg">
+                {user.name[0]}
+              </AvatarFallback>
+            </Avatar>
+            <div className="grid flex-1 text-left text-sm leading-tight">
+              <span className="truncate font-medium">{user.name}</span>
+              <span className="truncate text-xs">{user.email}</span>
+            </div>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+
+        <DropdownMenuItem onClick={handleLogout}>
+          <LogOut />
+          Log out
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 };
 
-const Auth = ({ user }: { user: User | undefined }) => {
-  return <>{user ? <AccountDropdown /> : <AuthModal />}</>;
+const Auth = ({ user }: { user: CustomUser | undefined }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
+  return <>{user ? <AccountDropdown user={user} /> : <AuthModal />}</>;
 };
 
 export default Auth;

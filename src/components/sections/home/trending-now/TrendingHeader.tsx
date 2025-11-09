@@ -21,7 +21,7 @@ export const TrendingHeader = () => {
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] as const }}
         />
         <motion.h3
-          className="bg-linear-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent font-bold text-3xl md:text-4xl lg:text-5xl text-center w-fit whitespace-nowrap flex items-center mb-0"
+          className="bg-linear-to-r from-white via-gray-200 to-gray-400 bg-clip-text pb-2 text-transparent font-bold text-3xl md:text-4xl lg:text-5xl text-center w-fit whitespace-nowrap flex items-center mb-0"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

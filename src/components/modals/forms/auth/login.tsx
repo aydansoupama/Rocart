@@ -42,7 +42,6 @@ export const LoginForm = () => {
 
   const onSubmit = async (data: LoginFormInputs) => {
     const loginType = data.username.includes("@") ? "email" : "username";
-    console.log("Login type:", loginType);
 
     try {
       if (loginType === "email") {

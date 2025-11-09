@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
 
-const AnimatedCard = motion(Card);
+const AnimatedCard = motion.create(Card);
 const AnimatedImg = motion.img;
 
 interface TrendingCardProps {
@@ -24,17 +24,15 @@ interface TrendingCardProps {
     buttonBorderColor: string;
     maskGroup: string;
   };
-  gameIndex: number;
   onVisitMarket: (route: string) => void;
 }
 
 export const TrendingCard = ({
   game,
-  gameIndex,
   onVisitMarket,
 }: TrendingCardProps) => {
   return (
-    <AnimatedCard className="bg-[#030804] rounded-3xl py-0 backdrop-blur-md overflow-hidden w-fit shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30 hover:shadow-[0_0_1rem_0_#3dff880f] transition-all duration-300">
+    <AnimatedCard className="bg-[#030804] rounded-3xl py-0 backdrop-blur-md overflow-hidden w-fit shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30 hover:shadow-[0_0_1rem_0_#3dff880f] transition-all duration-300 flex-shrink-0">
       <div className="w-full h-full py-8 px-6">
         <div className="mb-8 w-full flex flex-row items-center justify-center gap-4">
           <img

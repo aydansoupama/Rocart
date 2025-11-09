@@ -1,17 +1,19 @@
 "use client";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/Dialog";
 import { games } from "@/datas/games";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import Logo from "../Logo";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Game } from "@/types/game";
+import { Button } from "@/components/ui/Button";
 
 const ChooseGameModal = () => {
   return (
@@ -47,6 +49,7 @@ const ChooseGameModal = () => {
         >
           {/* Title */}
           <motion.div
+          className="flex items-center justify-between"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -55,17 +58,22 @@ const ChooseGameModal = () => {
               ease: [0.4, 0, 0.2, 1] as const,
             }}
           >
+            <div></div>
             <DialogTitle
               className="
                 font-poppins uppercase 
                 text-xl sm:text-2xl md:text-3xl 
                 font-bold text-center 
-                bg-gradient-to-r from-white to-secondary 
+                bg-linear-to-r from-white to-secondary 
                 bg-clip-text text-transparent
               "
             >
               Choose a game
             </DialogTitle>
+
+            <DialogClose asChild>
+              <X className="text-secondary hover:text-secondary/30 cursor-pointer" />
+            </DialogClose>
           </motion.div>
 
           {/* Games grid */}

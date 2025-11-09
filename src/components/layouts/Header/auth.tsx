@@ -11,7 +11,6 @@ import { LoginForm } from "@/components/modals/forms/auth/login";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Logo from "../Logo";
-import { CustomUser } from "@/types/auth";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,6 +22,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LogOut } from "lucide-react";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 import { authClient } from "@/lib/auth-client";
+import { User } from "better-auth";
 
 const AuthModal = () => {
   return (
@@ -165,7 +165,7 @@ const AuthModal = () => {
   );
 };
 
-const AccountDropdown = ({ user }: { user: CustomUser }) => {
+const AccountDropdown = ({ user }: { user: User }) => {
   const router = useRouter();
 
   const handleLogout = async () => {
@@ -238,17 +238,7 @@ const AccountDropdown = ({ user }: { user: CustomUser }) => {
   );
 };
 
-const Auth = ({ user }: { user: CustomUser | undefined }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
-
+const Auth = ({ user }: { user: User | undefined }) => {
   return <>{user ? <AccountDropdown user={user} /> : <AuthModal />}</>;
 };
 

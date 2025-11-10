@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 const AnimatedCard = motion.create(Card);
 const AnimatedImg = motion.img;
@@ -27,12 +28,11 @@ interface TrendingCardProps {
   onVisitMarket: (route: string) => void;
 }
 
-export const TrendingCard = ({
-  game,
-  onVisitMarket,
-}: TrendingCardProps) => {
+export const TrendingCard = ({ game, onVisitMarket }: TrendingCardProps) => {
   return (
-    <AnimatedCard className="bg-[#030804] rounded-3xl py-0 backdrop-blur-md overflow-hidden w-fit shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30 hover:shadow-[0_0_1rem_0_#3dff880f] transition-all duration-300 flex-shrink-0">
+    <AnimatedCard
+      className={`bg-[#030804] rounded-3xl py-0 backdrop-blur-md overflow-hidden w-fit h-[458px] shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30  transition-all duration-300 shrink-0 hover:border-[#3DFF87]/30`}
+    >
       <div className="w-full h-full py-8 px-6">
         <div className="mb-8 w-full flex flex-row items-center justify-center gap-4">
           <img
@@ -46,9 +46,19 @@ export const TrendingCard = ({
         </div>
         <div className="flex gap-4 justify-center">
           {game.items.map((item, index) => (
-            <div
+            <motion.div
               key={index}
               className="w-36 h-44 relative rounded-t-3xl flex flex-col border-none group/item cursor-pointer select-none bg-gradient-to-b from-green-500/20 to-transparent to-80%"
+              whileHover={{
+                scale: 1.1,
+                y: -8,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+                transition: {
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20,
+                },
+              }}
               style={{
                 background: item.backgroundImage,
               }}
@@ -106,6 +116,11 @@ export const TrendingCard = ({
                   alt={item.name}
                   src={item.image}
                   style={{ userSelect: "none", pointerEvents: "auto" }}
+                  whileHover={{
+                    scale: 1.15,
+                    rotate: -5,
+                    transition: { type: "spring", stiffness: 300 },
+                  }}
                 />
               </div>
               <div className="p-4 pt-0">
@@ -118,7 +133,7 @@ export const TrendingCard = ({
                   {item.price}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -128,19 +143,35 @@ export const TrendingCard = ({
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${game.maskGroup})`,
         }}
       >
-        <button
-          data-slot="button"
+        <Button
           onClick={() => onVisitMarket(game.route || "#")}
-          className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:w-4 [&_svg]:w-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer bg-primary hover:bg-primary/90 h-10 px-6 has-[>svg]:px-4 rounded-lg group-hover:scale-105 transition-transform duration-300 font-medium text-white bg-linear-to-r shadow-md"
+          className="w-[40vw] sm:w-[20vw] lg:w-[8vw] 
+                     h-[6vh] sm:h-[5.5vh] lg:h-[5vh] 
+                     z-100 rounded-[2vw] sm:rounded-[1.2vw] lg:rounded-[0.8vw] 
+                     group-hover:scale-105 transition-transform duration-300 space-x-0.5"
           style={{
             background: game.buttonGradient,
-            borderColor: "#D9D9D9",
-            borderWidth: "1px",
+            borderColor: "#9B9B9B",
+            borderWidth: "0.5px",
           }}
         >
-          Visit Market
-          <ChevronRight className="lucide lucide-arrow-right" size={24} />
-        </button>
+          <motion.span
+            className="font-medium text-white 
+                       text-[3.5vw] sm:text-[1.5vw] lg:text-[0.7vw] 
+                       opacity-100 tracking-tight leading-none pointer-events-none"
+            style={{ fontFamily: "Poppins, sans-serif" }}
+            whileHover={{ scale: 1.05 }}
+          >
+            Visit Market
+          </motion.span>
+          <ChevronRight
+            className="inline 
+                       w-[4vw] sm:w-[1.5vw] lg:w-[0.8vw] 
+                       h-[4vw] sm:h-[1.5vw] lg:h-[0.8vw] 
+                       "
+            size={24}
+          />
+        </Button>
       </div>
     </AnimatedCard>
   );

@@ -19,7 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOut } from "lucide-react";
+import { LogIn, LogOut, UserPlus } from "lucide-react";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 import { authClient } from "@/lib/auth-client";
 import { User } from "better-auth";
@@ -34,7 +34,7 @@ const AuthModal = () => {
         </button>
       </DialogTrigger>
       <DialogContent
-        className="bg-[#06100a] border-none w-[95vw] sm:w-[90vw] md:w-[80vw] lg:min-w-[960px] max-w-[960px] max-h-[95vh] sm:max-h-[90vh] p-0 overflow-hidden"
+        className="bg-[#06100a] border-none w-[95vw] sm:w-[90vw] md:w-[80vw] lg:min-w-[960px] max-w-[960px] max-h-[95vh] sm:max-h-[90vh] p-0 overflow-y-auto"
         showCloseButton={false}
       >
         <DialogTitle className="sr-only" />
@@ -119,16 +119,18 @@ const AuthModal = () => {
                     value="register"
                     className="text-sm sm:text-base"
                   >
+                    <UserPlus className="w-4 h-4 inline mr-2" />
                     Register
                   </TabsTrigger>
                   <TabsTrigger value="login" className="text-sm sm:text-base">
+                    <LogIn  className="w-4 h-4 inline mr-2" />
                     Login
                   </TabsTrigger>
                 </TabsList>
 
                 <TabsContent
                   value="register"
-                  className="mt-6 sm:mt-8 flex-1 overflow-y-auto"
+                  className="mt-6 sm:mt-8 flex-1 max-h-full overflow-y-auto"
                 >
                   <RegisterForm />
                 </TabsContent>

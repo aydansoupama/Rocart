@@ -52,7 +52,7 @@ const LanguageEditor = ({
             {isMobile ? "Language" : selectedLang?.name}
           </span>
         </div>
-        <ChevronDown className={`${isMobile ? "text-primary" : "text-secondary"} transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+        <ChevronDown className={`text-white transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       <AnimatePresence>

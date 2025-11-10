@@ -13,185 +13,134 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Game } from "@/types/game";
-import { Button } from "@/components/ui/Button";
+import { hexToRgba } from "@/lib/utils";
 
 const ChooseGameModal = () => {
   return (
     <DialogContent
       className="
+      flex justify-center items-center w-fit
         p-0 border-0 bg-transparent 
-        sm:min-w-[90vw] md:min-w-[80vw] lg:min-w-[70vw]
-        max-h-[90vh] overflow-hidden
+        sm:min-w-[90%]
+        max-w-[1300px]
         rounded-[40px] sm:rounded-[50px] md:rounded-[70px]
         [&>button]:hidden
+        font-poppins
       "
     >
       <motion.div
-        className="p-0.5 rounded-[40px] sm:rounded-[50px] md:rounded-[70px]"
-        style={{
-          background:
-            "linear-gradient(180deg, #3DFF88 0%, rgba(61, 255, 136, 0.6) 50%, rgba(61, 255, 136, 0.2) 100%)",
-        }}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] as const }}
+        className="relative rounded-[3vw] p-[4vw] sm:p-[2vw] 
+                  w-[90vw] sm:w-[80vw] lg:w-[70vw] 
+                  max-h-[85vh] overflow-y-auto
+                  bg-[url('/bg/modalbg.png')] bg-cover bg-center bg-no-repeat
+                  scrollbar-thin lg:scrollbar-none
+                  scrollbar-thumb-[#3dff87]/70 scrollbar-track-transparent scrollbar-thumb-rounded-full
+                  [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+        initial={{ scale: 0.7, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.7, opacity: 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <div
-          className="
-            flex flex-col w-full 
-            gap-6 sm:gap-8 md:gap-10 
-            rounded-[40px] sm:rounded-[50px] md:rounded-[70px]
-            bg-linear-to-b from-[#06100A] to-[#031C0D]
-            px-4 lg:px-24
-            py-6 sm:py-8 md:py-11
-            overflow-hidden
-          "
-        >
-          {/* Title */}
-          <motion.div
-          className="flex items-center justify-between"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.1,
-              ease: [0.4, 0, 0.2, 1] as const,
-            }}
-          >
-            <div></div>
-            <DialogTitle
-              className="
-                font-poppins uppercase 
-                text-xl sm:text-2xl md:text-3xl 
-                font-bold text-center 
-                bg-linear-to-r from-white to-secondary 
-                bg-clip-text text-transparent
-              "
+        {/* Header */}
+        <div className="flex justify-center relative mb-[3vh] sm:mb-[1.5vh]">
+          <DialogTitle className="text-[5vw] sm:text-[3vw] lg:text-[2vw] font-extrabold tracking-tight text-[#FFFFFF]">
+            CHOOSE A GAME
+          </DialogTitle>
+
+          <DialogClose asChild>
+            <button
+              className="absolute right-0 -top-2.5 text-white hover:text-[#3dff87] 
+                        text-[8vw] sm:text-[2.5vw] lg:text-[1.8vw]"
             >
-              Choose a game
-            </DialogTitle>
+              <X />
+            </button>
+          </DialogClose>
+        </div>
 
-            <DialogClose asChild>
-              <X className="text-secondary hover:text-secondary/30 cursor-pointer" />
-            </DialogClose>
-          </motion.div>
-
-          {/* Games grid */}
-          <div
-            className="
-              grid 
-              grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 
-              gap-4 sm:gap-6 lg:gap-8 
-              w-full max-w-[1200px]
-              mx-auto 
-              p-2 sm:p-4 md:p-6 
-              overflow-y-auto
-            "
-            style={{
-              maxHeight: "60vh",
-            }}
-          >
-            {games.map((game, index) => (
-              <motion.div
-                key={index}
-                className="
-                  relative 
-                  w-full
-                  min-w-[240px] max-w-[351px] 
-                  h-[200px] sm:h-[220px] md:h-[243px]
-                  p-0.5 rounded-[40px] sm:rounded-[48px] md:rounded-[53px]
-                  cursor-pointer transition-all mx-auto
+        {/* Grid of Games - Responsive grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[3vw] sm:gap-[1.5vw]">
+          {games.map((game, index) => (
+            <motion.div
+              key={index}
+              className="
+                  relative rounded-[25px] w-full h-[25vh] sm:h-[20vh] overflow-hidden hover:scale-[1.03] duration-300  bg-transparent shadow-none border-none
+                  p-0.5 sm:rounded-[48px] md:rounded-[53px]
+                  cursor-pointer transition-all mx-auto hover:scale-105 active:scale-95
                 "
+                  style={{
+                    background: `linear-gradient(to bottom, #3DFF88 0%, transparent 100%)`,
+                  }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.2 + index * 0.05,
+                ease: [0.4, 0, 0.2, 1] as const,
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div
+                className="relative z-10 flex flex-col items-center justify-center p-[2vw] sm:p-[1vw] text-center h-full overflow-hidden rounded-[25px] sm:rounded-[48px] md:rounded-[53px]"
                 style={{
-                  background:
-                    "linear-gradient(180deg, #3DFF88 0%, rgba(61, 255, 136, 0.6) 50%, rgba(61, 255, 136, 0.2) 100%)",
+                  background: `linear-gradient(to top, ${hexToRgba(game.color, 0.24)} 0%, transparent 50%), #030904`,
                 }}
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.2 + index * 0.05,
-                  ease: [0.4, 0, 0.2, 1] as const,
-                }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.98 }}
               >
+                {/* Background image */}
+                <div className="absolute inset-0 rounded-[inherit]">
+                  <Image
+                    src={game.icon}
+                    alt={game.name}
+                    className="object-cover scale-110 opacity-10 rounded-[inherit]"
+                    fill
+                  />
+                </div>
                 <div
                   className="
-                    relative flex flex-col justify-center items-center
-                    gap-4 sm:gap-6 
-                    w-full h-full 
-                    rounded-[36px] sm:rounded-[46px] md:rounded-[51px] 
-                    bg-[#030904] overflow-hidden
-                  "
-                >
-                  {/* Background image */}
-                  <div className="absolute inset-0 opacity-[0.24] rounded-[inherit]">
-                    <Image
-                      src={game.icon}
-                      alt={game.name}
-                      className="object-cover scale-110 rounded-[inherit]"
-                      fill
-                    />
-                  </div>
-
-                  {/* Icon */}
-                  <div
-                    className="
                       relative z-10 flex justify-center items-center
                       rounded-2xl
-                      w-[60px] sm:w-[80px] md:w-[100px]
-                      h-[60px] sm:h-[80px] md:h-[100px]
+                      w-[80px]
+                      h-[58px]
                     "
-                  >
-                    <Image
-                      src={game.icon}
-                      alt={game.name}
-                      className="object-cover rounded-2xl"
-                      fill
-                    />
-                  </div>
-
-                  {/* Text */}
-                  <div className="flex flex-col justify-center items-center gap-0.5 font-poppins text-center px-2">
-                    <h3
-                      className="
-                        font-bold 
-                        text-[16px] sm:text-[18px] md:text-[20px] 
-                        leading-tight 
-                        bg-clip-text text-transparent
-                      "
-                      style={{
-                        backgroundImage: `linear-gradient(90deg, ${game.color} 0%, #D9EDFF 100%)`,
-                      }}
-                    >
-                      {game.name}
-                    </h3>
-                    <p className="font-semibold text-[13px] sm:text-[14px] md:text-[15px] text-white">
-                      Tap to view Items
-                    </p>
-                  </div>
+                >
+                  <Image
+                    src={game.icon}
+                    alt={game.name}
+                    className="object-cover rounded-2xl"
+                    fill
+                  />
                 </div>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* Footer */}
-          <motion.div
-            className="flex justify-center items-center gap-4 sm:gap-6 md:gap-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.6,
-              ease: [0.4, 0, 0.2, 1] as const,
-            }}
-          >
-            <hr className="bg-gradient-to-r from-transparent to-white w-full h-0.5 rounded-full" />
-            <Logo size={8} className="scale-75 sm:scale-90 md:scale-100" />
-            <hr className="bg-gradient-to-l from-transparent to-white w-full h-0.5 rounded-full" />
-          </motion.div>
+                <p
+                  className="font-bold text-[3vw] sm:text-[2vw] lg:text-[1.2vw] bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage: `linear-gradient(90deg, ${game.color} 0%, #D9EDFF 100%)`,
+                  }}
+                >
+                  {game.name}
+                </p>
+                <p className="text-[#FFFFFF] font-extrabold text-[2.5vw] sm:text-[1.5vw] lg:text-[0.9vw] mt-[0.5vh] sm:mt-[0.3vh]">
+                  Tap to view Items
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Footer Rocart Logo */}
+        <motion.div
+          className="flex justify-center items-center gap-4 sm:gap-6 md:gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.6,
+            ease: [0.4, 0, 0.2, 1] as const,
+          }}
+        >
+          <hr className="bg-LINEAR-to-r from-transparent to-white w-full h-0.5 rounded-full" />
+          <Logo size={16} className="h-6 sm:h-8 md:h-12 lg:h-16" />
+          <hr className="bg-LINEAR-to-l from-transparent to-white w-full h-0.5 rounded-full" />
+        </motion.div>
       </motion.div>
     </DialogContent>
   );
@@ -255,9 +204,7 @@ const ChooseGameHeaderDropdown = ({
             </span>
           </div>
           <ChevronDown
-            className={`${
-              isMobile ? "text-primary" : "text-secondary"
-            } transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+            className={`text-white transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
           />
         </button>
       ) : (
@@ -277,9 +224,7 @@ const ChooseGameHeaderDropdown = ({
             Choose a game
           </span>
           <ChevronDown
-            className={`${
-              isMobile ? "text-primary" : "text-secondary"
-            } transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+            className={`text-white transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
           />
         </motion.button>
       )}
@@ -312,10 +257,8 @@ const ChooseGameHeaderDropdown = ({
                     setIsOpenInternal(false);
                   }
                 }}
-                className={`flex items-center gap-x-2.5 px-4 py-3 font-poppins font-semibold transition-colors ${
-                  isMobile
-                    ? "rounded-xl bg-[#0a1f0d] hover:bg-[#0f2912]"
-                    : "w-full hover:bg-card/50 text-left"
+                className={`flex items-center gap-x-2.5 px-4 py-3 font-poppins font-semibold transition-colors bg-[#0a1f0d] hover:bg-[#0f2912] ${
+                  isMobile ? "rounded-xl " : "w-full text-left"
                 }`}
                 initial={isMobile ? { opacity: 0, x: -10 } : { opacity: 0 }}
                 animate={isMobile ? { opacity: 1, x: 0 } : { opacity: 1 }}

@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Input } from "@/components/ui/Input";
 import { Checkbox } from "@/components/ui/Checkbox";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
 import Link from "next/link";
 import SignUpWithGoogleButton from "@/components/sections/auth/SignUpWithGoogle-button";
 import { toast } from "sonner";
@@ -88,13 +88,14 @@ export const RegisterForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-3.5 px-px w-full font-poppins"
+      className="space-y-3.5 px-px w-full font-poppins max-h-full overflow-y-auto"
     >
       <div className="space-y-2">
         <label
           htmlFor="username"
-          className="text-white text-sm font-poppins block font-normal"
+          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
         >
+          <User className="w-4 h-4" />
           Username<span>*</span>
         </label>
         <Input
@@ -107,8 +108,9 @@ export const RegisterForm = () => {
       <div className="space-y-2">
         <label
           htmlFor="email"
-          className="text-white text-sm font-poppins block font-normal"
+          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
         >
+          <Mail className="w-4 h-4" />
           Email<span>*</span>
         </label>
         <Input
@@ -122,8 +124,9 @@ export const RegisterForm = () => {
       <div className="space-y-2">
         <label
           htmlFor="password"
-          className="text-white text-sm font-poppins block font-normal"
+          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
         >
+          <Lock className="w-4 h-4" />
           Password<span>*</span>
         </label>
         <div className="relative">
@@ -146,8 +149,9 @@ export const RegisterForm = () => {
       <div className="space-y-2">
         <label
           htmlFor="confirmPassword"
-          className="text-white text-sm font-poppins block font-normal"
+          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
         >
+          <Lock className="w-4 h-4" />
           Confirm Password<span>*</span>
         </label>
         <div className="relative">
@@ -207,7 +211,7 @@ export const RegisterForm = () => {
       <div className="space-y-2">
         <label
           htmlFor="referral"
-          className="text-white text-sm font-poppins block font-normal"
+          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
         >
           Referral Code (Optional)
         </label>

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Input } from "@/components/ui/Input";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Lock, User } from "lucide-react";
 import Link from "next/link";
 import SignInWithGoogleButton from "@/components/sections/auth/SignInWithGoogle-button";
 import { toast } from "sonner";
@@ -91,8 +91,9 @@ export const LoginForm = () => {
       <div className="space-y-1.5">
         <label
           htmlFor="login-email"
-          className="text-white text-sm font-poppins block"
+          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
         >
+          <User className="w-4 h-4" />
           Email or Username<span>*</span>
         </label>
         <Input
@@ -106,8 +107,9 @@ export const LoginForm = () => {
       <div className="space-y-1.5">
         <label
           htmlFor="login-password"
-          className="text-white text-sm font-poppins block"
+          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
         >
+          <Lock className="w-4 h-4" />
           Password<span>*</span>
         </label>
         <div className="relative">

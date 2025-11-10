@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogTitle,
   DialogTrigger,
@@ -19,7 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogIn, LogOut, UserPlus } from "lucide-react";
+import { LogIn, LogOut, UserPlus, X } from "lucide-react";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 import { authClient } from "@/lib/auth-client";
 import { User } from "better-auth";
@@ -86,6 +87,10 @@ const AuthModal = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
           >
+            <DialogClose asChild>
+              <X className="w-6 h-6 text-white hover:text-gray-300 absolute top-4 right-4 cursor-pointer" />
+            </DialogClose>
+
             {/* Logo on mobile */}
             <motion.div
               className="lg:hidden flex justify-center mb-8"
@@ -123,7 +128,7 @@ const AuthModal = () => {
                     Register
                   </TabsTrigger>
                   <TabsTrigger value="login" className="text-sm sm:text-base">
-                    <LogIn  className="w-4 h-4 inline mr-2" />
+                    <LogIn className="w-4 h-4 inline mr-2" />
                     Login
                   </TabsTrigger>
                 </TabsList>

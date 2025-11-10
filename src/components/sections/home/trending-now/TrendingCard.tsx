@@ -31,9 +31,9 @@ interface TrendingCardProps {
 export const TrendingCard = ({ game, onVisitMarket }: TrendingCardProps) => {
   return (
     <AnimatedCard
-      className={`bg-[#030804] rounded-3xl py-0 backdrop-blur-md overflow-hidden w-fit h-[458px] shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30  transition-all duration-300 shrink-0 hover:border-[#3DFF87]/30`}
+      className={`bg-[#030804] gap-0 rounded-3xl py-0 backdrop-blur-md overflow-hidden w-fit shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30  transition-all duration-300 shrink-0 hover:border-[#3DFF87]/30`}
     >
-      <div className="w-full h-full py-8 px-6">
+      <div className="w-full h-full pt-8 pb-2 px-6">
         <div className="mb-8 w-full flex flex-row items-center justify-center gap-4">
           <img
             className="w-auto h-10 rounded-md object-cover"
@@ -147,7 +147,7 @@ export const TrendingCard = ({ game, onVisitMarket }: TrendingCardProps) => {
           onClick={() => onVisitMarket(game.route || "#")}
           className="w-[40vw] sm:w-[20vw] lg:w-[8vw] 
                      h-[6vh] sm:h-[5.5vh] lg:h-[5vh] 
-                     z-100 rounded-[2vw] sm:rounded-[1.2vw] lg:rounded-[0.8vw] 
+                     rounded-[2vw] sm:rounded-[1.2vw] lg:rounded-[0.8vw] 
                      group-hover:scale-105 transition-transform duration-300 space-x-0.5"
           style={{
             background: game.buttonGradient,

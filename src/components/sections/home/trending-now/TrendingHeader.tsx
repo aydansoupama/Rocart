@@ -21,13 +21,14 @@ export const TrendingHeader = () => {
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] as const }}
         />
         <motion.h3
-          className="bg-linear-to-r from-white via-gray-200 to-gray-400 bg-clip-text pb-2 text-transparent font-bold text-3xl md:text-4xl lg:text-5xl text-center w-fit whitespace-nowrap flex items-center mb-0"
+          className="bg-linear-to-b from-white via-gray-200 to-gray-500 bg-clip-text text-transparent font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl py-4 relative whitespace-nowrap"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
         >
           Trending Now
+          <div className="rounded-full w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-[#46FF68] opacity-5 blur-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         </motion.h3>
         <motion.hr
           className="bg-linear-to-l from-transparent to-white w-full h-0.5 rounded-full border-0"
@@ -38,7 +39,7 @@ export const TrendingHeader = () => {
         />
       </div>
       <motion.p
-        className="text-gray-300 text-sm md:text-base max-w-md mx-auto leading-relaxed px-2 text-center"
+        className="text-gray-300 text-xs sm:text-sm md:text-base max-w-xs sm:max-w-sm md:max-w-md mx-auto leading-relaxed px-4 sm:px-2 text-center"
         style={{ fontFamily: "Poppins, sans-serif" }}
         variants={descriptionVariants}
       >

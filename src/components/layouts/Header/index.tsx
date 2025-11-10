@@ -70,7 +70,7 @@ const Header = ({ user }: { user: User | undefined }) => {
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[#1a1a1a] transition-colors"
                   >
-                    <X className="w-6 h-6 text-white" />
+                    <X className="w-8 h-8 text-white" />
                   </button>
                 </div>
                 <div className="flex flex-col gap-4">

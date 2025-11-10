@@ -88,7 +88,7 @@ const AuthModal = () => {
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
           >
             <DialogClose asChild>
-              <X className="w-6 h-6 text-white hover:text-gray-300 absolute top-4 right-4 cursor-pointer" />
+              <X className="w-8 h-8 text-white hover:text-gray-300 absolute top-4 right-4 cursor-pointer" />
             </DialogClose>
 
             {/* Logo on mobile */}

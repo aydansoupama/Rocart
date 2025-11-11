@@ -4,7 +4,7 @@ import HotRarityIcon from "@/components/catalog/rarity/icons/hot-rarity-icon";
 import { type CatalogCategory } from "@/datas/catalog/categories";
 import { CatalogItemCard } from "@/components/catalog/CatalogItemCard";
 import { useRef, useCallback, useEffect } from "react";
-import { motion, useMotionValue, animate, useInView } from "framer-motion";
+import { motion, animate, useInView } from "framer-motion";
 import BestSellerRarityIcon from "./rarity/icons/best-sellers-rarity-icon";
 import PetsRarityIcon from "./rarity/icons/pets-rarity-icon";
 import ShecklesRarityIcon from "./rarity/icons/sheckles-rarity-icon";
@@ -15,7 +15,6 @@ import BundlesRarityIcon from "./rarity/icons/bundles-rarity-icon";
 
 const CatalogCategory = ({ category }: { category: CatalogCategory }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollX = useMotionValue(0);
   const scrollStep = 256; // Card width + gap
 
   const categoryRef = useRef<HTMLDivElement>(null);
@@ -23,36 +22,47 @@ const CatalogCategory = ({ category }: { category: CatalogCategory }) => {
 
   const scrollLeft = useCallback(() => {
     if (containerRef.current) {
-      const currentX = scrollX.get();
-      const targetX = Math.min(0, currentX + scrollStep); // Move content right (positive x)
-      animate(scrollX, targetX, {
+      const currentScroll = containerRef.current.scrollLeft;
+      const targetScroll = Math.max(0, currentScroll - scrollStep);
+      animate(currentScroll, targetScroll, {
         type: "spring",
         damping: 20,
         stiffness: 100,
+        onUpdate: (value) => {
+          if (containerRef.current) {
+            containerRef.current.scrollLeft = value;
+          }
+        },
       });
     }
-  }, [scrollX, scrollStep]);
+  }, [scrollStep]);
 
   const scrollRight = useCallback(() => {
     if (containerRef.current) {
-      const currentX = scrollX.get();
+      const currentScroll = containerRef.current.scrollLeft;
       const containerWidth = containerRef.current.clientWidth;
       const contentWidth = containerRef.current.scrollWidth;
-      const maxScrollX = -(contentWidth - containerWidth); // Max negative x to show end of content
-
-      const targetX = Math.max(maxScrollX, currentX - scrollStep); // Move content left (negative x)
-      animate(scrollX, targetX, {
+      const maxScroll = contentWidth - containerWidth;
+      const targetScroll = Math.min(maxScroll, currentScroll + scrollStep);
+      animate(currentScroll, targetScroll, {
         type: "spring",
         damping: 20,
         stiffness: 100,
+        onUpdate: (value) => {
+          if (containerRef.current) {
+            containerRef.current.scrollLeft = value;
+          }
+        },
       });
     }
-  }, [scrollX, scrollStep]);
+  }, [scrollStep]);
 
   // Reset scroll position if category changes or component mounts
   useEffect(() => {
-    scrollX.set(0);
-  }, [category.id, scrollX]);
+    if (containerRef.current) {
+      containerRef.current.scrollLeft = 0;
+    }
+  }, [category.id]);
 
   return (
     <motion.div
@@ -133,16 +143,13 @@ const CatalogCategory = ({ category }: { category: CatalogCategory }) => {
 
       <div
         ref={containerRef}
-        className="relative flex flex-nowrap overflow-x-scroll gap-4 p-2 py-3" // Changed to overflow-x-hidden
+        className="relative flex flex-nowrap overflow-x-scroll gap-4 p-2 pb-10 catalog-scrollbar"
       >
-        <motion.div
-          className="flex flex-nowrap gap-4" // Inner div to be animated
-          style={{ x: scrollX }}
-        >
+        <div className="flex flex-nowrap gap-4">
           {category.items.map((item, index) => (
             <CatalogItemCard key={item.id} item={item} index={index} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   );

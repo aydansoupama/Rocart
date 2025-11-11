@@ -54,7 +54,7 @@ export function RarityFilter({
               collapsed: { opacity: 0, height: 0 },
             }}
             transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
-            className="overflow-hidden overflow-y-auto max-h-[500px]"
+            className="overflow-y-auto max-h-[300px] sm:max-h-[40vh]"
           >
             <div className="space-y-2 pt-2">
               {rarities.map((rarity) => (

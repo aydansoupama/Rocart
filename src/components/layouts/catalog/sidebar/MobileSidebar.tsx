@@ -1,6 +1,12 @@
 "use client";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import FilterPanel from ".";
 import { Button } from "@/components/ui/Button";
 import { Funnel } from "lucide-react";
@@ -14,7 +20,8 @@ export function MobileSidebar() {
           Filter
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="bg-[#030c08] border-none">
+      <SheetContent side="left" className="bg-[#030c08] border-none" showClose={false}>
+        <SheetTitle className="sr-only">Filter Options</SheetTitle>
         <FilterPanel />
       </SheetContent>
     </Sheet>

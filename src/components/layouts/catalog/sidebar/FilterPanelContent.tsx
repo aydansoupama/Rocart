@@ -36,7 +36,7 @@ export function FilterPanelContent({
   handlePriceInputChange,
 }: FilterPanelContentProps) {
   return (
-    <div className="font-poppins bg-[#030c08] border-none text-white p-4 md:p-6 h-full">
+    <div className="font-poppins bg-[#030c08] border-none text-white p-4 md:p-6 h-full overflow-y-auto scrollbar-hide">
       <div className="w-full lg:max-w-sm mx-auto">
         <FilterHeader onReset={handleReset} />
         <PriceFilter

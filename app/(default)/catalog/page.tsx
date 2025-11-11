@@ -1,4 +1,3 @@
-import { MobileSidebar } from "@/components/layouts/catalog/sidebar/MobileSidebar";
 import CatalogSidebar from "@/components/layouts/catalog/sidebar";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -40,9 +39,9 @@ const CatalogPage = async () => {
             <CatalogCategory key={category.id} category={category} />
           ))}
 
-          <div className="lg:hidden mt-16 md:mt-[10vh]">
+          {/* <div className="lg:hidden mt-16 md:mt-[10vh]">
             <MobileSidebar />
-          </div>
+          </div> */}
         </div>
       </section>
 

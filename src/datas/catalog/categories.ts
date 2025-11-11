@@ -22,7 +22,7 @@ export interface CatalogCategory {
   id: number;
   name: string;
   icon: {
-    type: "hot";
+    type: "hot" | "best-sellers" | "pets" | "sheckles" | "fruits" | "mutated-pets" | "mega-pets" | "bundles";
     fromColor: string;
     toColor: string;
   };
@@ -201,6 +201,215 @@ export const catalogItems: CatalogItem[] = [
       originalPrice: 69.99,
     },
   },
+  {
+    id: 10,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D3572",
+    rarity: {
+      name: "Mythical",
+      color: "#329CFF",
+      icon: {
+        type: "hot",
+        fromColor: "#7CF6FF",
+        toColor: "#3292FF",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 11,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D724C",
+    rarity: {
+      name: "Rare",
+      color: "#FF4232",
+      icon: {
+        type: "hot",
+        fromColor: "#FF867C",
+        toColor: "#FF4232",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 12,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D3572",
+    rarity: {
+      name: "Mythical",
+      color: "#329CFF",
+      icon: {
+        type: "hot",
+        fromColor: "#7CF6FF",
+        toColor: "#3292FF",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 13,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D724C",
+    rarity: {
+      name: "Rare",
+      color: "#FF4232",
+      icon: {
+        type: "hot",
+        fromColor: "#FF867C",
+        toColor: "#FF4232",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 14,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D3572",
+    rarity: {
+      name: "Mythical",
+      color: "#329CFF",
+      icon: {
+        type: "hot",
+        fromColor: "#7CF6FF",
+        toColor: "#3292FF",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 15,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D724C",
+    rarity: {
+      name: "Rare",
+      color: "#FF4232",
+      icon: {
+        type: "hot",
+        fromColor: "#FF867C",
+        toColor: "#FF4232",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 16,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D3572",
+    rarity: {
+      name: "Mythical",
+      color: "#329CFF",
+      icon: {
+        type: "hot",
+        fromColor: "#7CF6FF",
+        toColor: "#3292FF",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 17,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D724C",
+    rarity: {
+      name: "Rare",
+      color: "#FF4232",
+      icon: {
+        type: "hot",
+        fromColor: "#FF867C",
+        toColor: "#FF4232",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 18,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D3572",
+    rarity: {
+      name: "Mythical",
+      color: "#329CFF",
+      icon: {
+        type: "hot",
+        fromColor: "#7CF6FF",
+        toColor: "#3292FF",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 19,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D724C",
+    rarity: {
+      name: "Rare",
+      color: "#FF4232",
+      icon: {
+        type: "hot",
+        fromColor: "#FF867C",
+        toColor: "#FF4232",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
+  {
+    id: 20,
+    name: "Racoon Pets",
+    image: "/img-5467--1--1.png",
+    color: "#1D3572",
+    rarity: {
+      name: "Mythical",
+      color: "#329CFF",
+      icon: {
+        type: "hot",
+        fromColor: "#7CF6FF",
+        toColor: "#3292FF",
+      },
+    },
+    price: {
+      discountPercentage: 31,
+      originalPrice: 69.99,
+    },
+  },
 ];
 
 export const catalogCategories: CatalogCategory[] = [
@@ -208,7 +417,7 @@ export const catalogCategories: CatalogCategory[] = [
     id: 1,
     name: "Best Sellers",
     icon: {
-      type: "hot",
+      type: "best-sellers",
       fromColor: "#FFBB00",
       toColor: "#FFD971",
     },
@@ -218,7 +427,7 @@ export const catalogCategories: CatalogCategory[] = [
     id: 2,
     name: "Pets",
     icon: {
-      type: "hot",
+      type: "pets",
       fromColor: "#FF565A",
       toColor: "#993336",
     },
@@ -228,7 +437,7 @@ export const catalogCategories: CatalogCategory[] = [
     id: 3,
     name: "Sheckles",
     icon: {
-      type: "hot",
+      type: "sheckles",
       fromColor: "#56ADFF",
       toColor: "#5CD4FF",
     },
@@ -238,7 +447,7 @@ export const catalogCategories: CatalogCategory[] = [
     id: 4,
     name: "Fruits",
     icon: {
-      type: "hot",
+      type: "fruits",
       fromColor: "#FF4400",
       toColor: "#FF7D5C",
     },
@@ -248,7 +457,7 @@ export const catalogCategories: CatalogCategory[] = [
     id: 5,
     name: "Mutated Pets",
     icon: {
-      type: "hot",
+      type: "mutated-pets",
       fromColor: "#0900FF",
       toColor: "#8376FF",
     },
@@ -258,7 +467,7 @@ export const catalogCategories: CatalogCategory[] = [
     id: 6,
     name: "Mega Pets",
     icon: {
-      type: "hot",
+      type: "mega-pets",
       fromColor: "#FF00C8",
       toColor: "#FF5CFC",
     },
@@ -268,7 +477,7 @@ export const catalogCategories: CatalogCategory[] = [
     id: 7,
     name: "Bundles",
     icon: {
-      type: "hot",
+      type: "bundles",
       fromColor: "#FFFF00",
       toColor: "#F1FF87",
     },

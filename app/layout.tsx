@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/next"
 
 const poppinsFont = Poppins({
   variable: "--font-poppins",
   weight: ["600", "500", "400", "700"],
 });
-
 const interFont = Inter({
   variable: "--font-inter",
   weight: ["400"],
@@ -30,6 +30,7 @@ export default function RootLayout({
       >
         {children}
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );

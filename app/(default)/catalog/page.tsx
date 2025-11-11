@@ -6,6 +6,7 @@ import { CatalogItemCard } from "@/components/catalog/CatalogItemCard";
 import HotRarityIcon from "@/components/catalog/rarity/icons/hot-rarity-icon";
 import { catalogCategories } from "@/datas/catalog/categories";
 import CatalogCategory from "@/components/catalog/CatalogCategory";
+import CatalogFooter from "@/components/sections/catalog/CatalogFooter";
 
 const CatalogPage = async () => {
   const session = await auth.api.getSession({
@@ -45,7 +46,7 @@ const CatalogPage = async () => {
         </div>
       </section>
 
-      <section></section>
+      <CatalogFooter />
     </>
   );
 };

@@ -130,7 +130,7 @@ const CatalogCategory = ({ category }: { category: CatalogCategory }) => {
 
       <div
         ref={containerRef}
-        className="relative flex flex-nowrap overflow-x-hidden overflow-y-hidden gap-4 p-2" // Changed to overflow-x-hidden
+        className="relative flex flex-nowrap overflow-x-scroll gap-4 p-2 py-3" // Changed to overflow-x-hidden
       >
         <motion.div
           className="flex flex-nowrap gap-4" // Inner div to be animated

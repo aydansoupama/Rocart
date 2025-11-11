@@ -8,6 +8,7 @@ import { catalogCategories } from "@/datas/catalog/categories";
 import CatalogCategory from "@/components/catalog/CatalogCategory";
 import CatalogFooter from "@/components/sections/catalog/CatalogFooter";
 import CatalogSearch from "@/components/catalog/CatalogSearch";
+import Logo from "@/components/layouts/Logo";
 
 const CatalogPage = async () => {
   const session = await auth.api.getSession({
@@ -17,8 +18,9 @@ const CatalogPage = async () => {
   return (
     <>
       <section className="flex font-poppins">
-        <div className="hidden lg:flex sticky w-[300px] mt-16 md:mt-[10vh] top-16 md:top-[10vh] h-screen">
+        <div className="flex flex-col items-center justify-between sticky w-[70px] h-screen pt-16 pb-2 md:pt-[10vh] top-0 overflow-y-auto">
           <CatalogSidebar />
+          <Logo size={32} variant={"compact"} />
         </div>
 
         <div className="flex-1 flex flex-col gap-10 p-4 md:p-6 lg:p-8 mt-16 md:mt-[10vh] bg-[#000b05] min-w-0">

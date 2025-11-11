@@ -2,6 +2,10 @@
 import { useState } from "react";
 import { FilterPanelContent } from "./FilterPanelContent";
 import { Rarity } from "@/types/rarity";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/Button";
+import { ChevronRight, Filter } from "lucide-react";
+import { DialogTitle } from "@/components/ui/Dialog";
 
 export default function FilterPanel() {
   const [minPrice, setMinPrice] = useState(0.25);
@@ -64,19 +68,32 @@ export default function FilterPanel() {
     };
 
   return (
-    <FilterPanelContent
-      minPrice={minPrice}
-      maxPrice={maxPrice}
-      setMinPrice={setMinPrice}
-      setMaxPrice={setMaxPrice}
-      selectedRarities={selectedRarities}
-      rarities={rarities}
-      handleReset={handleReset}
-      handleClearAll={handleClearAll}
-      handleSliderChange={handleSliderChange}
-      toggleRarity={toggleRarity}
-      handlePriceInputChange={handlePriceInputChange}
-    />
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button
+          variant={"outline"}
+          className="w-8 h-8 rounded-full cursor-pointer text-[#2ADF84] bg-[#112118] hover:bg-[#112118]/80"
+        >
+          <ChevronRight />
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" showClose={false}>
+        <DialogTitle className="sr-only">Filter Panel</DialogTitle>
+
+        <FilterPanelContent
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          setMinPrice={setMinPrice}
+          setMaxPrice={setMaxPrice}
+          selectedRarities={selectedRarities}
+          rarities={rarities}
+          handleReset={handleReset}
+          handleClearAll={handleClearAll}
+          handleSliderChange={handleSliderChange}
+          toggleRarity={toggleRarity}
+          handlePriceInputChange={handlePriceInputChange}
+        />
+      </SheetContent>
+    </Sheet>
   );
 }
-

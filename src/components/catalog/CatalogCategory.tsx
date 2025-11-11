@@ -115,17 +115,17 @@ const CatalogCategory = ({ category }: { category: CatalogCategory }) => {
             className="w-[30px] h-[30px] flex justify-center items-center text-center bg-[#030904] hover:bg-[#030904]/80 border border-[#999999]/17 rounded-[8px] cursor-pointer"
             onClick={scrollLeft}
           >
-            <ChevronLeft size={16} className="text-[#3DFF88]" />
+            <ChevronLeft size={20} className="text-[#3DFF88]" />
           </button>
 
           <button
             className="w-[30px] h-[30px] flex justify-center items-center text-center bg-[#030904] hover:bg-[#030904]/80 border border-[#999999]/17 rounded-[8px] cursor-pointer"
             onClick={scrollRight}
           >
-            <ChevronRight size={16} className="text-[#3DFF88]" />
+            <ChevronRight size={20} className="text-[#3DFF88]" />
           </button>
 
-          <button className="w-[75px] h-[26px] font-semibold text-xs flex justify-center items-center text-center bg-[#030904] hover:bg-[#030904]/80 border border-[#999999]/17 rounded-[8px] cursor-pointer">
+          <button className="w-[75px] h-[26px] font-semibold text-[11px] flex justify-center items-center text-center bg-[#030904] hover:bg-[#030904]/80 border border-[#999999]/17 rounded-[8px] cursor-pointer">
             View All
           </button>
         </div>

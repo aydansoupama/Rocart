@@ -1,11 +1,7 @@
 "use client";
 import { useState } from "react";
-import { RarityFilter } from "./RarityFilter";
-import { FilterHeader } from "./FilterHeader";
-import { PriceFilter } from "./PriceFilter";
-import { ActionButtons } from "./ActionButtons";
-import { FilterFooter } from "./FilterFooter";
-import { CloseButton } from "./CloseButton";
+import { FilterPanelContent } from "./FilterPanelContent";
+import { Rarity } from "@/types/rarity";
 
 export default function FilterPanel() {
   const [minPrice, setMinPrice] = useState(0.25);
@@ -14,7 +10,7 @@ export default function FilterPanel() {
     new Set()
   );
 
-  const rarities = [
+  const rarities: Rarity[] = [
     { name: "Secret", count: 0, fromColor: "#FF1B1B", toColor: "#FF9797" },
     { name: "Ultimate", count: 0, fromColor: "#FF8D1B", toColor: "#FFCE97" },
     { name: "Prismatic", count: 0, fromColor: "#E4FF1B", toColor: "#FFFC97" },
@@ -48,6 +44,11 @@ export default function FilterPanel() {
     setSelectedRarities(new Set());
   };
 
+  const handleSliderChange = (newValues: [number, number]) => {
+    setMinPrice(newValues[0]);
+    setMaxPrice(newValues[1]);
+  };
+
   const handlePriceInputChange =
     (setter: (value: number) => void) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,33 +63,20 @@ export default function FilterPanel() {
       }
     };
 
-  const handleSliderChange = (newValues: [number, number]) => {
-    setMinPrice(newValues[0]);
-    setMaxPrice(newValues[1]);
-  };
-
   return (
-    <div className="font-poppins bg-[#030c08] mt-16 lg:mt-[11vh] border-none text-white p-6">
-      <div className="max-w-[330px] mx-auto">
-        <FilterHeader onReset={handleReset} />
-        <PriceFilter
-          minPrice={minPrice}
-          maxPrice={maxPrice}
-          onMinPriceChange={handlePriceInputChange(setMinPrice)}
-          onMaxPriceChange={handlePriceInputChange(setMaxPrice)}
-          onSliderChange={handleSliderChange}
-        />
-        <div className="mb-8">
-          <RarityFilter
-            rarities={rarities}
-            selectedRarities={selectedRarities}
-            toggleRarity={toggleRarity}
-          />
-        </div>
-        <ActionButtons onClearAll={handleClearAll} />
-        <FilterFooter />
-        <CloseButton />
-      </div>
-    </div>
+    <FilterPanelContent
+      minPrice={minPrice}
+      maxPrice={maxPrice}
+      setMinPrice={setMinPrice}
+      setMaxPrice={setMaxPrice}
+      selectedRarities={selectedRarities}
+      rarities={rarities}
+      handleReset={handleReset}
+      handleClearAll={handleClearAll}
+      handleSliderChange={handleSliderChange}
+      toggleRarity={toggleRarity}
+      handlePriceInputChange={handlePriceInputChange}
+    />
   );
 }
+

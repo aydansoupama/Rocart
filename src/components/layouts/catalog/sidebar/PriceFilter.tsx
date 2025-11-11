@@ -19,13 +19,13 @@ export function PriceFilter({
 }: PriceFilterProps) {
   return (
     <div className="mb-8">
-      <h3 className="text-[#878c89] text-[10px] mb-4 font-medium">
+      <h3 className="text-[#878c89] text-xs mb-4 font-medium">
         Item price
       </h3>
 
       <div className="grid grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="text-[#878c89] text-[10px] mb-2">From</label>
+          <label className="text-[#878c89] text-xs mb-2">From</label>
           <input
             type="number"
             placeholder={`min $ ${0.25}`}
@@ -37,7 +37,7 @@ export function PriceFilter({
           />
         </div>
         <div>
-          <label className="text-[#878c89] text-[10px] mb-2">To</label>
+          <label className="text-[#878c89] text-xs mb-2">To</label>
           <input
             type="number"
             placeholder={`max $ ${2000}`}

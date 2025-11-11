@@ -1,4 +1,5 @@
 "use client";
+import { MobileSidebar } from "../catalog/sidebar/MobileSidebar";
 import ChooseGame, { ChooseGameHeaderDropdown } from "./choose-game";
 import Logo from "../Logo";
 import LanguageEditor from "./language-editor";

@@ -20,7 +20,7 @@ export function MobileSidebar() {
           Filter
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="bg-[#030c08] border-none" showClose={false}>
+      <SheetContent side="left" className="bg-[#030c08] border-none w-[300px]" showClose={false}>
         <SheetTitle className="sr-only">Filter Options</SheetTitle>
         <FilterPanel />
       </SheetContent>

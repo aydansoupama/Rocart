@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { catalogItems } from "@/datas/catalog";
 import { CatalogItemCard } from "@/components/catalog/CatalogItemCard";
+import HotRarityIcon from "@/components/catalog/rarity/icons/hot-rarity-icon";
 
 const CatalogPage = async () => {
   const session = await auth.api.getSession({
@@ -13,19 +14,30 @@ const CatalogPage = async () => {
   return (
     <>
       <section className="flex">
+        
         <div className="hidden lg:flex sticky w-[300px] mt-16 md:mt-[10vh] top-16 md:top-[10vh] h-screen">
           <CatalogSidebar />
         </div>
 
-        <div className="flex-1 p-4 md:p-6 lg:p-8 mt-16 md:mt-[10vh] bg-[#000b05]">
+        <div className="flex-1 p-4 md:p-6 lg:p-8 mt-16 md:mt-[10vh] bg-[#000b05] min-w-0">
+
+          {/* Hot Items */}
+          <div>
+            <h2 className="text-3xl font-bold text-white flex items-center gap-5 mb-6">
+              <div className="w-[30px] h-[30px]">
+                <HotRarityIcon fromColor={"#FF867C"} toColor={"#FF4232"} />
+              </div>
+              <span className="text-[20px] font-bold">Hot Items</span>
+            </h2>
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden gap-4 p-2">
+              {catalogItems.map((item) => (
+                <CatalogItemCard key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+
           <div className="lg:hidden mt-16 md:mt-[10vh]">
-          <MobileSidebar />
-        </div>
-          <h2 className="text-3xl font-bold text-white mb-6">All Items</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {catalogItems.map((item) => (
-              <CatalogItemCard key={item.id} item={item} />
-            ))}
+            <MobileSidebar />
           </div>
         </div>
       </section>

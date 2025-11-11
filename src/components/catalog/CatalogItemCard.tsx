@@ -10,7 +10,7 @@ interface CatalogItemCardProps {
 export const CatalogItemCard = ({ item }: CatalogItemCardProps) => {
   return (
     <div
-      className="relative font-poppins w-60 h-72 pt-8 pb-6 px-4 rounded-2xl shadow-lg hover:scale-105 active:scale-95 transform transition-transform duration-300"
+      className="relative shrink-0 font-poppins w-60 h-72 pt-8 pb-6 px-4 rounded-2xl shadow-lg hover:scale-105 active:scale-95 transform transition-transform duration-300"
       style={{
         background: `linear-gradient(to top, ${hexToRgba(
           item.color,
@@ -18,35 +18,37 @@ export const CatalogItemCard = ({ item }: CatalogItemCardProps) => {
         )} 0%, ${hexToRgba("#030C08", 0)} 100%)`,
       }}
     >
-     <svg
-  className="absolute inset-0 w-full h-full pointer-events-none z-20"
-  style={{
-    borderRadius: "1px",
-    overflow: "visible",
-  }}
->
-  <defs>
-    <linearGradient
-      id={`stroke-gradient-${item.name.replace(/\s+/g, "-")}-${item.id}`}
-      x1="0%"
-      y1="100%"
-      x2="0%"
-      y2="0%"
-    >
-      <stop offset="0%" stopColor={"#666464"} stopOpacity="0.7" />
-      <stop offset="28%" stopColor="#CCC9C9" stopOpacity="0" />
-    </linearGradient>
-  </defs>
-  <rect
-    x="0"
-    y="0"
-    width="100%"
-    height="100%"
-    rx="15"  // ✅ Changé de 24 à 15
-    fill="none"
-    stroke={`url(#stroke-gradient-${item.name.replace(/\s+/g, "-")}-${item.id})`}
-  />
-</svg>
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none z-20"
+        style={{
+          borderRadius: "1px",
+          overflow: "visible",
+        }}
+      >
+        <defs>
+          <linearGradient
+            id={`stroke-gradient-${item.name.replace(/\s+/g, "-")}-${item.id}`}
+            x1="0%"
+            y1="100%"
+            x2="0%"
+            y2="0%"
+          >
+            <stop offset="0%" stopColor={"#666464"} stopOpacity="0.7" />
+            <stop offset="28%" stopColor="#CCC9C9" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          rx="15" // ✅ Changé de 24 à 15
+          fill="none"
+          stroke={`url(#stroke-gradient-${item.name.replace(/\s+/g, "-")}-${
+            item.id
+          })`}
+        />
+      </svg>
 
       <div className="relative w-[120px] h-[120px] mx-auto">
         <Image
@@ -61,7 +63,7 @@ export const CatalogItemCard = ({ item }: CatalogItemCardProps) => {
         <div className="space-y-[5px]">
           <h3 className="font-bold text-sm w-fit">{item.name}</h3>
           <div
-            className="flex justify-center items-center w-[60px] h-5 gap-1.5 rounded-[6px]"
+            className="flex justify-center items-center w-fit px-1 max-w-1/2 h-5 gap-1.5 rounded-[6px]"
             style={{
               background: hexToRgba(item.rarity.color, 0.1),
             }}

@@ -7,6 +7,7 @@ import HotRarityIcon from "@/components/catalog/rarity/icons/hot-rarity-icon";
 import { catalogCategories } from "@/datas/catalog/categories";
 import CatalogCategory from "@/components/catalog/CatalogCategory";
 import CatalogFooter from "@/components/sections/catalog/CatalogFooter";
+import CatalogSearch from "@/components/catalog/CatalogSearch";
 
 const CatalogPage = async () => {
   const session = await auth.api.getSession({
@@ -31,10 +32,12 @@ const CatalogPage = async () => {
             </h2>
             <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden gap-4 p-2">
               {catalogItems.map((item) => (
-                <CatalogItemCard key={item.id} item={item} />
+                <CatalogItemCard key={item.id} item={item} index={item.id} />
               ))}
             </div>
           </div>
+
+          <CatalogSearch />
 
           {catalogCategories.map((category) => (
             <CatalogCategory key={category.id} category={category} />

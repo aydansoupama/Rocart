@@ -116,7 +116,7 @@ const CatalogFooter = () => {
             for premium prices and often have unique appearances or special
             properties. While mutations can occur naturally, the process is very
             random and time-consuming. Many players choose to buy pre-mutated
-            seeds from Bloxcart&apos;s shop to guarantee access to these
+            seeds from Bloxcart&apos;s shop to guarantee access to these
             valuable variants. This lets them immediately start growing
             high-value crops instead of waiting and hoping for lucky mutations.
           </div>

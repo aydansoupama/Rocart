@@ -4,10 +4,9 @@ import HotRarityIcon from "@/components/catalog/rarity/icons/hot-rarity-icon";
 import { type CatalogCategory } from "@/datas/catalog/categories";
 import { CatalogItemCard } from "@/components/catalog/CatalogItemCard";
 import { useRef, useCallback, useEffect } from "react";
-import { motion, useMotionValue, animate } from "framer-motion";
+import { motion, useMotionValue, animate, useInView } from "framer-motion";
 import BestSellerRarityIcon from "./rarity/icons/best-sellers-rarity-icon";
 import PetsRarityIcon from "./rarity/icons/pets-rarity-icon";
-import { M_PLUS_1 } from "next/font/google";
 import ShecklesRarityIcon from "./rarity/icons/sheckles-rarity-icon";
 import FruitsRarityIcon from "./rarity/icons/fruits-rarity-icon";
 import MutatedPetsRarityIcon from "./rarity/icons/mutated-pets-rarity-icon";
@@ -18,6 +17,9 @@ const CatalogCategory = ({ category }: { category: CatalogCategory }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollX = useMotionValue(0);
   const scrollStep = 256; // Card width + gap
+
+  const categoryRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(categoryRef, { once: true, amount: 0.3 }); // Trigger when 30% of the component is in view
 
   const scrollLeft = useCallback(() => {
     if (containerRef.current) {
@@ -54,9 +56,10 @@ const CatalogCategory = ({ category }: { category: CatalogCategory }) => {
 
   return (
     <motion.div
+      ref={categoryRef}
       key={category.id}
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
     >
       <div className="flex justify-between items-center">
@@ -136,8 +139,8 @@ const CatalogCategory = ({ category }: { category: CatalogCategory }) => {
           className="flex flex-nowrap gap-4" // Inner div to be animated
           style={{ x: scrollX }}
         >
-          {category.items.map((item) => (
-            <CatalogItemCard key={item.id} item={item} />
+          {category.items.map((item, index) => (
+            <CatalogItemCard key={item.id} item={item} index={index} />
           ))}
         </motion.div>
       </div>

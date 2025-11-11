@@ -1,15 +1,21 @@
+"use client";
 import Image from "next/image";
 import { CatalogItem } from "@/datas/catalog";
 import { applyDiscountedPrice, hexToRgba } from "@/lib/utils";
 import HotRarityIcon from "./rarity/icons/hot-rarity-icon";
+import { motion } from "framer-motion";
 
 interface CatalogItemCardProps {
   item: CatalogItem;
+  index: number; // Add index prop for staggered animation
 }
 
-export const CatalogItemCard = ({ item }: CatalogItemCardProps) => {
+export const CatalogItemCard = ({ item, index }: CatalogItemCardProps) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 300 }} // Staggered delay
       className="relative shrink-0 font-poppins w-60 h-72 pt-8 pb-6 px-4 rounded-2xl shadow-lg hover:scale-105 active:scale-95 transform transition-transform duration-300"
       style={{
         background: `linear-gradient(to top, ${hexToRgba(
@@ -133,6 +139,6 @@ export const CatalogItemCard = ({ item }: CatalogItemCardProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

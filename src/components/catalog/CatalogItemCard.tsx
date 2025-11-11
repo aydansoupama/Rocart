@@ -4,6 +4,7 @@ import { CatalogItem } from "@/datas/catalog";
 import { applyDiscountedPrice, hexToRgba } from "@/lib/utils";
 import HotRarityIcon from "./rarity/icons/hot-rarity-icon";
 import { motion } from "framer-motion";
+import CartIcon from "./CartIcon";
 
 interface CatalogItemCardProps {
   item: CatalogItem;
@@ -15,7 +16,12 @@ export const CatalogItemCard = ({ item, index }: CatalogItemCardProps) => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 300 }} // Staggered delay
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 300,
+      }} // Staggered delay
       className="relative shrink-0 font-poppins w-60 h-72 pt-8 pb-6 px-4 rounded-2xl shadow-lg hover:scale-105 active:scale-95 transform transition-transform duration-300"
       style={{
         background: `linear-gradient(to top, ${hexToRgba(
@@ -128,15 +134,9 @@ export const CatalogItemCard = ({ item, index }: CatalogItemCardProps) => {
             </div>
           </div>
 
-          <div className="p-2 bg-linear-to-b from-[#13E97D] to-[#00AE56] w-8 h-8 rounded-[4px]">
-            <Image
-              className="w-4 h-4 object-contain"
-              alt="Cart icon"
-              src="/icon/shop.png"
-              width={16}
-              height={16}
-            />
-          </div>
+          <button className="p-2 bg-linear-to-b from-[#13E97D] to-[#00AE56] w-8 h-8 rounded-[4px] hover:scale-105 cursor-pointer">
+            <CartIcon />
+          </button>
         </div>
       </div>
     </motion.div>

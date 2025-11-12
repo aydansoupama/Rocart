@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Game } from "@/types/game";
 import { hexToRgba } from "@/lib/utils";
+import DropdownOpenIcon from "./DropdownOpenIcon";
 
 const ChooseGameModal = () => {
   return (
@@ -67,9 +68,9 @@ const ChooseGameModal = () => {
                   p-0.5 sm:rounded-[48px] md:rounded-[53px]
                   cursor-pointer transition-all mx-auto hover:scale-105 active:scale-95
                 "
-                  style={{
-                    background: `linear-gradient(to bottom, #3DFF88 0%, transparent 100%)`,
-                  }}
+              style={{
+                background: `linear-gradient(to bottom, #3DFF88 0%, transparent 100%)`,
+              }}
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{
@@ -82,7 +83,10 @@ const ChooseGameModal = () => {
               <div
                 className="relative z-10 flex flex-col items-center justify-center p-[2vw] sm:p-[1vw] text-center h-full overflow-hidden rounded-[25px] sm:rounded-[48px] md:rounded-[53px]"
                 style={{
-                  background: `linear-gradient(to top, ${hexToRgba(game.color, 0.24)} 0%, transparent 50%), #030904`,
+                  background: `linear-gradient(to top, ${hexToRgba(
+                    game.color,
+                    0.24
+                  )} 0%, transparent 50%), #030904`,
                 }}
               >
                 {/* Background image */}
@@ -184,7 +188,7 @@ const ChooseGameHeaderDropdown = ({
       {selectedGame ? (
         <button
           onClick={toggle}
-          className={`flex items-center gap-x-2.5 px-4 py-3 rounded-xl cursor-pointer transition-colors ${
+          className={`flex items-center gap-x-1.5 px-[18px] py-3 rounded-xl cursor-pointer transition-colors ${
             isMobile
               ? "justify-between bg-[#0a1f0d] hover:bg-[#0f2912]"
               : "justify-center bg-card hover:bg-card/30"
@@ -203,13 +207,15 @@ const ChooseGameHeaderDropdown = ({
               {isMobile ? "Select Game" : selectedGame.name}
             </span>
           </div>
-          <ChevronDown
-            className={`text-white transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-          />
+          <div className="flex justify-center items-center w-4 h-2.5">
+            <div className="relative w-4 h-2.5">
+              <DropdownOpenIcon />
+            </div>
+          </div>
         </button>
       ) : (
         <motion.button
-          className="flex justify-center items-center gap-x-2.5 px-4 py-3 rounded-xl bg-card hover:bg-card/30 cursor-pointer"
+          className="flex items-center w-fit w-[210px] gap-x-[12.5px] px-4 py-3 rounded-xl bg-card hover:bg-card/80 cursor-pointer"
           whileTap={{ scale: 0.95 }}
           onClick={toggle}
         >
@@ -221,11 +227,13 @@ const ChooseGameHeaderDropdown = ({
               height={24}
               className="object-contain"
             />
-            Choose a game
+            Select Game
           </span>
-          <ChevronDown
-            className={`text-white transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-          />
+          <div className="flex justify-center items-center w-4 h-2.5">
+            <div className="relative ">
+              <DropdownOpenIcon />
+            </div>
+          </div>
         </motion.button>
       )}
 

@@ -1,5 +1,4 @@
 "use client";
-import { MobileSidebar } from "../catalog/sidebar/MobileSidebar";
 import ChooseGame, { ChooseGameHeaderDropdown } from "./choose-game";
 import Logo from "../Logo";
 import LanguageEditor from "./language-editor";
@@ -16,7 +15,7 @@ const Header = ({ user }: { user: User | undefined }) => {
   );
 
   return (
-    <header className="fixed w-full h-16 md:h-[10vh] flex items-center justify-between py-2 px-4 md:px-[2vw] bg-background z-50">
+    <header className="fixed w-full h-16 md:h-[10vh] flex items-center justify-between py-2 px-4 md:px-[2vw] bg-[#0c160f] z-50">
       <div className="flex justify-center items-center gap-4 sm:gap-6 lg:gap-8">
         {/* Menu hamburger - mobile only */}
         <button

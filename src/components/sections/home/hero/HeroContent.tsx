@@ -34,12 +34,7 @@ export const HeroContent = ({ onStartBuying }: HeroContentProps) => {
             <DialogTrigger asChild>
               <Button
                 onClick={onStartBuying}
-                className="relative mt-[2vh] sm:mt-[4vh] lg:mt-[6vh] h-[6vh] w-[40vw] sm:w-[25vw] lg:w-[12vw]
-            p-2 flex items-center justify-center gap-x-2
-            bg-linear-to-r from-[#3DFF88] to-[#259951]
-            hover:to-[#259951] hover:from-[#169e4a]
-            rounded-2xl
-            transition-colors duration-300 cursor-pointer"
+                className="gap-2 whitespace-nowrap text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 relative mt-[2vh] sm:mt-[4vh] lg:mt-[6vh] h-[8vh] sm:h-[7vh] w-[40vw] sm:w-[25vw] lg:w-[12vw] rounded-[15px] p-2 flex items-center justify-center bg-linear-to-r from-[#a9d692] via-[#3DFF88] to-[#259951] hover:shadow-xl hover:shadow-[#259951]/30 transition-all duration-300 overflow-hidden"
               >
                 <div className="relative z-10 flex items-center space-x-2">
                   <Image
@@ -58,7 +53,7 @@ export const HeroContent = ({ onStartBuying }: HeroContentProps) => {
 
             <ChooseGameModal />
           </Dialog>
-          
+
           <Image
             src="/icon/arroww.png"
             alt="Arrow"

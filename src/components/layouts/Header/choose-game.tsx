@@ -30,9 +30,9 @@ const ChooseGameModal = () => {
       "
     >
       <motion.div
-        className="relative rounded-[3vw] p-[4vw] sm:p-[2vw] 
+        className="relative rounded-[3vw] p-[4vw] sm:p-[2vw] pb-0 sm:pb-0
                   w-[90vw] sm:w-[80vw] lg:w-[70vw] 
-                  max-h-[85vh] overflow-y-auto
+                  max-h-[90vh] overflow-y-auto
                   bg-[url('/bg/modalbg.png')] bg-cover bg-center bg-no-repeat
                   scrollbar-thin lg:scrollbar-none
                   scrollbar-thumb-[#3dff87]/70 scrollbar-track-transparent scrollbar-thumb-rounded-full
@@ -86,11 +86,13 @@ const ChooseGameModal = () => {
                   background: `linear-gradient(to top, ${hexToRgba(
                     game.color,
                     0.24
-                  )} 0%, transparent 24%), #030904`,
+                  )} 0%, transparent 24%)`,
                 }}
               >
                 {/* Background image */}
-                <div className="absolute inset-0 rounded-[inherit]">
+                <div
+                  className="absolute inset-0 bg-[rgba(3, 8, 4, 0.000)] rounded-[inherit]"
+                >
                   <Image
                     src={game.bgImage}
                     alt={game.name}

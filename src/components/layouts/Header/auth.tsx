@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogClose,
@@ -35,13 +34,13 @@ const AuthModal = () => {
         </button>
       </DialogTrigger>
       <DialogContent
-        className="bg-[#06100a] border-none w-[95vw] sm:w-[90vw] md:w-[80vw] lg:min-w-[960px] max-w-[960px] max-h-[95vh] sm:max-h-[90vh] p-0 overflow-y-auto"
+        className="bg-[#06100a] border-none w-[95vw] sm:w-[90vw] md:w-[80vw] lg:min-w-[960px] max-w-[960px] max-h-[95vh] p-0 overflow-y-auto"
         showCloseButton={false}
       >
         <DialogTitle className="sr-only" />
-        <div className="flex flex-col lg:flex-row w-full h-full min-h-[700px] sm:min-h-[750px] lg:min-h-[800px]">
+        <div className="flex flex-col lg:flex-row w-full h-full">
           <motion.div
-            className="hidden lg:flex lg:w-1/2 relative flex-col justify-between items-center py-8 self-stretch bg-cover bg-center bg-no-repeat"
+            className="hidden lg:flex lg:w-[55%] relative flex-col justify-between items-center py-8 self-stretch bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: "url('/images/auth_banner.png')",
             }}
@@ -59,7 +58,7 @@ const AuthModal = () => {
                 ease: [0.4, 0, 0.2, 1] as const,
               }}
             >
-              <Logo size={10} />
+              <Logo size={10} className="w-[12vw] h-auto" />
             </motion.div>
 
             <motion.div
@@ -82,7 +81,7 @@ const AuthModal = () => {
 
           {/* Right side - Form */}
           <motion.div
-            className="w-full lg:w-1/2 h-full flex flex-col py-8 sm:py-10 lg:py-12 px-4 sm:px-6 md:px-8 lg:px-10"
+            className="w-full lg:w-[45%] h-full flex flex-col py-8 sm:py-10 lg:py-12 px-4 sm:px-6 md:px-8 lg:px-10"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
@@ -102,7 +101,7 @@ const AuthModal = () => {
                 ease: [0.4, 0, 0.2, 1] as const,
               }}
             >
-              <Logo size={8} />
+              <Logo size={10} className="w-32 h-auto" />
             </motion.div>
 
             <motion.div

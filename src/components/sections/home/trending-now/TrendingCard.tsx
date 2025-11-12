@@ -31,7 +31,7 @@ interface TrendingCardProps {
 export const TrendingCard = ({ game, onVisitMarket }: TrendingCardProps) => {
   return (
     <AnimatedCard
-      className={`bg-[#030804] gap-0 rounded-4xl py-0 backdrop-blur-md overflow-hidden w-fit shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30  transition-all duration-300 shrink-0 hover:border-[#3DFF87]/30`}
+      className={`bg-[#030804] gap-0 rounded-[10vw] sm:rounded-[2.5vw] lg:rounded-[2vw] py-0 backdrop-blur-md overflow-hidden w-fit shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30  transition-all duration-300 shrink-0 hover:border-[#3DFF87]/30`}
     >
       <div className="w-full h-full py-8 px-6">
         <div className="mb-8 w-full flex flex-row items-center justify-center gap-4">

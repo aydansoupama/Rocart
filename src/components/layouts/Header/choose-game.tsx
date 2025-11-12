@@ -141,9 +141,9 @@ const ChooseGameModal = () => {
             ease: [0.4, 0, 0.2, 1] as const,
           }}
         >
-          <hr className="bg-LINEAR-to-r from-transparent to-white w-full h-0.5 rounded-full" />
-          <Logo size={16} className="h-6 sm:h-8 md:h-12 lg:h-16" />
-          <hr className="bg-LINEAR-to-l from-transparent to-white w-full h-0.5 rounded-full" />
+          <hr className="bg-linear-to-r from-transparent to-white w-full h-0.5 rounded-full" />
+          <Logo size={16} className="w-[122px] h-auto" />
+          <hr className="bg-linear-to-l from-transparent to-white w-full h-0.5 rounded-full" />
         </motion.div>
       </motion.div>
     </DialogContent>

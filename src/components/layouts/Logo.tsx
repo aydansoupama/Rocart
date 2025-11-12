@@ -1,14 +1,30 @@
+"use client";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-const Logo = ({ size, className, variant="full" }: { size: number, className?: string, variant?: "compact" | "full" }) => {
-  const imgSrc = variant === "full" ? "/bloxbeam_logo.png" : "/bloxbeam_logo_2.png";
+const Logo = ({
+  size,
+  className,
+  variant = "full",
+}: {
+  size: number;
+  className?: string;
+  variant?: "compact" | "full";
+}) => {
+  const router = useRouter();
+
+  const imgSrc =
+    variant === "full" ? "/bloxbeam_logo.png" : "/bloxbeam_logo_2.png";
 
   return (
-    <img
-      src={imgSrc}
-      className={cn(`object-cover h-${size}`, className ? className : "")}
-      alt="Bloxbeam's Logo"
-    />
+    <Link href={""} onClick={() => router.refresh()}>
+      <img
+        src={imgSrc}
+        className={cn(`object-cover h-${size}`, className ? className : "")}
+        alt="Bloxbeam's Logo"
+      />
+    </Link>
   );
 };
 

@@ -241,8 +241,8 @@ const ChooseGameHeaderDropdown = ({
             Select Game
           </span>
           <div className="flex justify-center items-center w-4 h-2.5">
-            <div className="relative ">
-              <DropdownOpenIcon />
+            <div className="relative">
+              <DropdownOpenIcon isOpen={isOpen} />
             </div>
           </div>
         </motion.button>
@@ -250,13 +250,7 @@ const ChooseGameHeaderDropdown = ({
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            variants={containerVariants}
-            className="absolute  left-0 w-[210px] rounded-xl shadow-lg z-50 bg-[#0C1610] p-2 h-auto overflow-y-auto scrollbar-hide"
-          >
+          <div className="absolute left-0 w-[16vw] rounded-xl shadow-lg z-50 bg-[#0C1610] p-[0.5vw] h-auto overflow-y-auto">
             <div className="flex flex-col">
               {games.map((game) => (
                 <motion.button
@@ -264,24 +258,23 @@ const ChooseGameHeaderDropdown = ({
                   onClick={() => setSelectedGame(game)}
                   variants={itemVariants}
                   whileHover={{ scale: 1.02 }}
-                  className="relative flex items-center gap-2 w-full px-3 py-2.5 text-left bg-cover bg-center rounded-lg"
+                  className="relative flex items-center gap-[0.8vw] w-full px-[0.8vw] py-[3vh] h-[3vh] text-left bg-cover bg-center rounded-lg"
                 >
-                  <div className="absolute inset-0 rounded-lg" />
-                  <div className="w-6 h-6 rounded-md overflow-hidden shrink-0 relative z-10">
+                  <div className="w-[2vw] h-[2vw] rounded-md overflow-hidden shrink-0 relative z-10">
                     <Image
                       src={game.icon}
                       alt={game.name}
-                      fill
                       className="w-full h-full object-cover rounded-md"
+                      fill
                     />
                   </div>
-                  <span className="flex flex-col text-white font-medium text-sm relative z-10 leading-tight">
+                  <span className="flex flex-col text-white font-medium text-[0.9vw] relative z-10 leading-tight">
                     <span className="truncate">{game.name}</span>
                   </span>
                 </motion.button>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>

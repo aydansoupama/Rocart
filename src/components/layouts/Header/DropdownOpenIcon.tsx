@@ -1,4 +1,8 @@
-const DropdownOpenIcon = () => {
+interface DropdownOpenIconProps {
+  isOpen?: boolean;
+}
+
+const DropdownOpenIcon = ({ isOpen }: DropdownOpenIconProps) => {
   return (
     <svg
       width="14"
@@ -7,6 +11,10 @@ const DropdownOpenIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      style={{
+        transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+        transition: 'transform 0.275s ease-in-out',
+      }}
     >
       <mask
         id="mask0_1_2410"

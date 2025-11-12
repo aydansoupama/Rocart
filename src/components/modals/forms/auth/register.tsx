@@ -208,20 +208,6 @@ export const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="space-y-2">
-        <label
-          htmlFor="referral"
-          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
-        >
-          Referral Code (Optional)
-        </label>
-        <Input
-          id="referral"
-          placeholder="Enter Code"
-          {...register("referral")}
-        />
-      </div>
-
       <button
         type="submit"
         disabled={isSubmitting}

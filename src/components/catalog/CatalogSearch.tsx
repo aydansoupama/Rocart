@@ -45,13 +45,13 @@ const CatalogSearch = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row items-center gap-y-4 lg:gap-y-0 lg:gap-x-6 w-full lg:w-auto">
-        <div className="flex flex-wrap justify-center gap-2 lg:gap-[18px]">
+        <div className="flex flex-nowrap justify-center gap-2 lg:gap-[18px]">
           <motion.button
             variants={buttonVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={0}
-            className="hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-[13px] text-[#C5C5C5]"
+            className="whitespace-nowrap hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-[13px] text-[#C5C5C5]"
           >
             All
           </motion.button>
@@ -61,7 +61,7 @@ const CatalogSearch = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={1}
-            className="hover:scale-105 active:scale-95 transition-all flex justify-center items-center gap-2 w-fit h-11 py-2 px-3 bg-[#100f0a] hover:bg-[#100f0a]/80 cursor-pointer rounded-[14px] border-2 border-[#FC8483] font-bold text-[13px] text-[#fc8483]"
+            className="whitespace-nowrap hover:scale-105 active:scale-95 transition-all flex justify-center items-center gap-2 w-fit h-11 py-2 px-3 bg-[#100f0a] hover:bg-[#100f0a]/80 cursor-pointer rounded-[14px] border-2 border-[#FC8483] font-bold text-[13px] text-[#fc8483]"
           >
             <div className="bg-[#f7a0a1] w-6 h-5 p-0.5 rounded-[6px]">
               <HotRarityIcon fromColor={"#dd6262"} toColor={"#dd6262"} />
@@ -74,7 +74,7 @@ const CatalogSearch = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={2}
-            className="hover:scale-105 active:scale-95 transition-all flex justify-center items-center gap-2 w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#8bd673] font-bold text-[13px] text-[#8bd673]"
+            className="whitespace-nowrap hover:scale-105 active:scale-95 transition-all flex justify-center items-center gap-2 w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#8bd673] font-bold text-[13px] text-[#8bd673]"
           >
             <div className="bg-[#a4f7a0] w-6 h-5 p-0.5 rounded-[6px]">
               <BestSellerRarityIcon fromColor={"#82be6f"} toColor={"#82be6f"} />
@@ -85,13 +85,13 @@ const CatalogSearch = () => {
 
         <div className="border-l border-[#33e070] w-0.5 h-[25px] hidden lg:block" />
 
-        <div className="flex flex-wrap justify-center gap-2 lg:gap-[18px]">
+        <div className="flex flex-nowrap justify-center gap-2 lg:gap-[18px]">
           <motion.button
             variants={buttonVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={3}
-            className="hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-[13px] text-[#C5C5C5]"
+            className="whitespace-nowrap hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-xs text-[#C5C5C5]"
           >
             Bundles
           </motion.button>
@@ -100,7 +100,7 @@ const CatalogSearch = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={4}
-            className="hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-[13px] text-[#C5C5C5]"
+            className="whitespace-nowrap hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-xs text-[#C5C5C5]"
           >
             Knives
           </motion.button>
@@ -109,7 +109,7 @@ const CatalogSearch = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={5}
-            className="hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-[13px] text-[#C5C5C5]"
+            className="whitespace-nowrap hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-xs text-[#C5C5C5]"
           >
             Guns
           </motion.button>
@@ -118,7 +118,7 @@ const CatalogSearch = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             custom={6}
-            className="hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-[13px] text-[#C5C5C5]"
+            className="whitespace-nowrap hover:scale-105 active:scale-95 transition-all w-fit h-11 py-2 px-3 bg-[#0a1b11] hover:bg-[#0a1b11]/80 cursor-pointer rounded-[14px] border-2 border-[#04381E] font-bold text-xs text-[#C5C5C5]"
           >
             Summer Specials
           </motion.button>

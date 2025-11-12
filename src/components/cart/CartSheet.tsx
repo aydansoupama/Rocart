@@ -49,17 +49,17 @@ const CartSheet = () => {
       onOpenChange={(open) => (open ? openCart() : closeCart())}
     >
       <SheetTrigger asChild>
-        <Button
-          className="w-16 h-16 rounded-none rounded-l-xl border cursor-pointer text-[#2ADF84] bg-[#006432] hover:bg-[#04381e]"
+        <button
+          className="flex justify-center items-center p-2.5 w-16 h-16 rounded-none rounded-l-xl border cursor-pointer text-[#2ADF84] bg-[#006432] hover:bg-[#04381e]"
           style={{
             borderColor: hexToRgba("#13E97D", 0.25),
           }}
         >
-          <CartIcon />
-        </Button>
+          <CartIcon className="w-10 h-10" />
+        </button>
       </SheetTrigger>
       <SheetContent
-        className="font-poppins min-w-[500px]"
+        className="font-poppins min-w-[475px]"
         side="right"
         showClose={false}
       >
@@ -234,8 +234,8 @@ const CartSheet = () => {
             </p>
           </div>
           <button className="bg-[#00A241] hover:bg-[#00A241]/80 cursor-pointer transition-all rounded-[25px] py-6 px-32 flex justify-center items-center gap-1.5 h-[85px]">
-            <div className="relative w-[38px] h-[38px]">
-              <CartIcon />
+            <div>
+              <CartIcon className="w-[22px] h-auto" />
             </div>
             <h3 className="text-[22px] font-semibold">Checkout</h3>
           </button>

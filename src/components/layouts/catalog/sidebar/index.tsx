@@ -4,7 +4,7 @@ import { FilterPanelContent } from "./FilterPanelContent";
 import { Rarity } from "@/types/rarity";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/Button";
-import { ChevronRight, Filter } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { DialogTitle } from "@/components/ui/Dialog";
 
 export default function FilterPanel() {

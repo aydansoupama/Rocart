@@ -1,6 +1,6 @@
-const CartIcon = () => {
+const CartIcon = ({className}: {className?: string}) => {
   return (
-    <svg version="1.1" viewBox="0 0 24 24" fill="#ffffff">
+    <svg version="1.1" viewBox="0 0 24 24" fill="#ffffff" className={className ? className : ""}>
       <g id="info" />
       <g id="icons">
         <g id="cart2">

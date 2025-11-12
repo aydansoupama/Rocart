@@ -24,12 +24,6 @@ export function FilterHeader({ onReset }: FilterHeaderProps) {
       >
         Reset
       </button>
-
-      <SheetClose asChild>
-         <Button variant={"outline"} className="absolute right-0 translate-x-3.5 top-20 w-8 h-8 rounded-full cursor-pointer text-[#2ADF84] bg-[#112118] hover:bg-[#112118]/80">
-          <ChevronLeft size={20} />
-        </Button>
-      </SheetClose>
     </div>
   );
 }

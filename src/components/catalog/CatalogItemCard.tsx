@@ -138,10 +138,10 @@ export const CatalogItemCard = ({ item, index }: CatalogItemCardProps) => {
           </div>
 
           <button
-            className="p-2 bg-linear-to-b from-[#13E97D] to-[#00AE56] w-8 h-8 rounded-[4px] hover:scale-105 cursor-pointer"
+            className="flex justify-center items-center p-2 bg-linear-to-b from-[#13E97D] to-[#00AE56] w-8 h-8 rounded-[4px] hover:scale-105 cursor-pointer"
             onClick={() => addItem(item)}
           >
-            <CartIcon />
+            <CartIcon className="w-6 h-auto" />
           </button>
         </div>
       </div>

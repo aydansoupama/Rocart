@@ -5,6 +5,9 @@ import { PriceFilter } from "./PriceFilter";
 import { ActionButtons } from "./ActionButtons";
 import { FilterFooter } from "./FilterFooter";
 import { Rarity } from "@/types/rarity";
+import { SheetClose } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/Button";
+import { ChevronLeft } from "lucide-react";
 
 interface FilterPanelContentProps {
   minPrice: number;
@@ -37,6 +40,11 @@ export function FilterPanelContent({
 }: FilterPanelContentProps) {
   return (
     <div className="font-poppins bg-[#030c08] border-none text-white p-4 md:p-6 h-full overflow-y-auto scrollbar-hide">
+       <SheetClose asChild>
+         <Button variant={"outline"} className="absolute right-0 translate-x-3.5 top-1/2 w-8 h-8 rounded-full cursor-pointer text-[#2ADF84] bg-[#112118] hover:bg-[#112118]/80">
+          <ChevronLeft size={20} />
+        </Button>
+      </SheetClose>
       <div className="w-full lg:max-w-sm mx-auto">
         <FilterHeader onReset={handleReset} />
         <PriceFilter

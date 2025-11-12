@@ -25,7 +25,7 @@ const TrendingNowSection = () => {
       <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <TrendingHeader />
 
-        <div className="flex flex-nowrap w-fit max-w-full mx-auto gap-8 pb-6 justify-start items-center overflow-x-auto scrollbar-thin scrollbar-thumb-primary scrollbar-track-secondary lg:scrollbar-thumb-gray-500">
+        <div className="flex flex-nowrap space-x-6 items-center w-fit mx-auto max-w-[95%] overflow-x-scroll">
           {trendingGames.map((game, index) => (
             <TrendingCard
               game={game}

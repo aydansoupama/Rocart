@@ -31,9 +31,9 @@ interface TrendingCardProps {
 export const TrendingCard = ({ game, onVisitMarket }: TrendingCardProps) => {
   return (
     <AnimatedCard
-      className={`group bg-[#030804] gap-0 rounded-[10vw] sm:rounded-[2.5vw] lg:rounded-[2vw] py-0 backdrop-blur-md overflow-hidden w-fit shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30  transition-all duration-300 shrink-0 hover:border-[#3DFF87]/30`}
+      className={`bg-[#030804] gap-0 rounded-[10vw] sm:rounded-[2.5vw] lg:rounded-[2vw] max-w-fit w-fit shrink-0 lg:shrink lg:w-full py-0 backdrop-blur-md overflow-hidden shadow-2xl group grid grid-rows-[1fr_6rem] grid-flow-col relative border border-[#2A2A2A] hover:border-app-light/30  transition-all duration-300  hover:border-[#3DFF87]/30`}
     >
-      <div className="w-full h-full py-8 px-6">
+      <div className="w-full h-full py-8">
         <div className="mb-8 w-full flex flex-row items-center justify-center gap-4">
           <img
             className="w-auto h-10 rounded-md object-cover"
@@ -44,11 +44,11 @@ export const TrendingCard = ({ game, onVisitMarket }: TrendingCardProps) => {
             {game.title}
           </span>
         </div>
-        <div className="flex gap-4 justify-center">
+        <div className="flex w-full gap-x-2.5 px-4 justify-between mx-auto">
           {game.items.map((item, index) => (
             <motion.div
               key={index}
-              className="w-36 h-44 relative rounded-t-3xl flex flex-col border-none group/item cursor-pointer select-none bg-linear-to-b from-green-500/20 to-transparent to-80%"
+              className="w-28 h-36 2xl:w-36 2xl:h-44 relative rounded-t-3xl flex flex-col border-none group/item cursor-pointer select-none bg-linear-to-b from-green-500/20 to-transparent to-80%"
               whileHover={{
                 scale: 1.1,
                 y: -8,

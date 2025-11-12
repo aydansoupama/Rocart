@@ -26,7 +26,7 @@ const Header = ({ user }: { user: User | undefined }) => {
         </button>
 
         <div>
-          <Logo size={10} />
+          <Logo size={10} className="w-auto h-[5vh]" />
         </div>
 
         {/* Choose Game - desktop only */}

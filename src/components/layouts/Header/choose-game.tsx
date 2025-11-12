@@ -68,9 +68,9 @@ const ChooseGameModal = () => {
                   p-0.5 sm:rounded-[48px] md:rounded-[53px]
                   cursor-pointer transition-all mx-auto hover:scale-105 active:scale-95
                 "
-              style={{
-                background: `linear-gradient(to bottom, #3DFF88 0%, transparent 100%)`,
-              }}
+              // style={{
+              //   background: `linear-gradient(to bottom, #3DFF88 0%, transparent 100%)`,
+              // }}
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{
@@ -86,18 +86,19 @@ const ChooseGameModal = () => {
                   background: `linear-gradient(to top, ${hexToRgba(
                     game.color,
                     0.24
-                  )} 0%, transparent 50%), #030904`,
+                  )} 0%, transparent 24%), #030904`,
                 }}
               >
                 {/* Background image */}
                 <div className="absolute inset-0 rounded-[inherit]">
                   <Image
-                    src={game.icon}
+                    src={game.bgImage}
                     alt={game.name}
-                    className="object-cover scale-110 opacity-10 rounded-[inherit]"
+                    className="object-cover rounded-[inherit]"
                     fill
                   />
                 </div>
+
                 <div
                   className="
                       relative z-10 flex justify-center items-center
@@ -132,7 +133,7 @@ const ChooseGameModal = () => {
 
         {/* Footer Rocart Logo */}
         <motion.div
-          className="flex justify-center items-center gap-4 sm:gap-6 md:gap-8"
+          className="flex justify-center items-center "
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -141,9 +142,9 @@ const ChooseGameModal = () => {
             ease: [0.4, 0, 0.2, 1] as const,
           }}
         >
-          <hr className="bg-linear-to-r from-transparent to-white w-full h-0.5 rounded-full" />
-          <Logo size={16} className="w-[122px] h-auto" />
-          <hr className="bg-linear-to-l from-transparent to-white w-full h-0.5 rounded-full" />
+          <hr className="w-full h-0.5 rounded-full border-none bg-gradient-to-r from-transparent to-white" />
+          <Logo size={24} />
+          <hr className="w-full h-0.5 rounded-full border-none bg-gradient-to-l from-transparent to-white" />
         </motion.div>
       </motion.div>
     </DialogContent>

@@ -21,7 +21,10 @@ const Logo = ({
     <Link href={""} onClick={() => router.refresh()}>
       <img
         src={imgSrc}
-        className={cn(`object-cover h-${size}`, className ? className : "")}
+        className={cn(
+          `object-contain h-${size} w-auto`,
+          className ? className : ""
+        )}
         alt="Bloxbeam's Logo"
       />
     </Link>

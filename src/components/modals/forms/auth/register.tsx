@@ -211,7 +211,7 @@ export const RegisterForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-11 rounded-md bg-gradient-to-b from-[#3DFF88] to-[#259951] hover:from-[#35e67d] hover:to-[#218a46] transition-all shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] active:shadow-none active:translate-y-0.5 font-poppins font-semibold text-base text-black disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+        className="w-full h-11 rounded-md bg-linear-to-b from-[#3DFF88] to-[#259951] hover:from-[#35e67d] hover:to-[#218a46] transition-all shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] active:shadow-none active:translate-y-0.5 font-poppins font-semibold text-base text-black disabled:opacity-50 disabled:cursor-not-allowed mt-4"
       >
         Register
       </button>

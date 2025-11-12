@@ -47,7 +47,7 @@ const HowItWorksSection = () => {
   };
 
   return (
-    <section className="w-full bg-[#06100a] py-16 px-4 md:px-6 relative z-10 font-poppins">
+    <section className="w-full bg-[#06100a] pt-8 pb-4 px-4 md:px-6 relative z-10 font-poppins">
       <div
         className="
           absolute inset-0 

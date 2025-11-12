@@ -18,7 +18,7 @@ export const FAQItem = ({ question, answer, index }: FAQItemProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.3 }}
       viewport={{ once: true }}
-      className="w-full"
+      className="w-full font-poppins"
     >
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
@@ -30,10 +30,7 @@ export const FAQItem = ({ question, answer, index }: FAQItemProps) => {
                   group"
         whileTap={{ scale: 0.99 }}
       >
-        <span
-          className="text-white text-left font-normal text-sm sm:text-base"
-          style={{ fontFamily: "Poppins, sans-serif" }}
-        >
+        <span className="text-white text-left font-normal text-sm sm:text-base">
           {question}
         </span>
         <motion.div
@@ -58,10 +55,7 @@ export const FAQItem = ({ question, answer, index }: FAQItemProps) => {
             className="overflow-hidden"
           >
             <div className="px-4 sm:px-5 md:px-6 py-3 sm:py-4 bg-[#030804]/50 border-x border-b border-[#2A2A2A] rounded-b-lg">
-              <p
-                className="text-[#d9d9d9] text-sm sm:text-base leading-relaxed"
-                style={{ fontFamily: "Poppins, sans-serif" }}
-              >
+              <p className="text-white text-sm sm:text-base leading-relaxed">
                 {answer}
               </p>
             </div>

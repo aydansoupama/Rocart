@@ -44,7 +44,7 @@ const WhyChooseSection = () => {
     },
   };
   return (
-    <section className="w-full py-8 md:py-12 px-4 md:px-6 font-poppins relative z-10 bg-[#06100a]">
+    <section className="w-full pt-8 pb-4 px-4 md:px-6 font-poppins relative z-10 bg-[#06100a]">
       <div
         className="
           absolute inset-0 

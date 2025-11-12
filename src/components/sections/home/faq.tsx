@@ -16,7 +16,7 @@ const FAQSection = () => {
   );
 
   return (
-    <section className="relative bg-[#06100a] w-full py-12 sm:py-16 md:py-20 lg:py-24 ">
+    <section className="relative bg-[#06100a] w-full pt-6 pb-3 sm:py-16 md:py-20 lg:py-24 ">
       <div
         className="
           absolute inset-0 
@@ -86,7 +86,7 @@ const FAQSection = () => {
             </motion.div>
           </div>
         </div>
-        
+
         <div className="w-full flex justify-center">
           <p className="text-center text-sm sm:text-base font-medium">
             More Questions?

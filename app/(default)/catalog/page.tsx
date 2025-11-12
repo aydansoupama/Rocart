@@ -9,6 +9,7 @@ import CatalogCategory from "@/components/catalog/CatalogCategory";
 import CatalogFooter from "@/components/sections/catalog/CatalogFooter";
 import CatalogSearch from "@/components/catalog/CatalogSearch";
 import Logo from "@/components/layouts/Logo";
+import CartSheet from "@/components/cart/CartSheet";
 
 const CatalogPage = async () => {
   const session = await auth.api.getSession({
@@ -44,12 +45,12 @@ const CatalogPage = async () => {
           {catalogCategories.map((category) => (
             <CatalogCategory key={category.id} category={category} />
           ))}
-
-          {/* <div className="lg:hidden mt-16 md:mt-[10vh]">
-            <MobileSidebar />
-          </div> */}
         </div>
       </section>
+      
+      <div className="fixed top-[300px] right-0">
+        <CartSheet />
+      </div>
 
       <CatalogFooter />
     </>

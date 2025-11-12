@@ -5,13 +5,16 @@ import { applyDiscountedPrice, hexToRgba } from "@/lib/utils";
 import HotRarityIcon from "./rarity/icons/hot-rarity-icon";
 import { motion } from "framer-motion";
 import CartIcon from "./CartIcon";
+import { useCartStore } from "@/stores/cart";
 
 interface CatalogItemCardProps {
   item: CatalogItem;
-  index: number; // Add index prop for staggered animation
+  index: number;
 }
 
 export const CatalogItemCard = ({ item, index }: CatalogItemCardProps) => {
+  const addItem = useCartStore((state) => state.addItem);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -134,7 +137,10 @@ export const CatalogItemCard = ({ item, index }: CatalogItemCardProps) => {
             </div>
           </div>
 
-          <button className="p-2 bg-linear-to-b from-[#13E97D] to-[#00AE56] w-8 h-8 rounded-[4px] hover:scale-105 cursor-pointer">
+          <button
+            className="p-2 bg-linear-to-b from-[#13E97D] to-[#00AE56] w-8 h-8 rounded-[4px] hover:scale-105 cursor-pointer"
+            onClick={() => addItem(item)}
+          >
             <CartIcon />
           </button>
         </div>

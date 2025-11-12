@@ -150,6 +150,16 @@ const ChooseGameModal = () => {
   );
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.05 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: -10 },
+  show: { opacity: 1, y: 0 },
+};
+
 const ChooseGameHeaderDropdown = ({
   isMobile = false,
   isOpen: isOpenProp,
@@ -240,51 +250,36 @@ const ChooseGameHeaderDropdown = ({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className={
-              isMobile
-                ? "flex flex-col gap-2 mt-2 pl-2 overflow-hidden"
-                : "absolute top-full mt-2 right-0 min-w-full bg-card rounded-xl shadow-lg border border-border overflow-hidden z-50"
-            }
-            initial={
-              isMobile ? { height: 0, opacity: 0 } : { opacity: 0, y: -10 }
-            }
-            animate={
-              isMobile ? { height: "auto", opacity: 1 } : { opacity: 1, y: 0 }
-            }
-            exit={isMobile ? { height: 0, opacity: 0 } : { opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as const }}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            variants={containerVariants}
+            className="absolute  left-0 w-[210px] rounded-xl shadow-lg z-50 bg-[#0C1610] p-2 h-auto overflow-y-auto scrollbar-hide"
           >
-            {games.map((game, index) => (
-              <motion.button
-                key={game.id}
-                onClick={() => {
-                  setSelectedGame(game);
-                  if (isMobile && onToggle) {
-                    onToggle();
-                  } else {
-                    setIsOpenInternal(false);
-                  }
-                }}
-                className={`flex items-center gap-x-2.5 px-4 py-3 font-poppins font-semibold transition-colors bg-[#0a1f0d] hover:bg-[#0f2912] ${
-                  isMobile ? "rounded-xl " : "w-full text-left"
-                }`}
-                initial={isMobile ? { opacity: 0, x: -10 } : { opacity: 0 }}
-                animate={isMobile ? { opacity: 1, x: 0 } : { opacity: 1 }}
-                transition={
-                  isMobile ? { duration: 0.2, delay: index * 0.05 } : {}
-                }
-              >
-                <div className="relative aspect-square rounded-md w-6 h-6">
-                  <Image
-                    src={game.icon}
-                    alt={game.name}
-                    fill
-                    className="object-cover w-full h-full rounded-md"
-                  />
-                </div>
-                <span>{game.name}</span>
-              </motion.button>
-            ))}
+            <div className="flex flex-col">
+              {games.map((game) => (
+                <motion.button
+                  key={game.id}
+                  onClick={() => setSelectedGame(game)}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.02 }}
+                  className="relative flex items-center gap-2 w-full px-3 py-2.5 text-left bg-cover bg-center rounded-lg"
+                >
+                  <div className="absolute inset-0 rounded-lg" />
+                  <div className="w-6 h-6 rounded-md overflow-hidden shrink-0 relative z-10">
+                    <Image
+                      src={game.icon}
+                      alt={game.name}
+                      fill
+                      className="w-full h-full object-cover rounded-md"
+                    />
+                  </div>
+                  <span className="flex flex-col text-white font-medium text-sm relative z-10 leading-tight">
+                    <span className="truncate">{game.name}</span>
+                  </span>
+                </motion.button>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

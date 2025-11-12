@@ -28,7 +28,6 @@ export const TrendingHeader = () => {
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] as const }}
         >
           Trending Now
-          <div className="rounded-full w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-[#46FF68] opacity-5 blur-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         </motion.h3>
         <motion.hr
           className="bg-linear-to-l from-transparent to-white w-full h-0.5 rounded-full border-0"

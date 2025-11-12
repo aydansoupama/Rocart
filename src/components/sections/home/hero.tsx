@@ -51,7 +51,7 @@ const HeroSection = () => {
         </div>
 
         <motion.div
-          className="absolute bottom-0 left-0 w-full h-[0.2vh]"
+          className="absolute bottom-0 left-0 w-full h-[5px]"
           style={{
             background: "linear-gradient(to right, #3DFF87, #000000)",
           }}

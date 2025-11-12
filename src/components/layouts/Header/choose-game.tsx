@@ -53,7 +53,7 @@ const ChooseGameModal = () => {
               className="absolute right-0 -top-2.5 text-white hover:text-[#3dff87] 
                         text-[8vw] sm:text-[2.5vw] lg:text-[1.8vw]"
             >
-              <X />
+              ✕
             </button>
           </DialogClose>
         </div>

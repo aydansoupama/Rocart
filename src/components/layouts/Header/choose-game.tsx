@@ -94,7 +94,7 @@ const ChooseGameModal = () => {
                   <Image
                     src={game.bgImage}
                     alt={game.name}
-                    className="object-cover rounded-[inherit]"
+                    className="object-cover scale-110 rounded-[inherit]"
                     fill
                   />
                 </div>
@@ -142,9 +142,9 @@ const ChooseGameModal = () => {
             ease: [0.4, 0, 0.2, 1] as const,
           }}
         >
-          <hr className="w-full h-0.5 rounded-full border-none bg-gradient-to-r from-transparent to-white" />
+          <hr className="w-full h-0.5 rounded-full border-none bg-linear-to-r from-transparent to-white" />
           <Logo size={24} />
-          <hr className="w-full h-0.5 rounded-full border-none bg-gradient-to-l from-transparent to-white" />
+          <hr className="w-full h-0.5 rounded-full border-none bg-linear-to-l from-transparent to-white" />
         </motion.div>
       </motion.div>
     </DialogContent>

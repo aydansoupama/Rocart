@@ -8,7 +8,7 @@ const Logo = ({
   className,
   variant = "full",
 }: {
-  size: number;
+  size: number | string;
   className?: string;
   variant?: "compact" | "full";
 }) => {

@@ -1,4 +1,4 @@
-export const languages = [
+export const languages: {code: string, name: string, currency: string}[] = [
   {
     code: "US",
     name: "English",

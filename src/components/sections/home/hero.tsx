@@ -37,7 +37,7 @@ const HeroSection = () => {
       }
       radius={80}
     >
-      <section className="relative mt-16 md:mt-[10vh] z-10 w-full h-[75vh] overflow-hidden">
+      <section className="relative w-full h-[75vh] overflow-hidden">
         <div
           className="absolute bottom-0 left-0 w-full h-[0.2vh]"
           style={{

@@ -23,15 +23,18 @@ import { LogIn, LogOut, UserPlus, X } from "lucide-react";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 import { authClient } from "@/lib/auth-client";
 import { User } from "better-auth";
+import { Button } from "@/components/ui/Button";
 
 const AuthModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="flex justify-center items-center gap-x-2 px-2 py-2 rounded-xl bg-linear-to-b from-[#3DFF88] to-[#259951] hover:to-[#259951] hover:from-[#169e4a] transition-all transition-300 cursor-pointer hover:scale-105 actove:scale-95">
-          <div className="w-4 h-4 bg-[url(/icon/person.png)] bg-cover"></div>
-          <span className="font-poppins font-semibold">Log in</span>
-        </button>
+        <Button className="w-[8vw] h-[5vh] bg-[linear-gradient(180deg,rgba(61,255,136,1)_0%,rgba(37,153,81,1)_100%)] hover:bg-[linear-gradient(180deg,rgba(61,255,136,0.9)_0%,rgba(37,153,81,0.9)_100%)] rounded-[0.7vw] border-0 p-0 flex items-center justify-center gap-[0.5vw]">
+          <div className="w-[1.2vw] h-[1.2vw] bg-[url(/icon/person.png)] bg-cover" />
+          <span className="font-poppins font-semibold text-white text-[0.9vw] leading-tight whitespace-nowrap">
+            Log In
+          </span>
+        </Button>
       </DialogTrigger>
       <DialogContent
         className="bg-[#06100a] border-none w-[95vw] sm:w-[90vw] md:w-[80vw] lg:min-w-[960px] max-w-[960px] max-h-[95vh] p-0 overflow-y-auto"
@@ -248,4 +251,10 @@ const Auth = ({ user }: { user: User | undefined }) => {
   return <>{user ? <AccountDropdown user={user} /> : <AuthModal />}</>;
 };
 
+const AuthMobile = ({ user }: { user: User | undefined }) => {
+  return <>{user ? <AccountDropdown user={user} /> : <AuthModal />}</>;
+};
+
+
+export {AuthMobile, Auth}
 export default Auth;

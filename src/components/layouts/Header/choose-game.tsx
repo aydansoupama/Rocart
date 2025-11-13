@@ -7,7 +7,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/Dialog";
 import { games } from "@/datas/games";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, ChevronDownIcon, X } from "lucide-react";
 import Logo from "../Logo";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -90,9 +90,7 @@ const ChooseGameModal = () => {
                 }}
               >
                 {/* Background image */}
-                <div
-                  className="absolute inset-0 bg-[rgba(3, 8, 4, 0.000)] rounded-[inherit]"
-                >
+                <div className="absolute inset-0 bg-[rgba(3, 8, 4, 0.000)] rounded-[inherit]">
                   <Image
                     src={game.bgImage}
                     alt={game.name}
@@ -197,28 +195,27 @@ const ChooseGameHeaderDropdown = ({
   }, [isMobile]);
 
   return (
-    <div ref={dropdownRef} className={isMobile ? "flex flex-col" : "relative"}>
+    <div ref={dropdownRef} className={"relative"}>
       {selectedGame ? (
         <button
           onClick={toggle}
-          className={`flex items-center gap-x-1.5 px-[18px] py-3 rounded-xl cursor-pointer transition-colors ${
-            isMobile
-              ? "justify-between bg-[#0a1f0d] hover:bg-[#0f2912]"
-              : "justify-center bg-card hover:bg-card/30"
-          }`}
+          className={`w-auto h-[6vh] rounded-[0.7vw] flex items-center relative overflow-hidden bg-center cursor-pointer transition-colors bg-[#0f0f0f]`}
         >
-          <div className="flex items-center gap-x-2.5">
-            <div className="relative aspect-square rounded-md w-6 h-6">
-              <Image
-                src={selectedGame.icon}
-                alt={selectedGame.name}
-                fill
-                className="object-cover w-full h-full rounded-md"
-              />
-            </div>
-            <span className="font-poppins font-semibold">
-              {isMobile ? "Select Game" : selectedGame.name}
+          <div className="ml-[1vw] w-[1.5vw] h-[1.5vw] flex items-center justify-center relative z-10">
+            <Image
+              src={selectedGame.icon}
+              alt={selectedGame.name}
+              fill
+              className="object-cover w-full h-full rounded-md"
+            />
+          </div>
+
+          <div className="ml-[0.8vw] flex-1 flex items-center gap-[0.5vw] relative z-10">
+            <span className="font-poppins font-bold text-white text-[1vw] leading-tight">
+              {selectedGame.name}
             </span>
+
+            <ChevronDownIcon className={`w-[1.5vw] h-[2vw] text-white mr-[1vw] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
           </div>
           <div className="flex justify-center items-center w-4 h-2.5">
             <div className="relative w-4 h-2.5">
@@ -227,32 +224,43 @@ const ChooseGameHeaderDropdown = ({
           </div>
         </button>
       ) : (
-        <motion.button
-          className="flex items-center w-fit w-[210px] gap-x-[12.5px] px-4 py-3 rounded-xl bg-card hover:bg-card/80 cursor-pointer"
-          whileTap={{ scale: 0.95 }}
+        <button
           onClick={toggle}
+          className={`w-auto h-[6vh] rounded-[0.7vw] flex items-center relative overflow-hidden bg-center transition-colors cursor-pointer bg-[#0f0f0f]`}
         >
-          <span className="font-poppins font-semibold flex items-center gap-x-2">
-            <Image
-              src="/icon/gamepad.png"
-              alt="Gamepad"
-              width={24}
-              height={24}
-              className="object-contain"
-            />
-            Select Game
-          </span>
-          <div className="flex justify-center items-center w-4 h-2.5">
-            <div className="relative">
-              <DropdownOpenIcon isOpen={isOpen} />
+          <div className="ml-[1vw] w-[1.5vw] h-[1.5vw] flex items-center justify-center relative z-10">
+            <span className="font-poppins font-semibold flex items-center gap-x-2">
+              <Image
+                src="/icon/gamepad.png"
+                alt="Gamepad"
+                width={24}
+                height={24}
+                className="w-full h-full"
+              />
+            </span>
+          </div>
+
+          <div className="ml-[0.8vw] flex-1 flex items-center gap-[0.5vw] relative z-10">
+            <span className="font-poppins font-bold text-white text-[1vw] leading-tight">
+              Select Game
+            </span>
+
+            <div className="relative h-[full]">
+               <ChevronDownIcon className={`w-[1.5vw] h-[2vw] text-white mr-[1vw] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
             </div>
           </div>
-        </motion.button>
+        </button>
       )}
 
       <AnimatePresence>
         {isOpen && (
-          <div className="absolute left-0 w-[16vw] rounded-xl shadow-lg z-50 bg-[#0C1610] p-[0.5vw] h-auto overflow-y-auto">
+          <motion.div
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            variants={containerVariants}
+            className="absolute top-[6vh] left-0 w-[16vw] rounded-xl shadow-lg z-50 bg-[#0C1610] p-[0.5vw] h-auto overflow-y-auto"
+          >
             <div className="flex flex-col">
               {games.map((game) => (
                 <motion.button
@@ -262,12 +270,13 @@ const ChooseGameHeaderDropdown = ({
                   whileHover={{ scale: 1.02 }}
                   className="relative flex items-center gap-[0.8vw] w-full px-[0.8vw] py-[3vh] h-[3vh] text-left bg-cover bg-center rounded-lg"
                 >
+                  <div className="absolute inset-0 rounded-lg" />
                   <div className="w-[2vw] h-[2vw] rounded-md overflow-hidden shrink-0 relative z-10">
                     <Image
                       src={game.icon}
                       alt={game.name}
-                      className="w-full h-full object-cover rounded-md"
                       fill
+                      className="w-full h-full object-cover rounded-md"
                     />
                   </div>
                   <span className="flex flex-col text-white font-medium text-[0.9vw] relative z-10 leading-tight">
@@ -276,7 +285,7 @@ const ChooseGameHeaderDropdown = ({
                 </motion.button>
               ))}
             </div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
@@ -376,7 +385,6 @@ const ChooseGame = ({
           <ChevronDown className="text-secondary" />
         </motion.button>
       </DialogTrigger>
-      <ChooseGameModal />
     </Dialog>
   );
 };

@@ -89,12 +89,9 @@ export const LoginForm = () => {
       className="space-y-3.5 px-px w-full"
     >
       <div className="space-y-1.5">
-        <label
-          htmlFor="login-email"
-          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
-        >
+        <label className="text-sm md:text-[0.9vw] text-white mb-2 md:mb-[0.5vh] flex items-center gap-2">
           <User className="w-4 h-4" />
-          Email or Username<span>*</span>
+          E-mail or Username*
         </label>
         <Input
           id="login-email"
@@ -105,12 +102,9 @@ export const LoginForm = () => {
       </div>
 
       <div className="space-y-1.5">
-        <label
-          htmlFor="login-password"
-          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
-        >
+        <label className="text-sm md:text-[0.9vw] text-white mb-2 md:mb-[0.5vh] flex items-center gap-2">
           <Lock className="w-4 h-4" />
-          Password<span>*</span>
+          Password*
         </label>
         <div className="relative">
           <Input
@@ -134,18 +128,27 @@ export const LoginForm = () => {
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="w-full h-11 rounded-md bg-linear-to-b from-[#3DFF88] to-[#259951] hover:from-[#35e67d] hover:to-[#218a46] transition-all shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] active:shadow-none active:translate-y-0.5 font-poppins font-semibold text-base text-black mt-4"
-      >
-        Login
-      </button>
+      <div className="flex flex-col items-center space-y-3">
+        <button
+          type="submit"
+          className="w-full max-w-sm md:w-[25vw] bg-[linear-gradient(180deg,rgba(61,255,136,1)_0%,rgba(37,153,81,1)_100%)] hover:bg-[linear-gradient(180deg,rgba(61,255,136,0.9)_0%,rgba(37,153,81,0.9)_100%)] disabled:opacity-50 disabled:cursor-not-allowed rounded-lg py-3 md:py-[1.5vh] text-base md:text-[1vw] font-semibold text-white transition-all duration-200"
+        >
+          Log In
+        </button>
 
-      <div className="text-center text-sm font-poppins py-2">
-        or continue with
+        <span className="text-gray-400 text-sm md:text-[0.9vw]">
+          or continue with
+        </span>
+
+        <SignInWithGoogleButton />
       </div>
 
-      <SignInWithGoogleButton />
+      <div className="md:hidden text-center mt-6 px-4">
+        <span className="text-xs text-white leading-tight">
+          By accessing the site, I attest that I am at least 18 years old and
+          have read the Terms and Conditions
+        </span>
+      </div>
     </form>
   );
 };

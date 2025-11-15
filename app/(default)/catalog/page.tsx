@@ -28,6 +28,7 @@ const CatalogPage = async () => {
               <div className="absolute top-1/2">
               <CatalogSidebar />
               </div>
+              
               <Logo size={32} variant={"compact"} />
             </div>
           </div>

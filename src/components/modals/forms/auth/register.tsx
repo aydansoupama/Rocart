@@ -88,16 +88,14 @@ export const RegisterForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-3.5 px-px w-full font-poppins max-h-full overflow-y-auto"
+      className="flex-1 flex flex-col overflow-y-auto scrollbar-hide  space-y-4 md:space-y-[1.5vh]"
     >
-      <div className="space-y-2">
-        <label
-          htmlFor="username"
-          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
-        >
+      <div className="w-full max-w-sm md:w-[25vw]">
+        <label className="text-sm md:text-[0.9vw] text-white mb-2 md:mb-[0.5vh] flex items-center gap-2">
           <User className="w-4 h-4" />
-          Username<span>*</span>
+          Username*
         </label>
+
         <Input
           id="username"
           placeholder="Enter Username"
@@ -105,13 +103,10 @@ export const RegisterForm = () => {
         />
       </div>
 
-      <div className="space-y-2">
-        <label
-          htmlFor="email"
-          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
-        >
+      <div className="w-full max-w-sm md:w-[25vw]">
+        <label className="text-sm md:text-[0.9vw] text-white mb-2 md:mb-[0.5vh] flex items-center gap-2">
           <Mail className="w-4 h-4" />
-          Email<span>*</span>
+          Email*
         </label>
         <Input
           id="email"
@@ -121,13 +116,10 @@ export const RegisterForm = () => {
         />
       </div>
 
-      <div className="space-y-2">
-        <label
-          htmlFor="password"
-          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
-        >
+      <div className="w-full max-w-sm md:w-[25vw]">
+        <label className="text-sm md:text-[0.9vw] text-white mb-2 md:mb-[0.5vh] flex items-center gap-2">
           <Lock className="w-4 h-4" />
-          Password<span>*</span>
+          Password*
         </label>
         <div className="relative">
           <Input
@@ -146,13 +138,10 @@ export const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="space-y-2">
-        <label
-          htmlFor="confirmPassword"
-          className="flex items-center space-x-2 text-white text-sm font-poppins font-normal"
-        >
+      <div className="w-full max-w-sm md:w-[25vw]">
+        <label className="text-sm md:text-[0.9vw] text-white mb-2 md:mb-[0.5vh] flex items-center gap-2">
           <Lock className="w-4 h-4" />
-          Confirm Password<span>*</span>
+          Confirm Password*
         </label>
         <div className="relative">
           <Input
@@ -208,19 +197,21 @@ export const RegisterForm = () => {
         </div>
       </div>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full h-11 rounded-md bg-linear-to-b from-[#3DFF88] to-[#259951] hover:from-[#35e67d] hover:to-[#218a46] transition-all shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] active:shadow-none active:translate-y-0.5 font-poppins font-semibold text-base text-black disabled:opacity-50 disabled:cursor-not-allowed mt-4"
-      >
-        Register
-      </button>
+      <div className="flex flex-col items-center space-y-3">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full max-w-sm md:w-[25vw] bg-[linear-gradient(180deg,rgba(61,255,136,1)_0%,rgba(37,153,81,1)_100%)] hover:bg-[linear-gradient(180deg,rgba(61,255,136,0.9)_0%,rgba(37,153,81,0.9)_100%)] disabled:opacity-50 disabled:cursor-not-allowed rounded-lg py-3 md:py-[1.5vh] text-base md:text-[1vw] font-semibold text-white transition-all duration-200"
+        >
+          {isSubmitting ? "Creating Account..." : "Register"}
+        </button>
 
-      <div className="text-center text-sm font-poppins py-2">
-        or continue with
+        <span className="text-gray-400 text-sm md:text-[0.9vw]">
+          or continue with
+        </span>
+
+        <SignUpWithGoogleButton />
       </div>
-
-      <SignUpWithGoogleButton />
     </form>
   );
 };

@@ -25,10 +25,11 @@ const TrendingNowSection = () => {
       <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <TrendingHeader />
 
-        <div className="flex flex-nowrap space-x-6 items-center w-fit mx-auto max-w-[95%] overflow-x-auto">
+        <div className="flex flex-wrap gap-[4vw] sm:gap-[1.5vw] justify-center items-end">
           {trendingGames.map((game, index) => (
             <TrendingCard
               game={game}
+              index={index}
               key={index}
               onVisitMarket={() => console.log("market")}
             />

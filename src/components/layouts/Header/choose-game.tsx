@@ -1,13 +1,11 @@
 "use client";
 import {
-  Dialog,
   DialogClose,
   DialogContent,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/Dialog";
 import { games } from "@/datas/games";
-import { ChevronDown, ChevronDownIcon, X } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import Logo from "../Logo";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -199,7 +197,7 @@ const ChooseGameHeaderDropdown = ({
       {selectedGame ? (
         <button
           onClick={toggle}
-          className={`w-auto h-[6vh] rounded-[0.7vw] flex items-center relative overflow-hidden bg-center cursor-pointer transition-colors bg-[#0f0f0f]`}
+          className={`w-auto h-full px-0 max-h-[6vh] rounded-[0.7vw] flex items-center relative overflow-hidden bg-center cursor-pointer transition-colors bg-[#0f0f0f]`}
         >
           <div className="ml-[1vw] w-[1.5vw] h-[1.5vw] flex items-center justify-center relative z-10">
             <Image
@@ -215,7 +213,11 @@ const ChooseGameHeaderDropdown = ({
               {selectedGame.name}
             </span>
 
-            <ChevronDownIcon className={`w-[1.5vw] h-[2vw] text-white mr-[1vw] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+            <ChevronDownIcon
+              className={`w-[1.5vw] h-[2vw] text-white transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              }`}
+            />
           </div>
           <div className="flex justify-center items-center w-4 h-2.5">
             <div className="relative w-4 h-2.5">
@@ -246,7 +248,11 @@ const ChooseGameHeaderDropdown = ({
             </span>
 
             <div className="relative h-[full]">
-               <ChevronDownIcon className={`w-[1.5vw] h-[2vw] text-white mr-[1vw] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+              <ChevronDownIcon
+                className={`w-[1.5vw] h-[2vw] text-white mr-[1vw] transition-transform duration-200 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
             </div>
           </div>
         </button>
@@ -292,102 +298,33 @@ const ChooseGameHeaderDropdown = ({
   );
 };
 
-const ChooseGameDropdown = ({
-  isOpen,
-  onToggle,
-}: {
-  isOpen: boolean;
-  onToggle: () => void;
-}) => {
+const ChooseGameMobile = () => {
   return (
-    <div className="flex flex-col">
-      <button
-        onClick={onToggle}
-        className="flex items-center justify-between px-4 py-3 rounded-xl bg-[#0a1f0d] hover:bg-[#0f2912] transition-colors cursor-pointer"
-      >
-        <span className="text-white font-poppins font-semibold text-base">
-          Select Game
-        </span>
-        <ChevronDown
-          className={`text-primary transition-transform duration-300 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="flex flex-col gap-2 mt-2 pl-2 overflow-hidden"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as const }}
+    <>
+      <h3 className="text-white text-lg font-medium mb-4">Select Game</h3>
+      <div className="space-y-3">
+        {games.map((game) => (
+          <button
+            key={game.id}
+            className={`flex items-center gap-3 w-full p-3 rounded-lg transition-colors bg-[#3DFF88]/20 border border-[#3DFF88]`}
           >
-            {games.map((game, index) => (
-              <motion.button
-                key={game.id}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0a1f0d] hover:bg-[#0f2912] transition-colors cursor-pointer"
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.2, delay: index * 0.05 }}
-              >
-                <div className="relative w-8 h-8 shrink-0">
-                  <Image
-                    src={game.icon}
-                    alt={game.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <span className="text-white font-poppins font-medium text-sm">
-                  {game.name}
-                </span>
-              </motion.button>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+            <div className="w-10 h-10 rounded-md overflow-hidden shrink-0">
+              <Image
+                src={game.icon}
+                alt={game.name}
+                width={40}
+                height={40}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <span className="text-white font-medium text-left">
+              {game.name}
+            </span>
+          </button>
+        ))}
+      </div>
+    </>
   );
 };
 
-const ChooseGame = ({
-  isMobile = false,
-  isOpen = false,
-  onToggle,
-}: {
-  isMobile?: boolean;
-  isOpen?: boolean;
-  onToggle?: () => void;
-}) => {
-  if (isMobile && onToggle) {
-    return <ChooseGameDropdown isOpen={isOpen} onToggle={onToggle} />;
-  }
-
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <motion.button
-          className="flex justify-center items-center gap-x-2.5 px-4 py-3 rounded-xl bg-card hover:bg-card/30 cursor-pointer"
-          whileTap={{ scale: 0.95 }}
-        >
-          <span className="font-poppins font-semibold flex items-center gap-x-2">
-            <Image
-              src="/icon/gamepad.png"
-              alt="Gamepad"
-              width={24}
-              height={24}
-              className="object-contain"
-            />
-            Choose a game
-          </span>
-          <ChevronDown className="text-secondary" />
-        </motion.button>
-      </DialogTrigger>
-    </Dialog>
-  );
-};
-
-export { ChooseGameModal, ChooseGameDropdown, ChooseGameHeaderDropdown };
-export default ChooseGame;
+export { ChooseGameModal, ChooseGameHeaderDropdown, ChooseGameMobile };

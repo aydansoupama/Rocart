@@ -122,10 +122,18 @@ const Footer = () => {
               <Logo size={12} />
             </motion.div>
 
+            <h3 className="font-poppins font-medium text-white text-sm leading-relaxed text-center md:text-left max-w-md">
+              Disclaimer
+            </h3>
+
             <p className="font-poppins font-medium text-[#7b7b7b] text-sm leading-relaxed text-center md:text-left max-w-md">
               BloxBeams is not affiliated, endorsed by, or in any way associated
               with ROBLOX Corporation, Roblox.com, or any of its subsidiaries or
               affiliates.
+            </p>
+
+            <p className="font-poppins font-medium text-[#7b7b7b] text-xs leading-relaxed text-center md:text-left max-w-md">
+              &copy; 2025 Bloxbeam All rights reserved.
             </p>
           </motion.div>
 

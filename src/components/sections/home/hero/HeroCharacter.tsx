@@ -1,6 +1,7 @@
 "use client";
+import { Card, CardContent } from "@/components/ui/card";
 import { gameItems } from "./game-items-data";
-import { FloatingGameItem } from "./FloatingGameItem";
+import { motion } from "framer-motion";
 
 export const HeroCharacter = () => {
   return (
@@ -13,9 +14,51 @@ export const HeroCharacter = () => {
       />
 
       {/* Floating Game Items */}
-      {gameItems.map((item, index) => (
-        <FloatingGameItem item={item} index={index} key={index} />
-      ))}
+      <div className="hidden lg:flex flex-1 relative aspect-[4/3] w-full max-w-[40vw] mx-auto">
+        {/* Main Character */}
+        <img
+          className="absolute top-[25vh] left-[30%] w-[50%] h-auto object-contain"
+          alt="Character"
+          src="/logo/char.png"
+        />
+
+        {/* Floating Game Items */}
+        {gameItems.map((item, index) => (
+          <motion.div
+            key={index}
+            className="absolute"
+            style={{
+              top: item.top,
+              left: item.left,
+              width: "30%",
+              height: "30%",
+            }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{
+              duration: 3 + index,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <Card className="relative top-[15vw] w-full h-full bg-transparent shadow-none border-none">
+              <CardContent className="p-0 relative w-full h-full">
+                {/* Background gradient */}
+                <div className="absolute inset-0 rounded-[2.5vw] opacity-[0.12] -rotate-45" />
+
+                {/* Item Image */}
+                <img
+                  className={`absolute inset-0 w-[100%] h-[100%] m-auto object-contain scale-150 ${item.rotation}`}
+                  alt={item.name}
+                  src={item.image}
+                />
+
+                {/* Badge */}
+                <div className="absolute bottom-[20%] right-[10%] w-[2.5vw] h-[2.5vw] rounded-[0.8vw] -rotate-45" />
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };
